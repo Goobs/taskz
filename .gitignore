@@ -1,0 +1,31 @@
+# Platform and IDE-generated files
+.DS_Store
+.idea
+.project
+.pydevproject
+
+# Python-related ignores
+*.pyc
+*.pyo
+
+# Django-related ignores
+/proj.*
+/proj/settings/local.py
+
+# Virtual environment folders
+.Python
+bin/
+include/
+lib/
+local/
+src/
+
+# Obsolete ignores
+*.xml
+*.log
+*.*~
+static/thumb/*
+/static/thumb/*
+/nbproject/
+*.db
+/media
