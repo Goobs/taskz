@@ -5,12 +5,12 @@ from .models import *
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    """
-    class UserInline(admin.TabularInline):
-        model = User
-        extra = 0
-        allow_add = False
 
-    inlines = (UserInline, )
-    """
+    class ContactInline(admin.TabularInline):
+        model = Contact
+        extra = 0
+        allow_add = True
+
+    inlines = (ContactInline, )
+
 admin.site.register(Profile, ProfileAdmin)
