@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'proj',
     'proj.core',
     'proj.core.profile',
+    'proj.core.group',
     'proj.tasks',
 )
 
