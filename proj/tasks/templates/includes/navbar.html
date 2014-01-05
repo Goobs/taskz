@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Taskz</a>
+        {% if user.is_authenticated %}
+        <p class="navbar-text navbar-right">
+            <a href="#">Выйти</a>
+        </p>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#" title="Сообщения">
+                    <i class="fa fa-envelope fa-lg"></i>
+                </a>
+            </li>
+            <li>
+                <a href="#" title="Профиль">
+                    <i class="fa fa-user fa-lg"></i>
+                </a>
+            </li>
+        </ul>
+        {% else %}
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#">
+                    <i class="fa fa-sign-in"></i> Войти
+                </a>
+            </li>
+        </ul>
+        <p class="navbar-text navbar-right">Уже с нами?</p>
+        {% endif %}
+    </div>
+</div>

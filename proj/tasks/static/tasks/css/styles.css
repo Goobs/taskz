@@ -7,20 +7,24 @@ html, body {
     margin: 0 auto -60px;
     min-height: 100%;
     padding: 0 0 60px;
-    background: url("http://subtlepatterns.com/patterns/sos.png");
+    background: url("/static/tasks/img/sos.png");
 }
 
 footer {
     height: 60px;
     border-top: 3px solid #efefef;
-    background: url("http://subtlepatterns.com/patterns/outlets.png") #222;
+    background: url("/static/tasks/img/outlets.png") #222;
     color: #999;
 }
 
 .navbar-inverse {
-    background: url("http://subtlepatterns.com/patterns/outlets.png") #222;
+    background: url("/static/tasks/img/outlets.png") #222;
 }
 
 .list-unstyled ul {
     padding-left: 10px;
+}
+
+.feed-post-content {
+    margin-bottom: 12px;
 }
