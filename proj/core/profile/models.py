@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, verbose_name=u'Пользователь')
+    user = models.OneToOneField(User, related_name='profile', verbose_name=u'Пользователь')
     name = models.CharField(max_length=200, verbose_name=u'Имя')
 
     def __unicode__(self):
@@ -20,6 +20,7 @@ class Contact(models.Model):
         ('skype', u'Skype'),
         ('icq', u'ICQ'),
         ('jabber', u'Jabber'),
+        ('site', u'Site'),
     )
     profile = models.ForeignKey(Profile, verbose_name=u'Профиль')
     type = models.CharField(max_length=15, choices=CONTACT_TYPES, verbose_name=u'Тип')
