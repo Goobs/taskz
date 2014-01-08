@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'proj.core',
     'proj.core.profile',
     'proj.core.group',
+    'proj.core.feed',
     'proj.tasks',
 )
 
@@ -66,4 +67,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-#AUTH_USER_MODEL = 'core.User'
+#AUTH_USER_MODEL = 'proj.core.User'
