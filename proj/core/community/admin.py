@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import *
 
 
-class GroupAdmin(admin.ModelAdmin):
+class CommunityAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Group, GroupAdmin)
+admin.site.register(Community, CommunityAdmin)

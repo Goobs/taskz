@@ -25,11 +25,13 @@ INSTALLED_APPS = (
     'mptt',
     'treeadmin',
 
+    #core
     'proj',
     'proj.core',
-    'proj.core.profile',
-    'proj.core.group',
+    'proj.core.community',
     'proj.core.feed',
+
+    #app
     'proj.tasks',
 )
 
@@ -67,4 +69,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
 
-#AUTH_USER_MODEL = 'proj.core.User'
+AUTH_USER_MODEL = 'core.User'

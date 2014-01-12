@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+from proj.core.models import User
 import mptt
 
 
 class Feed(models.Model):
-    SENDER_TYPES = (
-        ('user', u'Пользователь'),
-    )
 
-    type = models.CharField(max_length=15, choices=SENDER_TYPES, default=1, verbose_name=u'Тип')
     sender = models.ForeignKey(User, verbose_name=u'Отправитель')
     title = models.CharField(max_length=255, blank=True, null=True, default='', verbose_name=u'Заголовок')
     content = models.TextField(blank=True, null=True, default='', verbose_name=u'Содержание')
