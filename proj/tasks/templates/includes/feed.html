@@ -26,7 +26,11 @@
                     <div class="feed-post-content">
                         {{ comment.comment }}
                     </div>
-                    <p class="text-muted">{{ comment.date }}
+                    <p class="text-muted">{{ comment.date }} |
+                        <a href="#">
+                            <i class="fa fa-reply"></i> Ответить
+                        </a>
+                    </p>
                 </div>
             </div>
             {% endfor %}

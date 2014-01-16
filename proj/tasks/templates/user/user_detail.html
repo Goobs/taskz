@@ -7,8 +7,8 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
-                <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/220x220{% endif %}"
-                     class="img-circle"/>
+                <img src="{% if object.avatar %}{{ MEDIA_URL }}{{ object.avatar }}{% else %}http://dummyimage.com/220x220{% endif %}"
+                     class="img-circle profile-avatar"/>
             </div>
             <div class="col-md-8">
                 <h3>{{ object.full_name|default:object.username }}<br/><small>Москва, Россия</small></h3>
