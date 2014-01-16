@@ -1,0 +1,27 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Лента{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills">
+    <li class="active">
+        <a href="#">Люди</a>
+    </li>
+    <li>
+        <a href="#">Сообщества</a>
+    </li>
+</ul>
+    <br/>
+{% for post in object_list %}
+{% include 'includes/feed.html' %}
+{% empty %}
+<div class="panel panel-default">
+    <section class="panel-body media">
+        <div class="alert alert-warning">
+            Здесь будут размещаться последние записи сообществ и людей, на которых вы подписаны.
+        </div>
+    </section>
+</div>
+{% endfor %}
+
+{% endblock %}

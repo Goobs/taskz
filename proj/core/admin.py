@@ -38,7 +38,8 @@ class CustomUserAdmin(UserAdmin):
     inlines = (ContactInline, )
 
     custom_fieldset = (
-        ((u'Персональные данные'), {'fields': ('full_name', )}),
+        ((u'Персональные данные'), {'fields': ('full_name', 'about', )}),
+        ((u'Изображения'), {'fields': ('avatar', )}),
     )
 
     fieldsets = UserAdmin.fieldsets + custom_fieldset

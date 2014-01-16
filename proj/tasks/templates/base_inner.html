@@ -9,12 +9,12 @@
         <div class="col-md-3 col-md-pull-9">
             <ul class="list-group">
                 <li class="list-group-item">
-                    <a href="/user">
+                    <a href="{% url 'user_detail' 2 %}">
                         <i class="fa fa-user"></i> Юзер
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="/feed">Лента</a>
+                    <a href="{% url 'feed_list' %}">Лента</a>
                 </li>
             </ul>
         </div>

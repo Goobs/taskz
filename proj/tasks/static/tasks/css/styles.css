@@ -28,3 +28,13 @@ footer {
 .feed-post-content {
     margin-bottom: 12px;
 }
+
+.feed-avatar {
+    width: 80px;
+    min-height: 1px;
+}
+
+.media.comment {
+    padding-top: 10px;
+    border-top: 1px solid #dedede;
+}

@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <section class="panel-body media">
+        <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
+            <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                 class="img-circle feed-avatar"/>
+        </a>
+        <div class="media-body">
+            <a href="{% url 'user_detail' post.sender.id %}">{{ post.sender.full_name|default:post.sender.username }}</a>
+            <div class="feed-post-content">
+                {{ post.content }}
+            </div>
+            <p class="text-muted">{{ post.date }} |
+                <a href="#">
+                    <i class="fa fa-comment-o"></i> Комментировать
+                </a>
+            </p>
+
+            {% for comment in post.comments.all %}
+            <div class="media comment">
+                <a href="{% url 'user_detail' comment.sender.id %}" class="media-object pull-left">
+                    <img src="{% if comment.sender.avatar %}{{ MEDIA_URL }}{{ comment.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                         class="img-circle feed-avatar"/>
+                </a>
+                <div class="media-body">
+                    <a href="{% url 'user_detail' comment.sender.id %}">{{ comment.sender.full_name|default:comment.sender.username }}</a>
+                    <div class="feed-post-content">
+                        {{ comment.comment }}
+                    </div>
+                    <p class="text-muted">{{ comment.date }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>

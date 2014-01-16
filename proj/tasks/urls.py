@@ -6,6 +6,6 @@ from .views import *
 urlpatterns = patterns(
     '',
     (r'^$', TemplateView.as_view(template_name='index.html')),
-    (r'^feed/?$', TemplateView.as_view(template_name='proto/feed.html')),
-    (r'^user/?$', TemplateView.as_view(template_name='proto/user.html')),
+    url(r'^feed/?$', FeedListView.as_view(), name='feed_list'),
+    url(r'^user/(?P<pk>\d+)/$', UserDetailView.as_view(), name='user_detail'),
 )

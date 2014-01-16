@@ -1,0 +1,43 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/220x220{% endif %}"
+                     class="img-circle"/>
+            </div>
+            <div class="col-md-8">
+                <h3>{{ object.full_name|default:object.username }}<br/><small>Москва, Россия</small></h3>
+                {% if object.about %}
+                <p><b>О себе:</b> {{ object.about }}</p>
+                {% endif %}
+                <hr/>
+                <h5>Контакты</h5>
+                <p>
+                {% for contact in object.contacts.all %}
+                    {% if contact.public %}
+                        <b>{{ contact.get_type_display }}:</b> {{ contact.value }}<br/>
+                    {% endif %}
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for post in userfeed %}
+{% include 'includes/feed.html' %}
+{% empty %}
+<div class="panel panel-default">
+    <section class="panel-body media">
+        <div class="alert alert-warning">
+            Здесь будут размещаться последние записи пользователя {{ object.full_name|default:object.username }}.
+        </div>
+    </section>
+</div>
+{% endfor %}
+{% endblock %}

@@ -7,6 +7,9 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
 
     full_name = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Полное имя')
+    avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
+    about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
+    friends = models.ManyToManyField('self', symmetrical=False, verbose_name=u'Друзья')
 
 
 class Contact(models.Model):
@@ -19,7 +22,7 @@ class Contact(models.Model):
         ('jabber', u'Jabber'),
         ('site', u'Site'),
     )
-    user = models.ForeignKey(User, verbose_name=u'Профиль')
+    user = models.ForeignKey(User, related_name='contacts', verbose_name=u'Пользователь')
     type = models.CharField(max_length=15, choices=CONTACT_TYPES, verbose_name=u'Тип')
     value = models.CharField(max_length=64, verbose_name=u'Значение', blank=True, null=True)
     public = models.BooleanField(default=False, verbose_name=u'Публичный')
