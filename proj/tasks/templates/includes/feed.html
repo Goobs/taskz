@@ -7,7 +7,7 @@
         <div class="media-body">
             <a href="{% url 'user_detail' post.sender.id %}">{{ post.sender.full_name|default:post.sender.username }}</a>
             <div class="feed-post-content">
-                {{ post.content }}
+                {{ post.content|linebreaks }}
             </div>
             <p class="text-muted">{{ post.date }} |
                 <a href="#">
@@ -24,7 +24,7 @@
                 <div class="media-body">
                     <a href="{% url 'user_detail' comment.sender.id %}">{{ comment.sender.full_name|default:comment.sender.username }}</a>
                     <div class="feed-post-content">
-                        {{ comment.comment }}
+                        {{ comment.comment|linebreaks }}
                     </div>
                     <p class="text-muted">{{ comment.date }} |
                         <a href="#">

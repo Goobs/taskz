@@ -3,16 +3,16 @@
         <a class="navbar-brand" href="/">Taskz</a>
         {% if user.is_authenticated %}
         <p class="navbar-text navbar-right">
-            <a href="#">Выйти</a>
+            <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>  Выйти</a>
         </p>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="/feed" title="Сообщения">
+                <a href="{% url 'feed_list' %}" title="Сообщения">
                     <i class="fa fa-envelope fa-lg"></i>
                 </a>
             </li>
             <li>
-                <a href="/user" title="Профиль">
+                <a href="{% url 'user_detail' user.id %}" title="Профиль">
                     <i class="fa fa-user fa-lg"></i>
                 </a>
             </li>
@@ -20,7 +20,7 @@
         {% else %}
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="#">
+                <a href="{% url 'login' %}">
                     <i class="fa fa-sign-in"></i> Войти
                 </a>
             </li>
