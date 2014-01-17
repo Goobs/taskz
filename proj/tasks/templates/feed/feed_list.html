@@ -3,15 +3,18 @@
 {% block title %}Лента{% endblock %}
 
 {% block content %}
-<ul class="nav nav-pills">
-    <li class="active">
-        <a href="#">Люди</a>
+<ul class="nav nav-pills compact">
+    <li{% if not getparam %} class="active"{% endif %}>
+        <a href="{% url 'feed_list' %}">Все</a>
     </li>
-    <li>
-        <a href="#">Сообщества</a>
+    <li{% if getparam == 'people' %} class="active"{% endif %}>
+        <a href="{% url 'feed_list' %}?from=people">Люди</a>
+    </li>
+    <li{% if getparam == 'communities' %} class="active"{% endif %}>
+        <a href="{% url 'feed_list' %}?from=communities">Сообщества</a>
     </li>
 </ul>
-    <br/>
+
 {% for post in object_list %}
 {% include 'includes/feed.html' %}
 {% empty %}

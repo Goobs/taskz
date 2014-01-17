@@ -14,3 +14,6 @@ class Community(models.Model):
     class Meta:
         verbose_name = u'Сообщество'
         verbose_name_plural = u'Сообщества'
+
+    def __unicode__(self):
+        return self.name

@@ -22,6 +22,20 @@ class FeedListView(ListView):
     model = Feed
     paginate_by = 20
 
+    def get_context_data(self, **kwargs):
+        context = super(FeedListView, self).get_context_data(**kwargs)
+        context['getparam'] = self.request.GET.get('from')
+        return context
+
+    def get_queryset(self):
+        param = self.request.GET.get('from')
+        queryset = Feed.objects.all()
+        if param == 'communities':
+            queryset = queryset.filter(community__isnull=False)
+        elif param == 'people':
+            queryset = queryset.filter(community__isnull=True)
+        return queryset
+
 
 class UserDetailView(DetailView):
     template_name = 'user/user_detail.html'

@@ -1,15 +1,37 @@
 <div class="panel panel-default">
     <section class="panel-body media">
+        {% if post.community %}
+        <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
+            <img src="{% if post.community.image %}{{ MEDIA_URL }}{{ post.community.image }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                 class="img-circle feed-avatar"/>
+        </a>
+        {% else %}
         <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
             <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
                  class="img-circle feed-avatar"/>
         </a>
+        {% endif %}
         <div class="media-body">
-            <a href="{% url 'user_detail' post.sender.id %}">{{ post.sender.full_name|default:post.sender.username }}</a>
+            {% if post.community %}
+                <a href="{% url 'user_detail' post.sender.id %}">
+                    {{ post.community.name }}
+                </a>
+            {% else %}
+                <a href="{% url 'user_detail' post.sender.id %}">
+                    {{ post.sender.full_name|default:post.sender.username }}
+                </a>
+            {% endif %}
             <div class="feed-post-content">
                 {{ post.content|linebreaks }}
             </div>
-            <p class="text-muted">{{ post.date }} |
+
+            <p class="text-muted">
+                {% if post.community %}
+                    <a href="{% url 'user_detail' post.sender.id %}" class="text-muted">
+                        <i class="fa fa-user"></i> {{ post.sender.full_name|default:post.sender.username }}
+                    </a>
+                {% endif %} |
+                {{ post.date }} |
                 <a href="#">
                     <i class="fa fa-comment-o"></i> Комментировать
                 </a>
