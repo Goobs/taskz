@@ -44,9 +44,18 @@ class UserDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['userfeed'] = Feed.objects.user_feed(self.object)
-
+        addform = FeedForm(form_method='post')
+        context['addform'] = addform
         return context
 
+    def post(self, request, **kwargs):
+        addform = FeedForm(request.POST)
+        addform.sender = request.user
+        if addform.is_valid():
+            addform.save()
+        else:
+            addform.errors
+        return self.get(request, **kwargs)
 
 class LoginView(TemplateView):
     template_name = 'accounts/login.html'

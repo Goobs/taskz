@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'proj.core',
     'proj.core.community',
     'proj.core.feed',
+    'proj.core.message',
 
     #app
     'proj.tasks',

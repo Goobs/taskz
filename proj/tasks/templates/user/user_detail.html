@@ -1,5 +1,5 @@
 {% extends 'base_inner.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Профиль{% endblock %}
 
 {% block content %}
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-
+{% crispy addform %}
 {% for post in userfeed %}
 {% include 'includes/feed.html' %}
 {% empty %}
