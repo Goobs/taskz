@@ -24,13 +24,12 @@ class LoginForm(CrispyForm):
         )
 
 
-class FeedForm(CrispyModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'placeholder':u'Напишите, что у вас нового'}),)
-    sender = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.HiddenInput())
+class FeedForm(CrispyForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'placeholder': u'Напишите, что у вас нового'}),)
 
     class Meta:
         model = Feed
-        fields = ('content', 'sender')
+        fields = ('content',)
 
     def get_layout(self, *args, **kwargs):
         self.helper.label_class = 'sr-only'
@@ -41,5 +40,6 @@ class FeedForm(CrispyModelForm):
                 Field('content'),
                 css_class='col-md-12'
             ),
-            StrictButton(u'<i class="fa fa-share-alt"></i> Отправить', type='submit', css_class='btn-primary'),
+            StrictButton(u'<i class="fa fa-share-alt"></i> Отправить', type='submit',
+                         css_class='btn-primary'),
         )

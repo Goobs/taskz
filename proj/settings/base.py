@@ -16,10 +16,12 @@ INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.comments',
     'south',
     'crispy_forms',
     'mptt',
@@ -56,6 +58,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 MEDIA_ROOT = os.path.normpath(os.path.join(BASE_DIR, '..', 'media'))
 MEDIA_URL = '/media/'
 
+SITE_ID = 1
 #FIXTURE_DIRS = (
 #    os.path.join(BASE_DIR, 'core', 'currency', 'fixtures'),
 #)

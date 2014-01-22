@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^', include('proj.tasks.urls')),
 )
 

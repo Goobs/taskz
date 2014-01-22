@@ -29,12 +29,16 @@ class FeedListView(ListView):
 
     def get_queryset(self):
         param = self.request.GET.get('from')
-        queryset = Feed.objects.all()
+        queryset = Feed.objects.all().order_by('-date')
         if param == 'communities':
             queryset = queryset.filter(community__isnull=False)
         elif param == 'people':
             queryset = queryset.filter(community__isnull=True)
         return queryset
+
+
+class FeedDetailView(DetailView):
+    model = Feed
 
 
 class UserDetailView(DetailView):
@@ -44,18 +48,19 @@ class UserDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['userfeed'] = Feed.objects.user_feed(self.object)
-        addform = FeedForm(form_method='post')
-        context['addform'] = addform
+        context['addform'] = FeedForm(form_method='post')
         return context
 
     def post(self, request, **kwargs):
         addform = FeedForm(request.POST)
-        addform.sender = request.user
         if addform.is_valid():
-            addform.save()
-        else:
-            addform.errors
+            feed = Feed(
+                sender=request.user,
+                content=addform.cleaned_data.get('content')
+            )
+            feed.save()
         return self.get(request, **kwargs)
+
 
 class LoginView(TemplateView):
     template_name = 'accounts/login.html'

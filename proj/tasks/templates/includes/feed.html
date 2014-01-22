@@ -1,3 +1,6 @@
+{% load comments %}
+
+
 <div class="panel panel-default">
     <section class="panel-body media">
         {% if post.community %}
@@ -26,36 +29,23 @@
             </div>
 
             <p class="text-muted">
+            {% get_comment_count for post as comment_count %}
                 {% if post.community %}
                     <a href="{% url 'user_detail' post.sender.id %}" class="text-muted">
                         <i class="fa fa-user"></i> {{ post.sender.full_name|default:post.sender.username }}
-                    </a>
-                {% endif %} |
+                    </a> |
+                {% endif %}
                 {{ post.date }} |
-                <a href="#">
+                {% if comment_count > 0 %}
+                <a href="{% url 'feed_detail' post.id %}">
+                    <i class="fa fa-comment-o"></i> Комментарии ({{ comment_count }})
+                </a>
+                {% else %}
+                <a href="{% url 'feed_detail' post.id %}">
                     <i class="fa fa-comment-o"></i> Комментировать
                 </a>
+                {% endif %}
             </p>
-
-            {% for comment in post.comments.all %}
-            <div class="media comment">
-                <a href="{% url 'user_detail' comment.sender.id %}" class="media-object pull-left">
-                    <img src="{% if comment.sender.avatar %}{{ MEDIA_URL }}{{ comment.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
-                         class="img-circle feed-avatar"/>
-                </a>
-                <div class="media-body">
-                    <a href="{% url 'user_detail' comment.sender.id %}">{{ comment.sender.full_name|default:comment.sender.username }}</a>
-                    <div class="feed-post-content">
-                        {{ comment.comment|linebreaks }}
-                    </div>
-                    <p class="text-muted">{{ comment.date }} |
-                        <a href="#">
-                            <i class="fa fa-reply"></i> Ответить
-                        </a>
-                    </p>
-                </div>
-            </div>
-            {% endfor %}
         </div>
     </section>
 </div>

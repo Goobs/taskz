@@ -1,0 +1,95 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Лента{% endblock %}
+
+{% block content %}
+
+{% load comments %}
+
+{% with object as post %}
+<div class="panel panel-default">
+    <section class="panel-body media">
+        {% if post.community %}
+        <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
+            <img src="{% if post.community.image %}{{ MEDIA_URL }}{{ post.community.image }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                 class="img-circle feed-avatar"/>
+        </a>
+        {% else %}
+        <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
+            <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                 class="img-circle feed-avatar"/>
+        </a>
+        {% endif %}
+        <div class="media-body">
+            {% if post.community %}
+                <a href="{% url 'user_detail' post.sender.id %}">
+                    {{ post.community.name }}
+                </a>
+            {% else %}
+                <a href="{% url 'user_detail' post.sender.id %}">
+                    {{ post.sender.full_name|default:post.sender.username }}
+                </a>
+            {% endif %}
+            <div class="feed-post-content">
+                {{ post.content|linebreaks }}
+            </div>
+
+            <p class="text-muted">
+
+                {% if post.community %}
+                    <a href="{% url 'user_detail' post.sender.id %}" class="text-muted">
+                        <i class="fa fa-user"></i> {{ post.sender.full_name|default:post.sender.username }}
+                    </a> |
+                {% endif %}
+                {{ post.date }}
+            </p>
+            <hr/>
+            {% get_comment_count for post as comment_count %}
+            <h4>Комментарии ({{ comment_count }})</h4>
+
+            {% get_comment_list for post as comment_list %}
+            {% for comment in comment_list %}
+                <a name="c{{ comment.id }}"></a>
+                <div class="media">
+                    <a href="{% url 'user_detail' comment.user.id %}" class="media-object pull-left">
+                        <img src="{% if comment.user.avatar %}{{ MEDIA_URL }}{{ comment.user.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                             class="img-circle feed-avatar"/>
+                    </a>
+                    <div class="media-body">
+                        <a href="{% url 'user_detail' post.sender.id %}">
+                            {{ comment.user.full_name|default:comment.user.username }}
+                        </a>
+                        <div class="feed-post-content">
+                            {{ comment.comment|linebreaks }}
+                        </div>
+                        <p class="text-muted">
+                            {{ comment.submit_date }}
+                        </p>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            {% get_comment_form for post as form %}
+            <form action="{% comment_form_target %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Комментарий:</label>
+                    <textarea name="comment" rows="3" class="form-control">{{ form.comment.value|default_if_none:'' }}</textarea>
+                </div>
+                {{ form.honeypot }}
+                {{ form.content_type }}
+                {{ form.object_pk }}
+                {{ form.timestamp }}
+                {{ form.security_hash }}
+                <input type="hidden" name="next" value="{% url 'feed_detail' post.id %}" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-share"></i> Отправить
+                </button>
+            </form>
+        </div>
+    </section>
+</div>
+
+{% endwith %}
+{% endblock %}
