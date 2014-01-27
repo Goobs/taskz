@@ -6,7 +6,7 @@ from proj.core.feed.models import *
 
 
 class LoginForm(CrispyForm):
-    username = forms.CharField(label=u'Логин')
+    email = forms.EmailField(label=u'Email')
     password = forms.CharField(label=u'Пароль', widget=forms.PasswordInput)
 
     def get_layout(self, *args, **kwargs):
@@ -14,7 +14,7 @@ class LoginForm(CrispyForm):
         self.helper.field_class = ''
         self.helper.form_class = ''
         return Layout(
-            Field('username', placeholder=u'Логин'),
+            Field('email', placeholder=u'Логин'),
             Div(
                 Div(
                     Field('password', placeholder=u'Пароль'),
@@ -35,14 +35,13 @@ class RegistrationForm(CrispyModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'full_name', 'email']
+        fields = ['full_name', 'email']
 
     def get_layout(self, *args, **kwargs):
         self.helper.label_class = 'sr-only'
         self.helper.field_class = ''
         self.helper.form_class = ''
         return Layout(
-            Field('username', placeholder=u'Логин'),
             Field('full_name', placeholder=u'Ваше имя'),
             Field('email', placeholder=u'E-mail'),
             Field('password', placeholder=u'Пароль'),

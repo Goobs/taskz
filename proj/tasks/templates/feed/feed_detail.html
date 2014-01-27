@@ -27,7 +27,7 @@
                 </a>
             {% else %}
                 <a href="{% url 'user_detail' post.sender.id %}">
-                    {{ post.sender.full_name|default:post.sender.username }}
+                    {{ post.sender.full_name }}
                 </a>
             {% endif %}
             <div class="feed-post-content">
@@ -38,7 +38,7 @@
 
                 {% if post.community %}
                     <a href="{% url 'user_detail' post.sender.id %}" class="text-muted">
-                        <i class="fa fa-user"></i> {{ post.sender.full_name|default:post.sender.username }}
+                        <i class="fa fa-user"></i> {{ post.sender.full_name }}
                     </a> |
                 {% endif %}
                 {{ post.date }}
@@ -57,7 +57,7 @@
                     </a>
                     <div class="media-body">
                         <a href="{% url 'user_detail' post.sender.id %}">
-                            {{ comment.user.full_name|default:comment.user.username }}
+                            {{ comment.user.full_name }}
                         </a>
                         <div class="feed-post-content">
                             {{ comment.comment|linebreaks }}

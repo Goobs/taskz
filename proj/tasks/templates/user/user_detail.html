@@ -21,12 +21,12 @@
                             </button>
                         </form>
                     {% else %}
-                        Вы подписаны на {{ object.username }}
+                        Вы подписаны на {{ object.full_name }}
                     {% endif %}
                 {% endif %}
             </div>
             <div class="col-md-8">
-                <h3>{{ object.full_name|default:object.username }}
+                <h3>{{ object.full_name }}
                     {% if object.id == user.id %}<small>(это вы)</small>{% endif %}
                     <br/><small>Москва, Россия</small></h3>
                 {% if object.about %}
@@ -53,7 +53,7 @@
 <div class="panel panel-default">
     <section class="panel-body media">
         <div class="alert alert-warning">
-            Здесь будут размещаться последние записи пользователя {{ object.full_name|default:object.username }}.
+            Здесь будут размещаться последние записи пользователя {{ object.full_name }}.
         </div>
     </section>
 </div>

@@ -80,29 +80,29 @@ class LoginView(TemplateView):
     regform = RegistrationForm(prefix='reg')
 
     def post(self, request):
-        username = None
+        email = None
         password = None
         self.loginform = LoginForm(self.request.POST, prefix='login')
         self.regform = RegistrationForm(self.request.POST, prefix='reg')
 
         if self.regform.is_valid():
             user = self.regform.instance
-            username = user.username
+            email = user.email
             password = self.regform.cleaned_data.get('password')
             user.set_password(password)
             user.save()
 
         if self.loginform.is_valid():
-            username = self.loginform.cleaned_data.get('username')
+            email = self.loginform.cleaned_data.get('email')
             password = self.loginform.cleaned_data.get('password')
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(email=email, password=password)
         if user is not None:
             if user.is_active:
-                login(request, user)
+                auth_login(request, user)
                 return redirect(request.GET.get('next', '/'))
             else:
-                self.loginform.errors['username'] = [u'Аккаунт неактивен']
+                self.loginform.errors['email'] = [u'Аккаунт неактивен']
         else:
             self.loginform.errors['__all__'] = [u'Неправильный логин и пароль']
         return self.get(request)

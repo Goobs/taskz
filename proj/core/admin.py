@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import admin
-
+from django.utils.translation import ugettext_lazy as _
 
 from .models import *
 
@@ -14,15 +14,15 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ('full_name',)
 
-    def clean_username(self):
-        username = self.cleaned_data["username"]
+    def clean_email(self):
+        email = self.cleaned_data["email"]
         try:
-            self.Meta.model.objects.get(username=username)
+            self.Meta.model.objects.get(email=email)
         except self.Meta.model.DoesNotExist:
-            return username
+            return email
         raise forms.ValidationError(
-            self.error_messages['duplicate_username'],
-            code='duplicate_username',
+            self.error_messages['duplicate_email'],
+            code='duplicate_email',
         )
 
 
@@ -36,15 +36,26 @@ class CustomUserAdmin(UserAdmin):
         verbose_name_plural = u'Контакты'
 
     inlines = (ContactInline, )
-
-    custom_fieldset = (
-        ((u'Персональные данные'), {'fields': ('full_name', 'about', )}),
-        ((u'Изображения'), {'fields': ('avatar', )}),
-        ((u'Подписки'), {'fields': ('friends',  )}),
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        (_('Personal info'), {'fields': ('full_name', 'about', 'avatar')}),
+        (u'Социальные связи', {'fields': ('friends',)}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
+                                       'groups', 'user_permissions')}),
+        (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
+    )
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2')}
+        ),
     )
 
-    fieldsets = UserAdmin.fieldsets + custom_fieldset
-    add_fieldsets = UserAdmin.add_fieldsets + custom_fieldset
+    list_display = ('email', 'full_name', 'is_staff')
+    list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
+    search_fields = ('full_name', 'email')
+    ordering = ('email',)
+    filter_horizontal = ('groups', 'user_permissions',)
 
     add_form = CustomUserCreationForm
 
