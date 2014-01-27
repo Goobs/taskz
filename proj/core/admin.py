@@ -40,6 +40,7 @@ class CustomUserAdmin(UserAdmin):
     custom_fieldset = (
         ((u'Персональные данные'), {'fields': ('full_name', 'about', )}),
         ((u'Изображения'), {'fields': ('avatar', )}),
+        ((u'Подписки'), {'fields': ('friends',  )}),
     )
 
     fieldsets = UserAdmin.fieldsets + custom_fieldset

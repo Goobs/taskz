@@ -5,7 +5,15 @@
 {% block content %}
 <div class="panel panel-default">
     <div class="panel-body">
-    {% crispy form %}
+    {% crispy loginform %}
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5 class="panel-title">Впервые у нас? Присоединяйтесь!</h5>
+    </div>
+    <div class="panel-body">
+    {% crispy regform %}
     </div>
 </div>
 {% endblock %}

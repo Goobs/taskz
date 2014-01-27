@@ -5,12 +5,13 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-
+    #email = models.EmailField(max_length=255, unique=True, db_index=True, verbose_name=u'Email')
     full_name = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Полное имя')
     avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
-    friends = models.ManyToManyField('self', symmetrical=False, verbose_name=u'Друзья')
+    friends = models.ManyToManyField('self', symmetrical=False, blank=True, verbose_name=u'Друзья')
 
+    #USERNAME_FIELD = 'email'
 
 class Contact(models.Model):
 

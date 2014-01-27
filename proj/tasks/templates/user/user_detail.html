@@ -7,11 +7,28 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">
+                <p>
                 <img src="{% if object.avatar %}{{ MEDIA_URL }}{{ object.avatar }}{% else %}http://dummyimage.com/220x220{% endif %}"
                      class="img-circle profile-avatar"/>
+                </p>
+                {% if object.id != user.id %}
+                    {% if not object in user.friends.all %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="follow-user" value="{{ object.id }}">
+                            <button type="submit" class="btn">
+                                <i class="fa fa-star"></i> Подписаться
+                            </button>
+                        </form>
+                    {% else %}
+                        Вы подписаны на {{ object.username }}
+                    {% endif %}
+                {% endif %}
             </div>
             <div class="col-md-8">
-                <h3>{{ object.full_name|default:object.username }}<br/><small>Москва, Россия</small></h3>
+                <h3>{{ object.full_name|default:object.username }}
+                    {% if object.id == user.id %}<small>(это вы)</small>{% endif %}
+                    <br/><small>Москва, Россия</small></h3>
                 {% if object.about %}
                 <p><b>О себе:</b> {{ object.about }}</p>
                 {% endif %}
