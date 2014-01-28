@@ -20,8 +20,9 @@
                     </a> <span class="text-muted">{{ message.date }}</span>
                 </p>
                 <p>
-                    {{ message.message }}
-
+                    <a href="{% url 'message_list' message.sender_id %}">
+                        {{ message.message }}
+                    </a>
                 </p>
             </div>
         </section>

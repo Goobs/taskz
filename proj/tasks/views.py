@@ -114,7 +114,18 @@ class LoginView(TemplateView):
         return context
 
 
-class MessagesListView(ListView):
+class DialogListView(ListView):
+    template_name = 'message/dialog_list.html'
     model = Message
     paginate_by = 20
 
+    def get_queryset(self):
+        return Message.objects.last(self.request.user)
+
+class MessageListView(ListView):
+    model = Message
+
+    def get_queryset(self):
+        user2 = User.objects.get(pk=self.kwargs.get('user'))
+        print user2
+        return Message.objects.dialog(self.request.user, user2)

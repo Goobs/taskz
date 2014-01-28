@@ -12,7 +12,8 @@ urlpatterns = patterns(
 
     url(r'^user/(?P<pk>\d+)/?$', UserDetailView.as_view(), name='user_detail'),
 
-    url(r'^messages/?$', login_required(MessagesListView.as_view()), name='messages_list'),
+    url(r'^messages/?$', login_required(DialogListView.as_view()), name='dialog_list'),
+    url(r'^messages/(?P<user>\d+)/?$', login_required(MessageListView.as_view()), name='message_list'),
 
     url(r'^accounts/login/$', unauthorized_only(LoginView.as_view()), name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),

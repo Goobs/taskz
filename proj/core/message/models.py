@@ -2,6 +2,7 @@
 
 from django.db import models
 from proj.core.models import User
+from .managers import *
 
 
 class Message(models.Model):
@@ -11,9 +12,11 @@ class Message(models.Model):
     date = models.DateTimeField(auto_now_add=True, verbose_name=u'Отправлено')
     read = models.BooleanField(default=False, verbose_name=u'Прочитано')
 
+    objects = MessageManager()
+
     class Meta:
         verbose_name = u'Сообщение'
         verbose_name_plural = u'Сообщения'
 
     def __unicode__(self):
-        return self.name
+        return '%s -> %s %s' % (self.sender, self.recipient, self.date)

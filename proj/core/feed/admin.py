@@ -7,6 +7,6 @@ from treeadmin.admin import TreeAdmin
 
 
 class FeedAdmin(admin.ModelAdmin):
-    list_display = ['sender', 'date']
+    list_display = ('sender', 'date')
 
 admin.site.register(Feed, FeedAdmin)
