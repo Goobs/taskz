@@ -82,19 +82,21 @@ class LoginView(TemplateView):
     def post(self, request):
         email = None
         password = None
-        self.loginform = LoginForm(self.request.POST, prefix='login')
-        self.regform = RegistrationForm(self.request.POST, prefix='reg')
 
-        if self.regform.is_valid():
-            user = self.regform.instance
-            email = user.email
-            password = self.regform.cleaned_data.get('password')
-            user.set_password(password)
-            user.save()
+        if request.POST.get('signup'):
+            self.regform = RegistrationForm(self.request.POST, prefix='reg')
+            if self.regform.is_valid():
+                user = self.regform.instance
+                email = user.email
+                password = self.regform.cleaned_data.get('password')
+                user.set_password(password)
+                user.save()
 
-        if self.loginform.is_valid():
-            email = self.loginform.cleaned_data.get('email')
-            password = self.loginform.cleaned_data.get('password')
+        if request.POST.get('login'):
+            self.loginform = LoginForm(self.request.POST, prefix='login')
+            if self.loginform.is_valid():
+                email = self.loginform.cleaned_data.get('email')
+                password = self.loginform.cleaned_data.get('password')
 
         user = authenticate(email=email, password=password)
         if user is not None:
@@ -121,6 +123,7 @@ class DialogListView(ListView):
 
     def get_queryset(self):
         return Message.objects.last(self.request.user)
+
 
 class MessageListView(ListView):
     model = Message

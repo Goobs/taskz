@@ -22,7 +22,7 @@ class LoginForm(CrispyForm):
                 ),
                 Div(
                     StrictButton(u'<i class="fa fa-sign-in"></i> Войти', type='submit',
-                                 css_class='btn-primary btn-block'),
+                                 css_class='btn-primary btn-block', name='login', value='on'),
                     css_class='col-md-4'
                 ),
                 css_class='row'
@@ -45,7 +45,8 @@ class RegistrationForm(CrispyModelForm):
             Field('full_name', placeholder=u'Ваше имя'),
             Field('email', placeholder=u'E-mail'),
             Field('password', placeholder=u'Пароль'),
-            StrictButton(u'Регистрация', type='submit', css_class='btn-default pull-right'),
+            StrictButton(u'Регистрация', type='submit', css_class='btn-default pull-right',
+                         name='signup', value='on'),
             Div(css_class='clearfix')
         )
 
