@@ -2,7 +2,7 @@
 
 from django.db import models
 from proj.core.models import User
-from proj.core.project.models import Project
+from proj.core.project.models import Project, Milestone
 from proj.core.community.models import Community
 
 STATUSES_CHOICES = (
@@ -17,6 +17,13 @@ PUBLIC_STATUSES = (
     ('community', u'Доступна сообществам'),
     ('private', u'Приватная'),
 )
+TASK_PRIORITIES = (
+    ('blocker', u'Блокирующий'),
+    ('critical', u'Критичный'),
+    ('major', u'Повышенный'),
+    ('minor', u'Пониженный'),
+    ('trivial', u'Обычный'),
+)
 
 
 class Task(models.Model):
@@ -26,9 +33,13 @@ class Task(models.Model):
                                  verbose_name=u'Исполнитель')
     project = models.ForeignKey(Project, related_name='tasks', blank=True, null=True,
                                 verbose_name=u'Проект')
+    milestone = models.ForeignKey(Milestone, related_name='tasks', blank=True, null=True,
+                                  verbose_name=u'Веха')
     status = models.CharField(max_length=10, choices=STATUSES_CHOICES, default='new', verbose_name=u'Статус')
+    priority = models.CharField(max_length=10, choices=TASK_PRIORITIES, default='major', verbose_name=u'Приоритет')
     title = models.CharField(max_length=255, verbose_name=u'Название')
-    content = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Суть задачи')
+    description = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Описание')
+
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
@@ -41,3 +52,13 @@ class Task(models.Model):
         verbose_name = u'Задача'
         verbose_name_plural = u'Задачи'
 
+
+class TaskComment(models.Model):
+    task = models.ForeignKey(Task, related_name='comments', verbose_name=u'Задача')
+    user = models.ForeignKey(User, verbose_name=u'Пользователь')
+    comment = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Комментарий')
+    date = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
+
+    class Meta:
+        verbose_name = u'Комментарий'
+        verbose_name_plural = u'Комментарии'
