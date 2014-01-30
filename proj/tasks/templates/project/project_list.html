@@ -1,0 +1,32 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Проекты{% endblock %}
+
+{% block content %}
+
+    {% for project in object_list %}
+    <section class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>
+                        <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+                    </h3>
+                    <p>Создан: {{ project.date_created }}</p>
+                </div>
+                <div class="col-md-4">
+                    <p class="text-right">
+                        Статус: <span class="badge">{{ project.get_status_display }}</span>
+                    </p>
+                    <p class="text-right">Вехи:
+                        <a href="{% url 'project_detail' project.id %}">{{ project.milestones.all|length }}</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    {% endfor %}
+
+{% include 'includes/pagination.html' %}
+{% endblock %}

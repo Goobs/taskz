@@ -17,6 +17,10 @@ footer {
     color: #999;
 }
 
+.page-header {
+    margin-top: 20px;
+}
+
 .navbar-inverse {
     background: url("/static/tasks/img/outlets.png") #222;
 }
@@ -54,4 +58,18 @@ footer {
 
 #id_honeypot {
     display: none;
+}
+
+.tasks-panel {
+    position: relative;
+}
+
+.tasks-panel:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    border-left: 1px solid #dedede;
+    right: 0;
+    top: 0;
 }

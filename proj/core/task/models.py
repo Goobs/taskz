@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.db import models
+from datetime import datetime
 from proj.core.models import User
 from proj.core.project.models import Project, Milestone
 from proj.core.community.models import Community
+from .managers import *
+
 
 STATUSES_CHOICES = (
     ('new', u'Новая задача'),
@@ -27,7 +29,8 @@ TASK_PRIORITIES = (
 
 
 class Task(models.Model):
-    parent = models.ForeignKey('self', related_name='sub_tasks', verbose_name=u'Родительская задача')
+    parent = models.ForeignKey('self', related_name='sub_tasks', blank=True, null=True,
+                               verbose_name=u'Родительская задача')
     reporter = models.ForeignKey(User, related_name='reported_tasks', verbose_name=u'Заказчик')
     assignee = models.ForeignKey(User, related_name='assigned_tasks', blank=True, null=True,
                                  verbose_name=u'Исполнитель')
@@ -48,9 +51,17 @@ class Task(models.Model):
     communities = models.ManyToManyField(Community, related_name='tasks', blank=True, null=True,
                                          verbose_name=u'Опубликовать в сообществах')
 
+    objects = TaskManager()
+
     class Meta:
         verbose_name = u'Задача'
         verbose_name_plural = u'Задачи'
+
+    @property
+    def is_past_due(self):
+        if datetime.now() > self.date_due:
+            return True
+        return False
 
 
 class TaskComment(models.Model):

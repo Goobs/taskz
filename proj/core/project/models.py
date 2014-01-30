@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from django.db import models
+from datetime import datetime
 from proj.core.models import User
+from .managers import *
 
 PROJECT_STATUSES = (
     ('open', u'Открыт'),
@@ -27,6 +28,15 @@ class Project(models.Model):
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
 
+    def __unicode__(self):
+        return self.title
+
+    @property
+    def is_past_due(self):
+        if datetime.now() > self.date_due:
+            return True
+        return False
+
 
 class Milestone(models.Model):
     project = models.ForeignKey(Project, related_name='milestones', verbose_name=u'Веха')
@@ -38,5 +48,14 @@ class Milestone(models.Model):
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
 
+    objects = MilestoneManager()
 
+    def __unicode__(self):
+        return self.title
+
+    @property
+    def is_past_due(self):
+        if datetime.now() > self.date_due:
+            return True
+        return False
 

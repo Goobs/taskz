@@ -6,7 +6,7 @@
 
             {% block content %}{% endblock %}
         </div>
-        <div class="col-md-3 col-md-pull-9">
+        <aside class="col-md-3 col-md-pull-9">
             {% if user.is_authenticated %}
             <ul class="nav nav-list">
                 <li>
@@ -24,9 +24,14 @@
                         <i class="fa fa-envelope-o"></i> Сообщения
                     </a>
                 </li>
+                <li>
+                    <a href="{% url 'project_list' %}">
+                        <i class="fa fa-tasks"></i> Проекты
+                    </a>
+                </li>
             </ul>
             {% endif %}
-        </div>
+        </aside>
     </div>
 
 

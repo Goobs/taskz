@@ -1,0 +1,62 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+
+    <article class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="page-header">{{ object.title }}<br/>
+                <small>Создан: {{ object.date_created }}</small>
+            </h3>
+            <p>{{ object.description|linebreaks }}</p>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 tasks-panel">
+                    <h4>Задачи</h4>
+                    {% if object.tasks.all|length %}
+                        <div class="list-group">
+                        {% for task in object.tasks.latest_top %}
+                            <a href="#" class="list-group-item">
+                                <span class="list-group-heading">
+                                    <i class="fa fa-ticket"></i> {{ task.title }}
+                                </span>
+                                <span class="badge">{{ task.get_status_display }}</span><br/>
+                                <span class="list-group-item-text
+                                    {% if task.is_past_due %}text-danger{% endif %}">
+                                    <i class="fa fa-clock-o"></i> Срок: {{ task.date_due|default_if_none:'' }}
+                                </span>
+                            </a>
+                        {% endfor %}
+                        </div>
+                        <a href="#">Показать еще&hellip;</a>
+                    {% else %}
+                        <p>В проекте пока нет задач</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <h4>Вехи</h4>
+                    {% if object.milestones.all|length %}
+                        <div class="list-group">
+                        {% for milestone in object.milestones.latest_top %}
+                            <a href="#" class="list-group-item">
+                                <span class="list-group-heading">
+                                    <i class="fa fa-tag"></i> {{ milestone.title }}
+                                </span>
+                                <span class="badge">{{ milestone.get_status_display }}</span><br/>
+                                <span class="list-group-item-text
+                                    {% if milestone.is_past_due %}text-danger{% endif %}">
+                                    <i class="fa fa-clock-o"></i> Срок: {{ milestone.date_due|default_if_none:'' }}
+                                </span>
+                            </a>
+                        {% endfor %}
+                        </div>
+                        <a href="#">Показать еще&hellip;</a>
+                    {% else %}
+                        <p>В проекте пока нет вех</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}
