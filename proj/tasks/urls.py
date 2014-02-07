@@ -20,4 +20,7 @@ urlpatterns = patterns(
 
     url(r'^projects/?$', login_required(ProjectListView.as_view()), name='project_list'),
     url(r'^projects/(?P<pk>\d+)/?$', login_required(ProjectDetailView.as_view()), name='project_detail'),
+
+    url(r'^communities/?$', login_required(CommunityListView.as_view()), name='community_list'),
+    url(r'^communities/(?P<pk>\d+)/?$', login_required(CommunityDetailView.as_view()), name='community_detail'),
 )

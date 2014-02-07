@@ -11,8 +11,11 @@ class FeedManager(models.Manager):
     def people_feed(self, user):
         return self.filter(sender__in=user.friends.all(), community__isnull=True).order_by('-date')
 
-    def community_feed(self, user):
+    def user_community_feed(self, user):
         return self.filter(community__in=user.communities.all()).order_by('-date')
+
+    def community_feed(self, community):
+        return self.filter(community=community).order_by('-date')
 
     def common_feed(self, user):
         return self.filter(

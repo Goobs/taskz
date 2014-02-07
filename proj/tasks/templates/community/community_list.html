@@ -1,0 +1,38 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Сообщества{% endblock %}
+
+{% block content %}
+
+    {% for community in object_list %}
+    <section class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>
+                        <a href="{% url 'community_detail' community.id %}">{{ community.name }}</a>
+                    </h3>
+                    <p>{{ community.description|striptags|truncatewords:10 }}</p>
+                    <p class="text-muted"><i class="fa fa-user"></i> Участников: {{ community.users.all|length }}</p>
+                </div>
+                <div class="col-md-4 text-right">
+                    <a href="{% url 'community_detail' community.id %}">
+                        <img src="{{ community.image.url }}" class="img-thumbnail"/>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    {% empty %}
+    <section class="panel panel-default">
+        <div class="panel-body media">
+            <div class="alert alert-warning">
+                Здесь будут размещаться сообщества, в которых вы участвуете.
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+
+{% include 'includes/pagination.html' %}
+{% endblock %}

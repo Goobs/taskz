@@ -1,0 +1,25 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+    <article class="panel panel-default">
+        <div class="panel-body">
+            <h3 class="page-header">{{ object.name }}</h3>
+            <p>{{ object.description|linebreaks }}</p>
+            <hr>
+        </div>
+    </article>
+
+    {% for post in userfeed %}
+    {% include 'includes/feed.html' %}
+    {% empty %}
+    <section class="panel panel-default">
+        <div class="panel-body media">
+            <div class="alert alert-warning">
+                Здесь будут размещаться последние записи сообщества {{ object.name }}.
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+{% endblock %}

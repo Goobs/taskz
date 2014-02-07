@@ -33,7 +33,7 @@ class FeedListView(ListView):
     def get_queryset(self):
         param = self.request.GET.get('from')
         if param == 'communities':
-            queryset = Feed.objects.community_feed(self.request.user)
+            queryset = Feed.objects.user_community_feed(self.request.user)
         elif param == 'people':
             queryset = Feed.objects.people_feed(self.request.user)
         else:
@@ -145,3 +145,20 @@ class ProjectListView(ListView):
 
 class ProjectDetailView(DetailView):
     model = Project
+
+
+class CommunityListView(ListView):
+    model = Community
+    paginate_by = 10
+
+    def get_queryset(self):
+        return self.request.user.communities.all()
+
+
+class CommunityDetailView(DetailView):
+    model = Community
+
+    def get_context_data(self, **kwargs):
+        context = super(CommunityDetailView, self).get_context_data(**kwargs)
+        context['userfeed'] = Feed.objects.community_feed(self.object)
+        return context

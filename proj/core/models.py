@@ -61,7 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _('users')
 
     def get_absolute_url(self):
-        return "/users/%s/" % urlquote(self.pk)
+        return "/user/%s/" % urlquote(self.pk)
 
     def get_full_name(self):
         """
