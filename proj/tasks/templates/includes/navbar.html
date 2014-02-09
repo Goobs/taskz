@@ -1,6 +1,15 @@
-<div class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
+<div class="navbar navbar-default navbar-static-top">
+
+        <ul class="nav navbar-nav">
+            <li>
+                <a class="sidebar-toggler" href="#">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </li>
+        </ul>
+
         <a class="navbar-brand" href="/">Taskz</a>
+
         {% if user.is_authenticated %}
         <p class="navbar-text navbar-right">
             <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>  Выйти</a>
@@ -27,5 +36,5 @@
         </ul>
         <p class="navbar-text navbar-right">Уже с нами?</p>
         {% endif %}
-    </div>
+
 </div>

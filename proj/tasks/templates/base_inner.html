@@ -1,38 +1,45 @@
 {% extends 'base.html' %}
 
 {% block commoncontent %}
-    <div class="row">
-        <div class="col-md-9 col-md-push-3">
 
+
+
+    <div id="all">
+        {% include 'includes/navbar.html' %}
+        <div id="content">
             {% block content %}{% endblock %}
         </div>
-        <aside class="col-md-3 col-md-pull-9">
-            {% if user.is_authenticated %}
-            <ul class="nav nav-list">
-                <li>
-                    <a href="{% url 'user_detail' user.id %}">
-                        <i class="fa fa-user"></i> Юзер
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'feed_list' %}">
-                        <i class="fa fa-list"></i> Лента
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'dialog_list' %}">
-                        <i class="fa fa-envelope-o"></i> Сообщения
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'project_list' %}">
-                        <i class="fa fa-tasks"></i> Проекты
-                    </a>
-                </li>
-            </ul>
-            {% endif %}
-        </aside>
+
     </div>
+    <aside id="sidebar">
+
+        {% if user.is_authenticated %}
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{% url 'user_detail' user.id %}" title="Юзер">
+                    <i class="fa fa-user"></i> Юзер
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'feed_list' %}" title="Лента">
+                    <i class="fa fa-list"></i> Лента
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'community_list' %}" title="Сообщества">
+                    <i class="fa fa-group"></i> Сообщества
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'project_list' %}" title="Проекты">
+                    <i class="fa fa-tasks"></i> Проекты
+                </a>
+            </li>
+        </ul>
+        {% endif %}
+    </aside>
+
 
 
 {% endblock %}

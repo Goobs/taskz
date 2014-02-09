@@ -18,22 +18,11 @@
         <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-    <div class="all">
-        {% include 'includes/navbar.html' %}
-        <div class="container">
-            {% block commoncontent %}{% endblock %}
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <br/>
+<body class="sidebar-hidden">
 
-            <p class="text-right">
-                &copy; {% now 'Y' %} Taskz
-            </p>
-        </div>
-    </footer>
+    {% block commoncontent %}{% endblock %}
+
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'tasks/js/scripts.js' %}"></script>
 </body>
 </html>

@@ -2,28 +2,77 @@ html, body {
     height: 100%;
 }
 
-.all {
-    height: auto;
-    margin: 0 auto -60px;
-    min-height: 100%;
-    padding: 0 0 60px;
-    background: url("/static/tasks/img/sos.png");
-}
-
-footer {
-    height: 60px;
-    border-top: 3px solid #efefef;
-    background: url("/static/tasks/img/outlets.png") #222;
-    color: #999;
+body {
+    background: #fff;
 }
 
 .page-header {
     margin-top: 20px;
 }
 
-.navbar-inverse {
-    background: url("/static/tasks/img/outlets.png") #222;
+#all {
+    margin-left: 250px;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: margin-left .3s;
+    transition: margin-left .3s;
 }
+
+.sidebar-hidden #all {
+    margin-left: 40px;
+}
+
+#content {
+    padding: 10px;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    background: #424242;
+    top: 0px;
+    overflow: hidden;
+    -weblit-transition: width .3s;
+    transition: width .3s;
+}
+
+.sidebar-hidden #sidebar {
+    width: 40px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin: 15px 0;
+    padding: 0;
+}
+
+.sidebar-menu > li {
+    display: block;
+}
+
+.sidebar-menu > li > a {
+    display: block;
+    padding: 12px;
+    color: #999;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.sidebar-menu > li > a:hover {
+    color: #ccc;
+    text-decoration: none;
+    background: #2b2b2b;
+}
+
+.sidebar-menu > li > a .fa {color: #999;}
+.sidebar-menu > li > a:hover .fa {color: #ccc;}
+
+.sidebar-hidden .sidebar-menu > li > a {color: #424242;}
+.sidebar-hidden .sidebar-menu > li > a:hover {color: #2b2b2b;}
+
+.sidebar-hidden .sidebar-menu > li > a .fa {color: #999;}
+.sidebar-hidden .sidebar-menu > li > a:hover .fa {color: #ccc;}
 
 .list-unstyled ul {
     padding-left: 10px;
