@@ -4,6 +4,7 @@ from django.views.generic import *
 from django.views.generic.list import ListView
 from django.contrib.auth.views import *
 from django.shortcuts import redirect, render
+from django.contrib import messages
 from django.forms.models import modelformset_factory
 from .forms import *
 from proj.core.feed.models import Feed
@@ -72,6 +73,25 @@ class UserDetailView(DetailView):
             feed.sender = request.user
             feed.content = self.addform.cleaned_data.get('content')
             feed.save()
+
+        return self.get(request, **kwargs)
+
+
+class UserProfileView(TemplateView):
+    template_name = 'accounts/profile_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileView, self).get_context_data(**kwargs)
+        context['profileform'] = EditProfileForm(instance=self.request.user)
+        return context
+
+    def post(self, request, **kwargs):
+        if request.POST.get('profile'):
+            form = EditProfileForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.instance.save()
+                messages.success(request, u'Данные успешно изменены')
+                return redirect('user_profile')
 
         return self.get(request, **kwargs)
 

@@ -3,6 +3,7 @@ from proj.core.utils.crispymixin import *
 from django.contrib.auth.forms import *
 from django.forms import widgets
 from proj.core.feed.models import *
+from proj.core.geo.models import *
 
 
 class LoginForm(CrispyForm):
@@ -51,6 +52,38 @@ class RegistrationForm(CrispyModelForm):
         )
 
 
+class EditProfileForm(CrispyModelForm):
+    #city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, widget=widgets.ChoiceInput())
+
+    class Meta:
+        model = User
+        fields = ['full_name', 'city', 'dob', 'about']
+        labels = {
+            'full_name': u'Ваше имя'
+        }
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
+        self.helper.form_class = 'form-horizontal'
+        return Layout(
+            'full_name',
+            'dob',
+            'city',
+            Field('about', rows=3),
+            Div(
+                Div(
+                    StrictButton(
+                        u'<i class="fa fa-save"></i> Сохранить',
+                        type='submit', name='profile', value='1', css_class='btn btn-primary'
+                    ),
+                    css_class='col-md-9 col-md-offset-3'
+                ),
+                css_class='form-group'
+            )
+        )
+
+
 class FeedForm(CrispyModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'placeholder': u'Напишите, что у вас нового'}),)
 
@@ -86,3 +119,5 @@ class FollowUserForm(CrispyForm):
             StrictButton(u'<i class="fa fa-star"></i> Подписаться', type='submit',
                          css_class='btn-primary')
         )
+
+

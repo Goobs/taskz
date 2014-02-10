@@ -7,7 +7,16 @@
     <div id="all">
         {% include 'includes/navbar.html' %}
         <div id="content">
-            {% block content %}{% endblock %}
+            <div class="container-fluid">
+                {% for message in messages %}
+                <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% block content %}{% endblock %}
+            </div>
+
         </div>
 
     </div>

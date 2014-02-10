@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'proj.core.message',
     'proj.core.task',
     'proj.core.project',
+    'proj.core.geo',
 
     #app
     'proj.tasks',
