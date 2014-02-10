@@ -48,6 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    dob = models.DateField(blank=True, null=True, verbose_name=u'Дата рождения')
     avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
     friends = models.ManyToManyField('self', symmetrical=False, verbose_name=u'Друзья')

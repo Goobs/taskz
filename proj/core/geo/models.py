@@ -23,4 +23,4 @@ class City(models.Model):
         verbose_name_plural = u'Города'
 
     def __unicode__(self):
-        return self.name
+        return u'%s, %s' % (self.country, self.name)
