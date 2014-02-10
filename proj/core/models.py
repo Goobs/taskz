@@ -6,6 +6,7 @@ import re
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlquote
+from proj.core.geo.models import *
 
 
 class UserManager(BaseUserManager):
@@ -50,6 +51,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
     friends = models.ManyToManyField('self', symmetrical=False, verbose_name=u'Друзья')
+
+    city = models.ForeignKey(City, blank=True, null=True, related_name='users', verbose_name=u'Город')
 
     objects = UserManager()
 
