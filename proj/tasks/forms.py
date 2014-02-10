@@ -84,6 +84,49 @@ class EditProfileForm(CrispyModelForm):
         )
 
 
+class PasswordChangeForm(CrispyModelForm):
+    passwd = forms.CharField(label=u'Текущий пароль', widget=widgets.PasswordInput)
+    password_new = forms.CharField(label=u'Новый пароль', widget=widgets.PasswordInput)
+    password_retry = forms.CharField(label=u'Повторите пароль', widget=widgets.PasswordInput)
+
+    class Meta:
+        model = User
+
+    def clean_passwd(self):
+        passwd = self.data['passwd']
+        if not self.instance.check_password(passwd):
+            msg = u'Неправильный пароль'
+            raise forms.ValidationError(msg)
+        return passwd
+
+    def clean_password_retry(self):
+        passwd = self.cleaned_data['password_new']
+        passwd_retry = self.cleaned_data['password_retry']
+        if passwd != passwd_retry:
+            msg = u'Пароли не совпадают!'
+            raise forms.ValidationError(msg)
+        return passwd_retry
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'col-md-3'
+        self.helper.field_class = 'col-md-9'
+        self.helper.form_class = 'form-horizontal'
+        return Layout(
+            'passwd',
+            'password_new',
+            'password_retry',
+            Div(
+                Div(
+                    StrictButton(
+                        u'<i class="fa fa-save"></i> Сменить пароль',
+                        type='submit', name='pass_change', value='1', css_class='btn btn-primary'
+                    ),
+                    css_class='col-md-9 col-md-offset-3'
+                ),
+                css_class='form-group'
+            )
+        )
+
 class FeedForm(CrispyModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'placeholder': u'Напишите, что у вас нового'}),)
 

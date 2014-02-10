@@ -29,22 +29,18 @@
             </div>
 
             <p class="text-muted">
-            {% get_comment_count for post as comment_count %}
+
                 {% if post.community %}
                     <a href="{% url 'user_detail' post.sender.id %}" class="text-muted">
                         <i class="fa fa-user"></i> {{ post.sender.full_name }}
                     </a> |
                 {% endif %}
                 {{ post.date }} |
-                {% if comment_count > 0 %}
-                <a href="{% url 'feed_detail' post.id %}">
-                    <i class="fa fa-comment-o"></i> Комментарии ({{ comment_count }})
-                </a>
-                {% else %}
+
                 <a href="{% url 'feed_detail' post.id %}">
                     <i class="fa fa-comment-o"></i> Комментировать
                 </a>
-                {% endif %}
+
             </p>
         </div>
     </section>

@@ -32,21 +32,23 @@
                 {% if object.about %}
                 <p><b>О себе:</b> {{ object.about }}</p>
                 {% endif %}
-                <hr/>
-                <h5>Контакты</h5>
-                <p>
-                {% for contact in object.contacts.all %}
-                    {% if contact.public %}
-                        <b>{{ contact.get_type_display }}:</b> {{ contact.value }}<br/>
-                    {% endif %}
-                {% endfor %}
-                </p>
+                {% if object.contacts.all|length %}
+                    <hr/>
+                    <h5>Контакты</h5>
+                    <p>
+                    {% for contact in object.contacts.all %}
+                        {% if contact.public %}
+                            <b>{{ contact.get_type_display }}:</b> {{ contact.value }}<br/>
+                        {% endif %}
+                    {% endfor %}
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-{% crispy addform %}
-<div class="clearfix"></div><br/>
+
+
 {% for post in userfeed %}
 {% include 'includes/feed.html' %}
 {% empty %}

@@ -49,13 +49,11 @@ class FeedDetailView(DetailView):
 class UserDetailView(DetailView):
     template_name = 'user/user_detail.html'
     model = User
-    addform = FeedForm(prefix='add')
     followform = FollowUserForm(prefix='follow')
 
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['userfeed'] = Feed.objects.user_feed(self.object)
-        context['addform'] = self.addform
         context['followform'] = self.followform
         return context
 
@@ -67,32 +65,35 @@ class UserDetailView(DetailView):
             request.user.friends.add(user)
             return self.get(request)
 
-        self.addform = FeedForm(request.POST, prefix='add')
-        if self.addform.is_valid() and request.POST.get('post'):
-            feed = self.addform.instance
-            feed.sender = request.user
-            feed.content = self.addform.cleaned_data.get('content')
-            feed.save()
-
         return self.get(request, **kwargs)
 
 
 class UserProfileView(TemplateView):
     template_name = 'accounts/profile_edit.html'
+    passwordform = None
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
-        context['profileform'] = EditProfileForm(instance=self.request.user)
+        if not self.passwordform:
+            self.passwordform = PasswordChangeForm(instance=self.request.user, prefix='pass')
+        context['profileform'] = EditProfileForm(instance=self.request.user, prefix='profile')
+        context['passwordform'] = self.passwordform
         return context
 
     def post(self, request, **kwargs):
         if request.POST.get('profile'):
-            form = EditProfileForm(request.POST, instance=request.user)
+            form = EditProfileForm(request.POST, instance=request.user, prefix='profile')
             if form.is_valid():
-                form.instance.save()
+                form.save()
                 messages.success(request, u'Данные успешно изменены')
                 return redirect('user_profile')
-
+        if request.POST.get('pass_change'):
+            self.passwordform = EditProfileForm(request.POST, instance=request.user, prefix='pass')
+            if self.passwordform.is_valid():
+                #form.instance.set_password(form.cleaned_data.get('password_new'))
+                #form.instance.save()
+                messages.success(request, u'Пароль изменен')
+                return redirect('user_profile')
         return self.get(request, **kwargs)
 
 
