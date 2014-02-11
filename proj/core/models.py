@@ -85,7 +85,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email])
 
 
-
 class Contact(models.Model):
 
     CONTACT_TYPES = (
@@ -97,7 +96,7 @@ class Contact(models.Model):
         ('site', u'Site'),
     )
     user = models.ForeignKey(User, related_name='contacts', verbose_name=u'Пользователь')
-    type = models.CharField(max_length=15, choices=CONTACT_TYPES, verbose_name=u'Тип')
+    type = models.CharField(max_length=15, choices=CONTACT_TYPES, default='phone', verbose_name=u'Тип')
     value = models.CharField(max_length=64, verbose_name=u'Значение', blank=True, null=True)
     public = models.BooleanField(default=False, verbose_name=u'Публичный')
 

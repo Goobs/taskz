@@ -6,12 +6,14 @@ from django.contrib.auth.views import *
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.forms.models import modelformset_factory
+from django.utils.functional import curry
 from .forms import *
 from proj.core.feed.models import Feed
 from proj.core.models import User
 from proj.core.message.models import Message
 from proj.core.project.models import Project
 from proj.core.task.models import Task
+
 
 
 class IndexView(TemplateView):
@@ -72,8 +74,10 @@ class UserProfileView(TemplateView):
     template_name = 'accounts/profile_edit.html'
     passwordform = None
     profileform = None
+    contactforms = modelformset_factory(Contact, form=UserContactForm, extra=1)
 
     def get_context_data(self, **kwargs):
+        self.contactforms.form = staticmethod(curry(UserContactForm, user=self.request.user))
         context = super(UserProfileView, self).get_context_data(**kwargs)
         if not self.passwordform:
             self.passwordform = UserPasswordChangeForm(self.request.user, prefix='pass')
@@ -81,9 +85,11 @@ class UserProfileView(TemplateView):
             self.profileform = EditProfileForm(instance=self.request.user, prefix='profile')
         context['profileform'] = self.profileform
         context['passwordform'] = self.passwordform
+        context['contactforms'] = self.contactforms(queryset=self.request.user.contacts.all())
         return context
 
     def post(self, request, **kwargs):
+        self.contactforms.form = staticmethod(curry(UserContactForm, user=request.user))
         if request.POST.get('profile'):
             self.profileform = EditProfileForm(request.POST, instance=request.user, prefix='profile')
             if self.profileform.is_valid():
@@ -96,6 +102,19 @@ class UserProfileView(TemplateView):
                 self.passwordform.save()
                 messages.success(request, u'Пароль изменен')
                 return redirect('user_profile')
+        if request.POST.get('save_contacts'):
+            fs = self.contactforms(request.POST, queryset=self.request.user.contacts.all())
+            if fs.is_valid:
+                fs.save()
+                messages.success(request, u'Контакты сохранены')
+                return redirect('user_profile')
+        if request.POST.get('delete_contact'):
+            contact = Contact.objects.get(pk=request.POST.get('delete_contact'))
+            if contact and contact.user == request.user:
+                contact.delete()
+                messages.success(request, u'Контакт удален')
+                return redirect('user_profile')
+
         return self.get(request, **kwargs)
 
 

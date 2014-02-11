@@ -4,6 +4,7 @@ from django.contrib.auth.forms import *
 from django.forms import widgets
 from proj.core.feed.models import *
 from proj.core.geo.models import *
+from proj.core.models import *
 
 
 class LoginForm(CrispyForm):
@@ -104,6 +105,56 @@ class UserPasswordChangeForm(PasswordChangeForm, CrispyForm):
                 css_class='form-group'
             )
         )
+
+
+class UserContactForm(CrispyModelForm):
+
+    class Meta:
+        model = Contact
+        fields = ['id', 'type', 'value', 'public']
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(UserContactForm, self).__init__(*args, **kwargs)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.form_tag = False
+        return Layout(
+            Div(
+                Div(
+                    InlineField('type'),
+                    css_class='col-md-3'
+                ),
+                Div(
+                    InlineField('value'),
+                    css_class='col-md-5'
+                ),
+                Div(
+                    InlineField('public'),
+                    css_class='col-md-3'
+                ),
+                Div(
+                    Div(
+                        HTML('<a href="#" class="btn btn-link delete-form"><i class="fa fa-minus"></i></a>')
+                            if not self.instance.id else
+                            StrictButton('<i class="fa fa-minus text-danger"></i>',
+                                         type='submit',
+                                         name='delete_contact',
+                                         value=self.instance.id,
+                                         css_class='btn-link'),
+                        css_class='form-group'
+                    ),
+                    css_class='col-md-1'
+                ),
+                css_class='row' if self.instance.id else 'row dynamic-form',
+            ),
+
+        )
+
+    def save(self, *args, **kwargs):
+        self.instance.user = self.user
+        super(UserContactForm, self).save(*args, **kwargs)
+
 
 
 class FeedForm(CrispyModelForm):
