@@ -5,6 +5,26 @@
 {% block content %}
     <article class="panel panel-default">
         <div class="panel-body">
+            <div class="pull-right">
+                {% if not object in user.communities.all %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="follow-community" value="{{ object.id }}">
+                        <button type="submit" class="btn">
+                            <i class="fa fa-star"></i> Подписаться
+                        </button>
+                    </form>
+                {% else %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="follow-community" value="{{ object.id }}">
+                        <i class="fa fa-star"></i> Вы подписаны на {{ object.name }}.
+                        <button type="submit" class="btn btn-link">
+                            Отписаться
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
             <h3 class="page-header">{{ object.name }}</h3>
             <p>{{ object.description|linebreaks }}</p>
             <hr>

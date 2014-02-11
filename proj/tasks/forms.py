@@ -187,10 +187,17 @@ class FollowUserForm(CrispyForm):
         self.helper.field_class = ''
         self.helper.form_method = 'post'
 
-        return Layout(
-            'user',
-            StrictButton(u'<i class="fa fa-star"></i> Подписаться', type='submit',
-                         css_class='btn-primary')
-        )
+        return None
+
+
+class FollowCommunityForm(CrispyForm):
+    community = forms.IntegerField(widget=forms.HiddenInput)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'sr-only'
+        self.helper.field_class = ''
+        self.helper.form_method = 'post'
+
+        return None
 
 
