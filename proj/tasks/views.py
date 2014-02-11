@@ -64,7 +64,10 @@ class UserDetailView(DetailView):
         self.followform = FollowUserForm(request.POST, prefix='follow')
         if self.followform.is_valid():
             user = User.objects.get(pk=self.followform.cleaned_data.get('user'))
-            request.user.friends.add(user)
+            if not user in request.user.friends.all():
+                request.user.friends.add(user)
+            else:
+                request.user.friends.remove(user)
             return self.get(request)
 
         return self.get(request, **kwargs)
