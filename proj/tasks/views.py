@@ -71,27 +71,29 @@ class UserDetailView(DetailView):
 class UserProfileView(TemplateView):
     template_name = 'accounts/profile_edit.html'
     passwordform = None
+    profileform = None
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileView, self).get_context_data(**kwargs)
         if not self.passwordform:
-            self.passwordform = PasswordChangeForm(instance=self.request.user, prefix='pass')
-        context['profileform'] = EditProfileForm(instance=self.request.user, prefix='profile')
+            self.passwordform = UserPasswordChangeForm(self.request.user, prefix='pass')
+        if not self.profileform:
+            self.profileform = EditProfileForm(instance=self.request.user, prefix='profile')
+        context['profileform'] = self.profileform
         context['passwordform'] = self.passwordform
         return context
 
     def post(self, request, **kwargs):
         if request.POST.get('profile'):
-            form = EditProfileForm(request.POST, instance=request.user, prefix='profile')
-            if form.is_valid():
-                form.save()
+            self.profileform = EditProfileForm(request.POST, instance=request.user, prefix='profile')
+            if self.profileform.is_valid():
+                self.profileform.save()
                 messages.success(request, u'Данные успешно изменены')
                 return redirect('user_profile')
         if request.POST.get('pass_change'):
-            self.passwordform = EditProfileForm(request.POST, instance=request.user, prefix='pass')
+            self.passwordform = UserPasswordChangeForm(request.user, data=request.POST, prefix='pass')
             if self.passwordform.is_valid():
-                #form.instance.set_password(form.cleaned_data.get('password_new'))
-                #form.instance.save()
+                self.passwordform.save()
                 messages.success(request, u'Пароль изменен')
                 return redirect('user_profile')
         return self.get(request, **kwargs)
