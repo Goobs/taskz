@@ -11,7 +11,7 @@ from .forms import *
 from proj.core.feed.models import Feed
 from proj.core.models import User
 from proj.core.message.models import Message
-from proj.core.project.models import Project
+
 from proj.core.task.models import Task
 
 
@@ -178,18 +178,6 @@ class MessageListView(ListView):
     def get_queryset(self):
         user2 = User.objects.get(pk=self.kwargs.get('user'))
         return Message.objects.dialog(self.request.user, user2)
-
-
-class ProjectListView(ListView):
-    model = Project
-    paginate_by = 10
-
-    def get_queryset(self):
-        return Project.objects.filter(reporter=self.request.user)
-
-
-class ProjectDetailView(DetailView):
-    model = Project
 
 
 class CommunityListView(ListView):

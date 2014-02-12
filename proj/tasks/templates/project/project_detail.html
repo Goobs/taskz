@@ -3,9 +3,15 @@
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block content %}
-
+    <ul class="breadcrumb">
+        <li><a href="{% url 'project_list' %}">Проекты</a></li>
+        <li class="active">{{ object.title }}</li>
+    </ul>
     <article class="panel panel-default">
         <div class="panel-body">
+            {% if object.reporter == user %}
+            <a href="{% url 'project_edit' object.id %}" class="pull-right">Редактировать</a>
+            {% endif %}
             <h3 class="page-header">{{ object.title }}<br/>
                 <small>Создан: {{ object.date_created }}</small>
             </h3>

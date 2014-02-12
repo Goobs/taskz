@@ -12,7 +12,10 @@
                     <h3>
                         <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
                     </h3>
-                    <p>Создан: {{ project.date_created }}</p>
+                    <p>Создан: {{ project.date_created }} {% if project.reporter == user %}
+                        <a href="{% url 'project_edit' object.id %}">Редактировать</a>
+                        {% endif %}
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <p class="text-right">

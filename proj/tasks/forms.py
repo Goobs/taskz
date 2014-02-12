@@ -4,6 +4,7 @@ from django.contrib.auth.forms import *
 from django.forms import widgets
 from proj.core.feed.models import *
 from proj.core.geo.models import *
+
 from proj.core.models import *
 
 
@@ -199,5 +200,4 @@ class FollowCommunityForm(CrispyForm):
         self.helper.form_method = 'post'
 
         return None
-
 
