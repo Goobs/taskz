@@ -1,0 +1,21 @@
+{% extends 'base_inner.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Задача{% endblock %}
+
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'task_list' %}">Задачи</a></li>
+    <li class="active">Редактирование</li>
+</ul>
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% crispy form %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Задача{% endblock %}
+
+{% block content %}
+
+<ul class="breadcrumb">
+    <li><a href="{% url 'task_list' %}">Задачи</a></li>
+    <li class="active">{{ object.title|truncatechars:50 }}</li>
+</ul>
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h4 class="page-header">{{ object.title }}<br/>
+                <small>Создана: {{ object.date_created }}</small></h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><i class="fa fa-user"></i> <b>Заказчик:</b> {{ object.reporter }}</p>
+                        <p><i class="fa fa-file-o"></i> <b>Статус:</b> <span class="badge">{{ object.get_status_display }}</span></p>
+                        <p><i class="fa fa-clock-o"></i> <b>Срок:</b> {{ object.date_due }}</p>
+                        <p><i class="fa fa-signal"></i> <b>Приоритет:</b> {{ object.get_priority_display }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><i class="fa fa-sitemap"></i> <b>Проект:</b>
+                            {% if object.project %}
+                                <a href="{% url 'project_detail' object.project_id %}">{{ object.project }}</a>
+                            {% else %}
+                                <span class="text-muted">Нет проекта</span>
+                            {% endif %}</p>
+
+                        <p><i class="fa fa-flag"></i> <b>Веха:</b>
+                            {% if object.milestone %}
+                                <a href="{% url 'project_detail' object.milestone.project_id %}">{{ object.milestone }}</a>
+                            {% else %}
+                                <span class="text-muted">Нет вехи</span>
+                            {% endif %}
+                        </p>
+                        <p>
+                            <i class="fa fa-user"></i> <b>Исполнитель:</b>
+                            {% if object.assignee %}
+                                <a href="{% url 'project_detail' object.assignee_id %}">{{ object.assignee }}</a>
+                            {% else %}
+                                <span class="text-muted">Нет исполнителя</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <hr/>
+                <p><strong>Описание:</strong></p>
+                <p>{{ object.description|default_if_none:''|linebreaks }}</p>
+                <hr/>
+                <p>
+                    {% if object.reporter == user %}
+                    <a href="{% url 'task_edit' object.id %}" class="btn btn-default">
+                        <i class="fa fa-edit"></i> Редактировать
+                    </a>
+                    {% endif %}
+
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

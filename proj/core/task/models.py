@@ -63,6 +63,9 @@ class Task(models.Model):
             return True
         return False
 
+    def __unicode__(self):
+        return self.title
+
 
 class TaskComment(models.Model):
     task = models.ForeignKey(Task, related_name='comments', verbose_name=u'Задача')

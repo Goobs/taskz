@@ -1,0 +1,44 @@
+{% extends 'base_inner.html' %}
+
+{% block title %}Задачи{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% for task in object_list %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>
+                            <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+                        </h3>
+                        <p>Создан: {{ task.date_created }} {% if task.reporter == user %}
+                            <a href="{% url 'task_edit' task.id %}">Редактировать</a>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-right">
+                            Статус: <span class="badge">{{ task.get_status_display }}</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% empty %}
+            <section class="panel panel-default">
+                <div class="panel-body media">
+                    <div class="alert alert-warning">
+                        Здесь будут размещаться ваши Задачи. <a href="{% url 'task_edit' %}">Создать новую&hellip;</a>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+        {% include 'includes/pagination.html' %}
+    </div>
+
+</div>
+
+{% endblock %}
