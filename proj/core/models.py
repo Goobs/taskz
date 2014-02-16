@@ -51,7 +51,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     dob = models.DateField(blank=True, null=True, verbose_name=u'Дата рождения')
     avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
-    friends = models.ManyToManyField('self', symmetrical=False, verbose_name=u'Друзья')
+    friends = models.ManyToManyField('self', symmetrical=False, blank=True, null=True, verbose_name=u'Друзья')
 
     city = models.ForeignKey(City, blank=True, null=True, related_name='users', verbose_name=u'Город')
 
@@ -89,6 +89,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         if self.avatar:
             return self.avatar.url
         return 'http://dummyimage.com/220x220'
+
+    def __unicode__(self):
+        return self.get_full_name()
 
 
 class Contact(models.Model):

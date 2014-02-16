@@ -32,6 +32,8 @@ class Task(models.Model):
     parent = models.ForeignKey('self', related_name='sub_tasks', blank=True, null=True,
                                verbose_name=u'Родительская задача')
     reporter = models.ForeignKey(User, related_name='reported_tasks', verbose_name=u'Заказчик')
+    repliers = models.ManyToManyField(User, related_name='replied_tasks', blank=True, null=True,
+                                      verbose_name=u'Отклики')
     assignee = models.ForeignKey(User, related_name='assigned_tasks', blank=True, null=True,
                                  verbose_name=u'Исполнитель')
     project = models.ForeignKey(Project, related_name='tasks', blank=True, null=True,

@@ -55,3 +55,23 @@ class TaskCommentForm(CrispyModelForm):
                 css_class='form-group'
             )
         )
+
+
+class TaskReplyForm(CrispyForm):
+    task = forms.IntegerField(widget=widgets.HiddenInput)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'sr-only'
+        self.helper.field_class = ''
+        self.helper.form_method = 'post'
+        return None
+
+
+class TaskAssignForm(CrispyForm):
+    user = forms.IntegerField(widget=widgets.HiddenInput)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'sr-only'
+        self.helper.field_class = ''
+        self.helper.form_method = 'post'
+        return None

@@ -19,25 +19,53 @@ class TaskListView(ListView):
 class TaskDetailView(DetailView):
     model = Task
     commentform = None
+    replyform = None
+    assignform = None
 
     def get_context_data(self, **kwargs):
         context = super(TaskDetailView, self).get_context_data(**kwargs)
-        self.commentform = TaskCommentForm()
+        self.commentform = TaskCommentForm(prefix='comment')
+        self.replyform = TaskReplyForm(prefix='reply')
+        self.assignform = TaskAssignForm(prefix='assign')
         context['commentform'] = self.commentform
+        context['replyform'] = self.replyform
+        context['assignform'] = self.assignform
         return context
 
     def post(self, request, **kwargs):
         if request.POST.get('send'):
-            print 'send'
-            self.commentform = TaskCommentForm(request.POST)
+            self.commentform = TaskCommentForm(request.POST, prefix='comment')
             self.commentform.instance.user = request.user
             self.commentform.instance.task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
             if self.commentform.is_valid():
-                print 'valid'
                 self.commentform.save()
                 messages.success(request, u'Комментарий добавлен')
                 return redirect('task_detail', pk=self.kwargs.get('pk'))
-            print self.commentform.errors
+        if request.POST.get('reply-task'):
+            self.replyform = TaskReplyForm(request.POST, prefix='reply')
+            if self.replyform.is_valid():
+                task = get_object_or_404(Task, pk=self.replyform.cleaned_data.get('task'))
+                if request.user in task.repliers.all():
+                    task.repliers.remove(request.user)
+                    messages.success(request, u'Вы отазались от выполнения этой задачи')
+                else:
+                    task.repliers.add(request.user)
+                    messages.success(request, u'Вы откликнулись на эту задачу')
+                return redirect('task_detail', pk=self.kwargs.get('pk'))
+
+        if request.POST.get('assign-user'):
+            self.assignform = TaskAssignForm(request.POST, prefix='assign')
+            if self.assignform.is_valid():
+                user = get_object_or_404(User, pk=self.assignform.cleaned_data.get('user'))
+                task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
+                if user == task.assignee:
+                    task.assignee = None
+                    messages.success(request, u'Вы сняли пользователя с этой задачи')
+                else:
+                    task.assignee = user
+                    messages.success(request, u'Вы назначили пользователя исполнителем на эту задачу')
+                task.save()
+                return redirect('task_detail', pk=self.kwargs.get('pk'))
         return self.get(request, **kwargs)
 
 

@@ -38,7 +38,7 @@ class CustomUserAdmin(UserAdmin):
     inlines = (ContactInline, )
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('full_name', 'about', 'avatar')}),
+        (_('Personal info'), {'fields': ('full_name', 'about', 'avatar', 'city')}),
         (u'Социальные связи', {'fields': ('friends',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
