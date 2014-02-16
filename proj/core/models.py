@@ -75,7 +75,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.full_name.strip()
 
     def get_short_name(self):
-        "Returns the short name for the user."
+        """Returns the short name for the user."""
         return self.full_name.strip()
 
     def email_user(self, subject, message, from_email=None):
@@ -83,6 +83,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         Sends an email to this User.
         """
         send_mail(subject, message, from_email, [self.email])
+
+    @property
+    def avatar_url(self):
+        if self.avatar:
+            return self.avatar.url
+        return 'http://dummyimage.com/220x220'
 
 
 class Contact(models.Model):

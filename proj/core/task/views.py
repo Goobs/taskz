@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic import *
 from django.views.generic.list import ListView
 from django.contrib.auth.views import *
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from .forms import *
 from proj.core.models import User
@@ -18,6 +18,27 @@ class TaskListView(ListView):
 
 class TaskDetailView(DetailView):
     model = Task
+    commentform = None
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskDetailView, self).get_context_data(**kwargs)
+        self.commentform = TaskCommentForm()
+        context['commentform'] = self.commentform
+        return context
+
+    def post(self, request, **kwargs):
+        if request.POST.get('send'):
+            print 'send'
+            self.commentform = TaskCommentForm(request.POST)
+            self.commentform.instance.user = request.user
+            self.commentform.instance.task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
+            if self.commentform.is_valid():
+                print 'valid'
+                self.commentform.save()
+                messages.success(request, u'Комментарий добавлен')
+                return redirect('task_detail', pk=self.kwargs.get('pk'))
+            print self.commentform.errors
+        return self.get(request, **kwargs)
 
 
 class TaskEditView(TemplateView):
@@ -28,7 +49,7 @@ class TaskEditView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(TaskEditView, self).get_context_data(**kwargs)
         if self.kwargs.get('pk'):
-            self.object = Task.objects.get(pk=self.kwargs.get('pk'), reporter=self.request.user)
+            self.object = get_object_or_404(Task, pk=self.kwargs.get('pk'), reporter=self.request.user)
         if not self.form:
             self.form = TaskEditForm(instance=self.object)
         context['form'] = self.form
@@ -36,7 +57,7 @@ class TaskEditView(TemplateView):
 
     def post(self, request, **kwargs):
         if self.kwargs.get('pk'):
-            self.object = Task.objects.get(pk=self.kwargs.get('pk'), reporter=request.user)
+            self.object = get_object_or_404(Task, pk=self.kwargs.get('pk'), reporter=request.user)
         if request.POST.get('save'):
             self.form = TaskEditForm(request.POST, instance=self.object)
             self.form.instance.reporter = request.user
