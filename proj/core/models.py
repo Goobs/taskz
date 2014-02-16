@@ -102,3 +102,17 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return u'%s: %s' % (self.get_type_display(), self.value)
+
+
+class Currency(models.Model):
+    char_code = models.CharField(max_length=5, primary_key=True)
+    code = models.CharField(max_length=5, unique=True)
+    name = models.CharField(max_length=31)
+    exchange_rate = models.FloatField(default=1)
+
+    class Meta:
+        verbose_name = u'Валюта'
+        verbose_name_plural = u'Валюты'
+
+    def __unicode__(self):
+        return self.char_code

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from proj.core.models import User
+from proj.core.models import User, Currency
 from proj.core.project.models import Project, Milestone
 from proj.core.community.models import Community
 from .managers import *
@@ -42,7 +42,8 @@ class Task(models.Model):
     priority = models.CharField(max_length=10, choices=TASK_PRIORITIES, default='major', verbose_name=u'Приоритет')
     title = models.CharField(max_length=255, verbose_name=u'Название')
     description = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Описание')
-
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=u'Стоимость')
+    currency = models.ForeignKey(Currency, default='RUB', verbose_name=u'Валюта')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')

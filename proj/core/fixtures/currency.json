@@ -1,0 +1,1433 @@
+[
+{
+  "pk": "AED", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "784", 
+    "name": "\u0414\u0438\u0440\u0445\u0430\u043c (\u041e\u0410\u042d)"
+  }
+},
+{
+  "pk": "AFN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "971", 
+    "name": "\u0410\u0444\u0433\u0430\u043d\u0438"
+  }
+},
+{
+  "pk": "ALL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "008", 
+    "name": "\u041b\u0435\u043a"
+  }
+},
+{
+  "pk": "AMD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "051", 
+    "name": "\u0410\u0440\u043c\u044f\u043d\u0441\u043a\u0438\u0439 \u0434\u0440\u0430\u043c"
+  }
+},
+{
+  "pk": "ANG", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "532", 
+    "name": "\u041d\u0438 \u0430\u043d\u0442\u0438\u043b\u044c\u0441\u043a\u0438\u0439 \u0433\u0443\u043b\u044c\u0434\u0435\u043d"
+  }
+},
+{
+  "pk": "AOA", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "973", 
+    "name": "\u041a\u0432\u0430\u043d\u0437\u0430"
+  }
+},
+{
+  "pk": "ARS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "032", 
+    "name": "\u0410\u0440\u0433\u0435\u043d\u0442\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "AUD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "036", 
+    "name": "\u0410\u0432\u0441\u0442\u0440\u0430\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "AWG", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "533", 
+    "name": "\u0410\u0440\u0443\u0431\u0430\u043d\u0441\u043a\u0438\u0439 \u0433\u0443\u043b\u044c\u0434\u0435\u043d"
+  }
+},
+{
+  "pk": "BBD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "052", 
+    "name": "\u0411\u0430\u0440\u0431\u0430\u0434\u043e\u0441\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "BDT", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "050", 
+    "name": "\u0422\u0430\u043a\u0430"
+  }
+},
+{
+  "pk": "BGN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "975", 
+    "name": "\u0411\u043e\u043b\u0433\u0430\u0440\u0441\u043a\u0438\u0439 \u043b\u0435\u0432"
+  }
+},
+{
+  "pk": "BHD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "048", 
+    "name": "\u0411\u0430\u0445\u0440\u0435\u0439\u043d\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "BIF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "108", 
+    "name": "\u0411\u0443\u0440\u0443\u043d\u0434\u0438\u0439\u0441\u043a\u0438\u0439 \u0444\u0440\u0430\u043d\u043a"
+  }
+},
+{
+  "pk": "BMD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "060", 
+    "name": "\u0411\u0435\u0440\u043c\u0443\u0434\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "BND", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "096", 
+    "name": "\u0411\u0440\u0443\u043d\u0435\u0439\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "BOB", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "068", 
+    "name": "\u0411\u043e\u043b\u0438\u0432\u0438\u0430\u043d\u043e"
+  }
+},
+{
+  "pk": "BRL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "986", 
+    "name": "\u0411\u0440\u0430\u0437\u0438\u043b\u044c\u0441\u043a\u0438\u0439 \u0440\u0435\u0430\u043b"
+  }
+},
+{
+  "pk": "BSD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "044", 
+    "name": "\u0411\u0430\u0433\u0430\u043c\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "BTN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "064", 
+    "name": "\u041d\u0433\u0443\u043b\u0442\u0440\u0443\u043c"
+  }
+},
+{
+  "pk": "BWP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "072", 
+    "name": "\u041f\u0443\u043b\u0430"
+  }
+},
+{
+  "pk": "BYR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "974", 
+    "name": "\u0411\u0435\u043b\u043e\u0440\u0443\u0441\u0441\u043a\u0438\u0439 \u0440\u0443\u0431\u043b\u044c"
+  }
+},
+{
+  "pk": "BZD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "084", 
+    "name": "\u0411\u0435\u043b\u0438\u0437\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "CAD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "124", 
+    "name": "\u041a\u0430\u043d\u0430\u0434\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "CDF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "976", 
+    "name": "\u041a\u043e\u043d\u0433\u043e\u043b\u0435\u0437\u0441\u043a\u0438\u0439 \u0444\u0440\u0430\u043d\u043a"
+  }
+},
+{
+  "pk": "CHF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "756", 
+    "name": "\u0428\u0432\u0435\u0439\u0446\u0430\u0440\u0441\u043a\u0438\u0439 \u0444\u0440\u0430\u043d\u043a"
+  }
+},
+{
+  "pk": "CLP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "152", 
+    "name": "\u0427\u0438\u043b\u0438\u0439\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "CNY", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "156", 
+    "name": "\u042e\u0430\u043d\u044c"
+  }
+},
+{
+  "pk": "COP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "170", 
+    "name": "\u041a\u043e\u043b\u0443\u043c\u0431\u0438\u0439\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "COU", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "970", 
+    "name": "\u0415\u0434\u0438\u043d\u0438\u0446\u0430 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u0438"
+  }
+},
+{
+  "pk": "CRC", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "188", 
+    "name": "\u041a\u043e\u0441\u0442\u0430\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u043a\u043e\u043b\u043e\u043d"
+  }
+},
+{
+  "pk": "CUC", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "931", 
+    "name": "\u041a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u0443\u0435\u043c\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "CUP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "192", 
+    "name": "\u041a\u0443\u0431\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "CVE", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "132", 
+    "name": "\u042d\u0441\u043a\u0443\u0434\u043e \u041a\u0430\u0431\u043e-\u0412\u0435\u0440\u0434\u0435"
+  }
+},
+{
+  "pk": "CZK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "203", 
+    "name": "\u0427\u0435\u0448\u0441\u043a\u0430\u044f \u043a\u0440\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "DJF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "262", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u0414\u0436\u0438\u0431\u0443\u0442\u0438"
+  }
+},
+{
+  "pk": "DKK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "208", 
+    "name": "\u0414\u0430\u0442\u0441\u043a\u0430\u044f \u043a\u0440\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "DOP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "214", 
+    "name": "\u0414\u043e\u043c\u0438\u043d\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "DZD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "012", 
+    "name": "\u0410\u043b\u0436\u0438\u0440\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "EGP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "818", 
+    "name": "\u0415\u0433\u0438\u043f\u0435\u0442\u0441\u043a\u0438\u0439 \u0444\u0443\u043d\u0442"
+  }
+},
+{
+  "pk": "ERN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "232", 
+    "name": "\u041d\u0430\u043a\u0444\u0430"
+  }
+},
+{
+  "pk": "ETB", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "230", 
+    "name": "\u042d\u0444\u0438\u043e\u043f\u0441\u043a\u0438\u0439 \u0431\u044b\u0440"
+  }
+},
+{
+  "pk": "EUR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "978", 
+    "name": "\u0415\u0432\u0440\u043e"
+  }
+},
+{
+  "pk": "FJD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "242", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u0424\u0438\u0434\u0436\u0438"
+  }
+},
+{
+  "pk": "FKP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "238", 
+    "name": "\u0424\u0443\u043d\u0442 \u0424\u043e\u043b\u043a\u043b\u0435\u043d\u0434\u0441\u043a\u0438\u0445 \u043e\u0441\u0442\u0440\u043e\u0432\u043e\u0432"
+  }
+},
+{
+  "pk": "GBP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "826", 
+    "name": "\u0424\u0443\u043d\u0442 \u0441\u0442\u0435\u0440\u043b\u0438\u043d\u0433\u043e\u0432"
+  }
+},
+{
+  "pk": "GEL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "981", 
+    "name": "\u041b\u0430\u0440\u0438"
+  }
+},
+{
+  "pk": "GHS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "936", 
+    "name": "\u0421\u0435\u0434\u0438"
+  }
+},
+{
+  "pk": "GIP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "292", 
+    "name": "\u0413\u0438\u0431\u0440\u0430\u043b\u0442\u0430\u0440\u0441\u043a\u0438\u0439 \u0444\u0443\u043d\u0442"
+  }
+},
+{
+  "pk": "GMD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "270", 
+    "name": "\u0414\u0430\u043b\u0430\u0441\u0438"
+  }
+},
+{
+  "pk": "GNF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "324", 
+    "name": "\u0413\u0432\u0438\u043d\u0435\u0439\u0441\u043a\u0438\u0439 \u0444\u0440\u0430\u043d\u043a"
+  }
+},
+{
+  "pk": "GTQ", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "320", 
+    "name": "\u041a\u0435\u0442\u0441\u0430\u043b\u044c"
+  }
+},
+{
+  "pk": "GYD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "328", 
+    "name": "\u0413\u0430\u0439\u0430\u043d\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "HKD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "344", 
+    "name": "\u0413\u043e\u043d\u043a\u043e\u043d\u0433\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "HRK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "191", 
+    "name": "\u0425\u043e\u0440\u0432\u0430\u0442\u0441\u043a\u0430\u044f \u043a\u0443\u043d\u0430"
+  }
+},
+{
+  "pk": "HTG", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "332", 
+    "name": "\u0413\u0443\u0440\u0434"
+  }
+},
+{
+  "pk": "HUF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "348", 
+    "name": "\u0424\u043e\u0440\u0438\u043d\u0442"
+  }
+},
+{
+  "pk": "IDR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "360", 
+    "name": "\u0420\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "ILS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "376", 
+    "name": "\u041d\u043e\u0432\u044b\u0439 \u0438\u0437\u0440\u0430\u0438\u043b\u044c\u0441\u043a\u0438\u0439 \u0448\u0435\u043a\u0435\u043b\u044c"
+  }
+},
+{
+  "pk": "INR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "356", 
+    "name": "\u0418\u043d\u0434\u0438\u0439\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "IQD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "368", 
+    "name": "\u0418\u0440\u0430\u043a\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "IRR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "364", 
+    "name": "\u0418\u0440\u0430\u043d\u0441\u043a\u0438\u0439 \u0440\u0438\u0430\u043b"
+  }
+},
+{
+  "pk": "ISK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "352", 
+    "name": "\u0418\u0441\u043b\u0430\u043d\u0434\u0441\u043a\u0430\u044f \u043a\u0440\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "JMD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "388", 
+    "name": "\u042f\u043c\u0430\u0439\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "JOD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "400", 
+    "name": "\u0418\u043e\u0440\u0434\u0430\u043d\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "JPY", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "392", 
+    "name": "\u0418\u0435\u043d\u0430"
+  }
+},
+{
+  "pk": "KES", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "404", 
+    "name": "\u041a\u0435\u043d\u0438\u0439\u0441\u043a\u0438\u0439 \u0448\u0438\u043b\u043b\u0438\u043d\u0433"
+  }
+},
+{
+  "pk": "KGS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "417", 
+    "name": "\u0421\u043e\u043c"
+  }
+},
+{
+  "pk": "KHR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "116", 
+    "name": "\u0420\u0438\u0435\u043b\u044c"
+  }
+},
+{
+  "pk": "KMF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "174", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u041a\u043e\u043c\u043e\u0440"
+  }
+},
+{
+  "pk": "KPW", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "408", 
+    "name": "\u0421\u0435\u0432\u0435\u0440\u043e\u043a\u043e\u0440\u0435\u0439\u0441\u043a\u0430\u044f \u0432\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "KRW", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "410", 
+    "name": "\u0412\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "KWD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "414", 
+    "name": "\u041a\u0443\u0432\u0435\u0439\u0442\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "KYD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "136", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u041e\u0441\u0442\u0440\u043e\u0432\u043e\u0432 \u041a\u0430\u0439\u043c\u0430\u043d"
+  }
+},
+{
+  "pk": "KZT", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "398", 
+    "name": "\u0422\u0435\u043d\u0433\u0435"
+  }
+},
+{
+  "pk": "LAK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "418", 
+    "name": "\u041a\u0438\u043f"
+  }
+},
+{
+  "pk": "LBP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "422", 
+    "name": "\u041b\u0438\u0432\u0430\u043d\u0441\u043a\u0438\u0439 \u0444\u0443\u043d\u0442"
+  }
+},
+{
+  "pk": "LKR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "144", 
+    "name": "\u0428\u0440\u0438-\u041b\u0430\u043d\u043a\u0438\u0439\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "LRD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "430", 
+    "name": "\u041b\u0438\u0431\u0435\u0440\u0438\u0439\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "LSL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "426", 
+    "name": "\u041b\u043e\u0442\u0438"
+  }
+},
+{
+  "pk": "LTL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "440", 
+    "name": "\u041b\u0438\u0442\u043e\u0432\u0441\u043a\u0438\u0439 \u043b\u0438\u0442"
+  }
+},
+{
+  "pk": "LVL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "428", 
+    "name": "\u041b\u0430\u0442\u0432\u0438\u0439\u0441\u043a\u0438\u0439 \u043b\u0430\u0442"
+  }
+},
+{
+  "pk": "LYD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "434", 
+    "name": "\u041b\u0438\u0432\u0438\u0439\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "MAD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "504", 
+    "name": "\u041c\u0430\u0440\u043e\u043a\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u0434\u0438\u0440\u0445\u0430\u043c"
+  }
+},
+{
+  "pk": "MDL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "498", 
+    "name": "\u041c\u043e\u043b\u0434\u0430\u0432\u0441\u043a\u0438\u0439 \u043b\u0435\u0439"
+  }
+},
+{
+  "pk": "MGA", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "969", 
+    "name": "\u041c\u0430\u043b\u0430\u0433\u0430\u0441\u0438\u0439\u0441\u043a\u0438\u0439 \u0430\u0440\u0438\u0430\u0440\u0438"
+  }
+},
+{
+  "pk": "MKD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "807", 
+    "name": "\u0414\u0435\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "MMK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "104", 
+    "name": "\u041a\u044c\u044f\u0442"
+  }
+},
+{
+  "pk": "MNT", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "496", 
+    "name": "\u0422\u0443\u0433\u0440\u0438\u043a"
+  }
+},
+{
+  "pk": "MRO", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "478", 
+    "name": "\u0423\u0433\u0438\u044f"
+  }
+},
+{
+  "pk": "MUR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "480", 
+    "name": "\u041c\u0430\u0432\u0440\u0438\u043a\u0438\u0439\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "MVR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "462", 
+    "name": "\u0420\u0443\u0444\u0438\u044f"
+  }
+},
+{
+  "pk": "MWK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "454", 
+    "name": "\u041a\u0432\u0430\u0447\u0430"
+  }
+},
+{
+  "pk": "MXN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "484", 
+    "name": "\u041c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "MYR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "458", 
+    "name": "\u041c\u0430\u043b\u0430\u0439\u0437\u0438\u0439\u0441\u043a\u0438\u0439 \u0440\u0438\u043d\u0433\u0433\u0438\u0442"
+  }
+},
+{
+  "pk": "MZN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "943", 
+    "name": "\u041c\u0435\u0442\u0438\u043a\u0430\u043b"
+  }
+},
+{
+  "pk": "NAD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "516", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u041d\u0430\u043c\u0438\u0431\u0438\u0438"
+  }
+},
+{
+  "pk": "NGN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "566", 
+    "name": "\u041d\u0430\u0439\u0440\u0430"
+  }
+},
+{
+  "pk": "NIO", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "558", 
+    "name": "\u0417\u043e\u043b\u043e\u0442\u0430\u044f \u043a\u043e\u0440\u0434\u043e\u0431\u0430"
+  }
+},
+{
+  "pk": "NOK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "578", 
+    "name": "\u041d\u043e\u0440\u0432\u0435\u0436\u0441\u043a\u0430\u044f \u043a\u0440\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "NPR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "524", 
+    "name": "\u041d\u0435\u043f\u0430\u043b\u044c\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "NZD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "554", 
+    "name": "\u041d\u043e\u0432\u043e\u0437\u0435\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "OMR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "512", 
+    "name": "\u041e\u043c\u0430\u043d\u0441\u043a\u0438\u0439 \u0440\u0438\u0430\u043b"
+  }
+},
+{
+  "pk": "PAB", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "590", 
+    "name": "\u0411\u0430\u043b\u044c\u0431\u043e\u0430"
+  }
+},
+{
+  "pk": "PEN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "604", 
+    "name": "\u041d\u043e\u0432\u044b\u0439 \u0441\u043e\u043b\u044c"
+  }
+},
+{
+  "pk": "PGK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "598", 
+    "name": "\u041a\u0438\u043d\u0430"
+  }
+},
+{
+  "pk": "PHP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "608", 
+    "name": "\u0424\u0438\u043b\u0438\u043f\u043f\u0438\u043d\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "PKR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "586", 
+    "name": "\u041f\u0430\u043a\u0438\u0441\u0442\u0430\u043d\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "PLN", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "985", 
+    "name": "\u0417\u043b\u043e\u0442\u044b\u0439"
+  }
+},
+{
+  "pk": "PYG", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "600", 
+    "name": "\u0413\u0443\u0430\u0440\u0430\u043d\u0438"
+  }
+},
+{
+  "pk": "QAR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "634", 
+    "name": "\u041a\u0430\u0442\u0430\u0440\u0441\u043a\u0438\u0439 \u0440\u0438\u0430\u043b"
+  }
+},
+{
+  "pk": "RON", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "946", 
+    "name": "\u041d\u043e\u0432\u044b\u0439 \u043b\u0435\u0439"
+  }
+},
+{
+  "pk": "RSD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "941", 
+    "name": "\u0421\u0435\u0440\u0431\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "RUB", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "643", 
+    "name": "\u0420\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u0438\u0439 \u0440\u0443\u0431\u043b\u044c"
+  }
+},
+{
+  "pk": "RWF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "646", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u0420\u0443\u0430\u043d\u0434\u044b"
+  }
+},
+{
+  "pk": "SAR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "682", 
+    "name": "\u0421\u0430\u0443\u0434\u043e\u0432\u0441\u043a\u0438\u0439 \u0440\u0438\u044f\u043b"
+  }
+},
+{
+  "pk": "SBD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "090", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u0421\u043e\u043b\u043e\u043c\u043e\u043d\u043e\u0432\u044b\u0445 \u041e\u0441\u0442\u0440\u043e\u0432\u043e\u0432"
+  }
+},
+{
+  "pk": "SCR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "690", 
+    "name": "\u0421\u0435\u0439\u0448\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0440\u0443\u043f\u0438\u044f"
+  }
+},
+{
+  "pk": "SDG", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "938", 
+    "name": "\u0421\u0443\u0434\u0430\u043d\u0441\u043a\u0438\u0439 \u0444\u0443\u043d\u0442"
+  }
+},
+{
+  "pk": "SEK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "752", 
+    "name": "\u0428\u0432\u0435\u0434\u0441\u043a\u0430\u044f \u043a\u0440\u043e\u043d\u0430"
+  }
+},
+{
+  "pk": "SGD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "702", 
+    "name": "\u0421\u0438\u043d\u0433\u0430\u043f\u0443\u0440\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "SHP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "654", 
+    "name": "\u0424\u0443\u043d\u0442 \u0421\u0432\u044f\u0442\u043e\u0439 \u0415\u043b\u0435\u043d\u044b"
+  }
+},
+{
+  "pk": "SLL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "694", 
+    "name": "\u041b\u0435\u043e\u043d\u0435"
+  }
+},
+{
+  "pk": "SOS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "706", 
+    "name": "\u0421\u043e\u043c\u0430\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u0448\u0438\u043b\u043b\u0438\u043d\u0433"
+  }
+},
+{
+  "pk": "SRD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "968", 
+    "name": "\u0421\u0443\u0440\u0438\u043d\u0430\u043c\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "STD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "678", 
+    "name": "\u0414\u043e\u0431\u0440\u0430"
+  }
+},
+{
+  "pk": "SVC", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "222", 
+    "name": "\u0421\u0430\u043b\u044c\u0432\u0430\u0434\u043e\u0440\u0441\u043a\u0438\u0439 \u043a\u043e\u043b\u043e\u043d"
+  }
+},
+{
+  "pk": "SYP", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "760", 
+    "name": "\u0421\u0438\u0440\u0438\u0439\u0441\u043a\u0438\u0439 \u0444\u0443\u043d\u0442"
+  }
+},
+{
+  "pk": "SZL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "748", 
+    "name": "\u041b\u0438\u043b\u0430\u043d\u0433\u0435\u043d\u0438"
+  }
+},
+{
+  "pk": "THB", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "764", 
+    "name": "\u0411\u0430\u0442"
+  }
+},
+{
+  "pk": "TJS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "972", 
+    "name": "\u0421\u043e\u043c\u043e\u043d\u0438"
+  }
+},
+{
+  "pk": "TMT", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "934", 
+    "name": "\u041d\u043e\u0432\u044b\u0439 \u043c\u0430\u043d\u0430\u0442"
+  }
+},
+{
+  "pk": "TND", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "788", 
+    "name": "\u0422\u0443\u043d\u0438\u0441\u0441\u043a\u0438\u0439 \u0434\u0438\u043d\u0430\u0440"
+  }
+},
+{
+  "pk": "TRY", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "949", 
+    "name": "\u0422\u0443\u0440\u0435\u0446\u043a\u0430\u044f \u043b\u0438\u0440\u0430"
+  }
+},
+{
+  "pk": "TTD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "780", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u0422\u0440\u0438\u043d\u0438\u0434\u0430\u0434\u0430 \u0438 \u0422\u043e\u0431\u0430\u0433\u043e"
+  }
+},
+{
+  "pk": "TWD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "901", 
+    "name": "\u041d\u043e\u0432\u044b\u0439 \u0442\u0430\u0439\u0432\u0430\u043d\u044c\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "TZS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "834", 
+    "name": "\u0422\u0430\u043d\u0437\u0430\u043d\u0438\u0439\u0441\u043a\u0438\u0439 \u0448\u0438\u043b\u043b\u0438\u043d\u0433"
+  }
+},
+{
+  "pk": "UAH", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "980", 
+    "name": "\u0413\u0440\u0438\u0432\u043d\u0430"
+  }
+},
+{
+  "pk": "UGX", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "800", 
+    "name": "\u0423\u0433\u0430\u043d\u0434\u0438\u0439\u0441\u043a\u0438\u0439 \u0448\u0438\u043b\u043b\u0438\u043d\u0433"
+  }
+},
+{
+  "pk": "USD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "840", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u0421\u0428\u0410"
+  }
+},
+{
+  "pk": "UYI", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "940", 
+    "name": "\u0432 \u0438\u043d\u0434\u0435\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u0435\u0434\u0438\u043d\u0438\u0446\u0430\u0445"
+  }
+},
+{
+  "pk": "UYU", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "858", 
+    "name": "\u0423\u0440\u0443\u0433\u0432\u0430\u0439\u0441\u043a\u043e\u0435 \u043f\u0435\u0441\u043e"
+  }
+},
+{
+  "pk": "UZS", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "860", 
+    "name": "\u0423\u0437\u0431\u0435\u043a\u0441\u043a\u0438\u0439 \u0441\u0443\u043c"
+  }
+},
+{
+  "pk": "VEF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "937", 
+    "name": "\u0411\u043e\u043b\u0438\u0432\u0430\u0440 \u0444\u0443\u044d\u0440\u0442\u0435"
+  }
+},
+{
+  "pk": "VND", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "704", 
+    "name": "\u0414\u043e\u043d\u0433"
+  }
+},
+{
+  "pk": "VUV", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "548", 
+    "name": "\u0412\u0430\u0442\u0443"
+  }
+},
+{
+  "pk": "WST", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "882", 
+    "name": "\u0422\u0430\u043b\u0430"
+  }
+},
+{
+  "pk": "XAF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "950", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u041a\u0424\u0410 \u0412\u0415\u0410\u0421"
+  }
+},
+{
+  "pk": "XCD", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "951", 
+    "name": "\u0412\u043e\u0441\u0442\u043e\u0447\u043d\u043e-\u043a\u0430\u0440\u0438\u0431\u0441\u043a\u0438\u0439 \u0434\u043e\u043b\u043b\u0430\u0440"
+  }
+},
+{
+  "pk": "XDR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "960", 
+    "name": "\u0421\u0414\u0420 (\u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0438\u043c\u0441\u0442\u0432\u043e\u0432\u0430\u043d\u0438\u044f)"
+  }
+},
+{
+  "pk": "XOF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "952", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u041a\u0424\u0410 \u0412\u0421\u0415\u0410\u041e"
+  }
+},
+{
+  "pk": "XPF", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "953", 
+    "name": "\u0424\u0440\u0430\u043d\u043a \u041a\u0424\u041f"
+  }
+},
+{
+  "pk": "YER", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "886", 
+    "name": "\u0419\u0435\u043c\u0435\u043d\u0441\u043a\u0438\u0439 \u0440\u0438\u0430\u043b"
+  }
+},
+{
+  "pk": "ZAR", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "710", 
+    "name": "\u0420\u044d\u043d\u0434"
+  }
+},
+{
+  "pk": "ZMK", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "894", 
+    "name": "\u0417\u0430\u043c\u0431\u0438\u0439\u0441\u043a\u0430\u044f \u043a\u0432\u0430\u0447\u0430"
+  }
+},
+{
+  "pk": "ZWL", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "932", 
+    "name": "\u0414\u043e\u043b\u043b\u0430\u0440 \u0417\u0438\u043c\u0431\u0430\u0431\u0432\u0435"
+  }
+},
+{
+  "pk": "\u0412\u0410\u041c", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "977", 
+    "name": "\u041a\u043e\u043d\u0432\u0435\u0440\u0442\u0438\u0440\u0443\u0435\u043c\u0430\u044f \u043c\u0430\u0440\u043a\u0430"
+  }
+},
+{
+  "pk": "\u041c\u041e\u0420", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "446", 
+    "name": "\u041f\u0430\u0442\u0430\u043a\u0430"
+  }
+},
+{
+  "pk": "\u0422\u041e\u0420", 
+  "model": "core.currency", 
+  "fields": {
+    "exchange_rate": 1.0, 
+    "code": "776", 
+    "name": "\u041f\u0430\u0430\u043d\u0433\u0430"
+  }
+}
+]

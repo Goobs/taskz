@@ -24,6 +24,8 @@ class TaskEditForm(CrispyModelForm):
             Field('priority'),
             Field('title'),
             Field('description'),
+            Field('price'),
+            Field('currency'),
             Field('date_due'),
             Field('visible'),
             Field('communities'),

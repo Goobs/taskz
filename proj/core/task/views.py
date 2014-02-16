@@ -44,6 +44,6 @@ class TaskEditView(TemplateView):
 
                 self.form.save()
                 messages.success(request, u'Задача сохранена')
-                return redirect('task_detail', pk=self.object.id)
+                return redirect('task_detail', pk=self.form.instance.pk)
 
         return self.get(request, **kwargs)
