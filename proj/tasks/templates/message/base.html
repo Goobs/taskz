@@ -1,0 +1,52 @@
+{% extends 'base_inner.html' %}
+{% load proj_core %}
+
+{%  block content %}
+    {% user_dialogs user as dialogs %}
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-unstyled">
+                {% for message in dialogs.all %}
+                <div class="media">
+                    {% if message.recepient == user %}
+                        <a href="{% url 'dialog_list' message.sender.id %}" class="media-object pull-left">
+                            <img src="{{ message.sender.avatar_url }}" width="60"/>
+                        </a>
+                        <a href="{% url 'dialog_list' message.sender.id %}">
+                            <div class="media-body">
+                                <div>
+                                    <b>{{ message.sender.full_name }}</b>
+                                </div>
+                                <div>
+                                    {{ message.message|truncatechars:30 }}
+                                </div>
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'dialog_list' message.recepient_id %}" class="media-object pull-left">
+                            <img src="{{ message.recepient.avatar_url }}" width="60"/>
+                        </a>
+                        <a href="{% url 'dialog_list' message.recepient_id %}">
+                            <div class="media-body">
+                                <div>
+                                    <b>{{ message.recepient.full_name }}</b>
+                                </div>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <b class="text-muted">Я:</b> {{ message.message|truncatechars:30 }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-9">
+            {%  block msgcontent %}{% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

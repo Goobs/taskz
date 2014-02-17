@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+<div class="modal-dialog" id="product-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Написать сообщение</h4>
+        </div>
+        <div class="modal-body">
+            <label>Получатель: </label>
+                <a href="{% url 'user_detail' form.instance.recepient.id %}">{{ form.instance.recepient }}</a>
+            <form action="{% url 'message_modal' form.instance.recepient.id %}" method="post">
+                {% crispy form %}
+            </form>
+
+        </div>
+
+    </div>
+</div>

@@ -5,6 +5,6 @@ from .models import *
 
 
 class MessageAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['id', 'sender', 'recepient', 'read']
 
 admin.site.register(Message, MessageAdmin)

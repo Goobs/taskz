@@ -18,5 +18,21 @@
             $('.add-form').show();
         })
 
+        $('.message-modal').on('click', function(e){
+            var $this = $(this);
+            e.preventDefault();
+
+            $.get($this.attr('href'), function(data){
+                $('#sendmessage').html(data)
+                    .modal('show');
+            })
+        })
+
+        $(window).on('resize', function(){
+            console.log($(window).height())
+            $('.chat').height($(window).height() - $('.inputs').outerHeight()-102);
+            $('.chat').scrollTop($(document).height())
+        }).resize();
+
     })
 })(jQuery)

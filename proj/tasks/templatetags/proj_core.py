@@ -1,6 +1,8 @@
 from django import template
 from django.utils.safestring import mark_safe
 
+from proj.core.message.models import Message
+
 register = template.Library()
 
 
@@ -24,3 +26,13 @@ def url_replace(request, field, value):
     dict_[field] = value
 
     return dict_.urlencode()
+
+
+@register.assignment_tag
+def user_dialogs(user):
+    return Message.objects.last(user)[:10]
+
+
+@register.assignment_tag
+def user_notifications(user):
+    return Message.objects.filter(recepient=user, read=False)

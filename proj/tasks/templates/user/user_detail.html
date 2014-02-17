@@ -31,6 +31,7 @@
                         </form>
                     {% endif %}
                 {% endif %}
+
             </div>
             <div class="col-md-8">
                 <h3>{{ object.full_name }}
@@ -50,6 +51,10 @@
                     {% endfor %}
                     </p>
                 {% endif %}
+
+                <a href="{% url 'message_modal' object.id %}" class="message-modal btn btn-default">
+                    <i class="fa fa-envelope-o"></i> Написать сообщение
+                </a>
             </div>
         </div>
     </div>
@@ -67,4 +72,5 @@
     </section>
 </div>
 {% endfor %}
+
 {% endblock %}

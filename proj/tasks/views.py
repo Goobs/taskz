@@ -10,7 +10,6 @@ from django.utils.functional import curry
 from .forms import *
 from proj.core.feed.models import Feed
 from proj.core.models import User
-from proj.core.message.models import Message
 
 from proj.core.task.models import Task
 
@@ -51,24 +50,27 @@ class FeedDetailView(DetailView):
 class UserDetailView(DetailView):
     template_name = 'user/user_detail.html'
     model = User
-    followform = FollowUserForm(prefix='follow')
+    followform = None
 
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['userfeed'] = Feed.objects.user_feed(self.object)
+        if not self.followform:
+            self.followform = FollowUserForm(prefix='follow')
         context['followform'] = self.followform
         return context
 
     def post(self, request, **kwargs):
 
-        self.followform = FollowUserForm(request.POST, prefix='follow')
-        if self.followform.is_valid():
-            user = User.objects.get(pk=self.followform.cleaned_data.get('user'))
-            if not user in request.user.friends.all():
-                request.user.friends.add(user)
-            else:
-                request.user.friends.remove(user)
-            return self.get(request)
+        if request.POST.get('follow-user'):
+            self.followform = FollowUserForm(request.POST, prefix='follow')
+            if self.followform.is_valid():
+                user = User.objects.get(pk=self.followform.cleaned_data.get('user'))
+                if not user in request.user.friends.all():
+                    request.user.friends.add(user)
+                else:
+                    request.user.friends.remove(user)
+                return self.get(request)
 
         return self.get(request, **kwargs)
 
@@ -161,23 +163,6 @@ class LoginView(TemplateView):
         context['loginform'] = self.loginform
         context['regform'] = self.regform
         return context
-
-
-class DialogListView(ListView):
-    template_name = 'message/dialog_list.html'
-    model = Message
-    paginate_by = 20
-
-    def get_queryset(self):
-        return Message.objects.last(self.request.user)
-
-
-class MessageListView(ListView):
-    model = Message
-
-    def get_queryset(self):
-        user2 = User.objects.get(pk=self.kwargs.get('user'))
-        return Message.objects.dialog(self.request.user, user2)
 
 
 class CommunityListView(ListView):
