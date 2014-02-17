@@ -60,9 +60,11 @@ class TaskDetailView(DetailView):
                 task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
                 if user == task.assignee:
                     task.assignee = None
+                    task.status = 'new'
                     messages.success(request, u'Вы сняли пользователя с этой задачи')
                 else:
                     task.assignee = user
+                    task.status = 'open'
                     messages.success(request, u'Вы назначили пользователя исполнителем на эту задачу')
                 task.save()
                 return redirect('task_detail', pk=self.kwargs.get('pk'))

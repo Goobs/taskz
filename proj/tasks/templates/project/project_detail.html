@@ -23,7 +23,7 @@
                     {% if object.tasks.all|length %}
                         <div class="list-group">
                         {% for task in object.tasks.latest_top %}
-                            <a href="#" class="list-group-item">
+                            <a href="{% url 'task_detail' task.id %}" class="list-group-item">
                                 <span class="list-group-heading">
                                     <i class="fa fa-ticket"></i> {{ task.title }}
                                 </span>

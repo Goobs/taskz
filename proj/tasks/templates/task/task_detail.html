@@ -68,7 +68,8 @@
                                 <i class="fa fa-reply"></i> Откликнуться
                             </button>
                         </form>
-                    {% else %}
+                        <hr/>
+                    {% elif user != object.assignee %}
                         <form method="post">
                             {% csrf_token %}
                             <input type="hidden" name="reply-task" value="{{ object.id }}">
@@ -77,11 +78,12 @@
                                 <i class="fa fa-times"></i> Отказаться
                             </button>
                         </form>
+                        <hr/>
                     {% endif %}
 
                 {% endif %}
 
-                <hr/>
+
                 {% if object.comments.comment_feed|length > 0 %}
                     <h4><i class="fa fa-comments-o"></i> Комментарии ({{ object.comments.all|length }}):</h4>
                     {% for comment in object.comments.all %}
