@@ -72,11 +72,47 @@ label {
     background: #2b2b2b;
 }
 
+.sidebar-menu > li.active > a {
+    color: #ccc;
+    text-decoration: none;
+    background: #2b2b2b;
+    position: relative;
+}
+
+.sidebar-menu > li.active > a:before,
+.sidebar-menu > li.active > a:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: solid;
+    border-color: transparent #fff transparent transparent;
+    border-width: 10px 5px;
+    display: block;
+    right: 0;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.sidebar-menu > li.active > a:after {
+    border-color: transparent #fff transparent transparent;
+    border-width: 10px 5px;
+    margin-top: -10px;
+    z-index: 1;
+}
+
+.sidebar-menu > li.active > a:before {
+    border-color: transparent rgba(0,0,0,0.5) transparent transparent;
+    border-width: 11px 6px;
+    margin-top: -11px;
+}
+
 .sidebar-menu > li > a .fa {color: #999;}
 .sidebar-menu > li > a:hover .fa {color: #ccc;}
 
 .sidebar-hidden .sidebar-menu > li > a {color: #424242;}
-.sidebar-hidden .sidebar-menu > li > a:hover {color: #2b2b2b;}
+.sidebar-hidden .sidebar-menu > li > a:hover,
+.sidebar-hidden .sidebar-menu > li.active > a {color: #2b2b2b;}
 
 .sidebar-hidden .sidebar-menu > li > a .fa {color: #999;}
 .sidebar-hidden .sidebar-menu > li > a:hover .fa {color: #ccc;}

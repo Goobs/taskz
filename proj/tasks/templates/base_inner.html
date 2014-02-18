@@ -35,17 +35,17 @@
                     <i class="fa fa-list"></i> Лента
                 </a>
             </li>
-            <li>
+            <li{% ifequal request.resolver_match.app_name 'community' %} class="active"{% endifequal %}>
                 <a href="{% url 'community_list' %}" title="Сообщества">
                     <i class="fa fa-group"></i> Сообщества
                 </a>
             </li>
-            <li>
+            <li{% ifequal request.resolver_match.app_name 'project' %} class="active"{% endifequal %}>
                 <a href="{% url 'project_list' %}" title="Проекты">
                     <i class="fa fa-sitemap"></i> Проекты
                 </a>
             </li>
-            <li>
+            <li{% ifequal request.resolver_match.app_name 'task' %} class="active"{% endifequal %}>
                 <a href="{% url 'task_list' %}" title="Задачи">
                     <i class="fa fa-tasks"></i> Задачи
                 </a>
