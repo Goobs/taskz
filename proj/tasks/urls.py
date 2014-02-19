@@ -18,6 +18,8 @@ urlpatterns = patterns(
 
     url(r'^user/(?P<pk>\d+)/?$', UserDetailView.as_view(), name='user_detail'),
     url(r'^user/profile/?$', login_required(UserProfileView.as_view()), name='user_profile'),
+    url(r'^users/?$', login_required(UserListView.as_view()), name='user_list'),
+
 
     url(r'^accounts/login/$', unauthorized_only(LoginView.as_view()), name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),

@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 from django.core.mail import send_mail
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 import re
 from taggit.managers import TaggableManager
@@ -37,6 +38,31 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, full_name, True, True,
                                  **extra_fields)
 
+    def search(self, user, **kwargs):
+        qs = self
+        query = kwargs.get('query')
+        city = kwargs.get('city')
+        friends = kwargs.get('friends')
+        if query:
+            qs = qs.filter(
+                Q(full_name__icontains=query) |
+                Q(email__icontains=query) |
+                Q(tags__name__icontains=query)
+            )
+        if city:
+            qs = qs.filter(city_id=city)
+        if friends == 'followers':
+            qs = qs.followers(user)
+        elif friends == 'following':
+            qs = qs.following(user)
+        return qs.distinct()
+
+    def followers(self, user):
+        return self.filter(friends=user)
+
+    def following(self, user):
+        return self.filter(followers=user)
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True, db_index=True, blank=True)
@@ -52,7 +78,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     dob = models.DateField(blank=True, null=True, verbose_name=u'Дата рождения')
     avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
-    friends = models.ManyToManyField('self', symmetrical=False, blank=True, null=True, verbose_name=u'Друзья')
+    friends = models.ManyToManyField('self', symmetrical=False, blank=True, null=True,
+                                     related_name='followers', verbose_name=u'Друзья')
 
     city = models.ForeignKey(City, blank=True, null=True, related_name='users', verbose_name=u'Город')
     tags = TaggableManager(blank=True)

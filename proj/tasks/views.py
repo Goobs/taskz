@@ -14,7 +14,6 @@ from proj.core.models import User
 from proj.core.task.models import Task
 
 
-
 class IndexView(TemplateView):
 
     def get(self, request):
@@ -48,7 +47,6 @@ class FeedDetailView(DetailView):
 
 
 class UserDetailView(DetailView):
-    template_name = 'user/user_detail.html'
     model = User
     followform = None
 
@@ -121,6 +119,25 @@ class UserProfileView(TemplateView):
                 return redirect('user_profile')
 
         return self.get(request, **kwargs)
+
+
+class UserListView(ListView):
+    model = User
+    paginate_by = 50
+
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context['searchform'] = UserSearchForm(self.request.GET)
+        return context
+
+    def get_queryset(self):
+        qs = User.objects.search(
+            self.request.user,
+            query=self.request.GET.get('query'),
+            city=self.request.GET.get('city'),
+            friends=self.request.GET.get('friends'),
+        )
+        return qs
 
 
 class LoginView(TemplateView):

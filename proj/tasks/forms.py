@@ -192,3 +192,29 @@ class FollowUserForm(CrispyForm):
         return None
 
 
+class UserSearchForm(CrispyForm):
+    query = forms.CharField(required=False, label=u'Поиск')
+    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False)
+    friends = forms.CharField(required=False, widget=widgets.HiddenInput)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.form_class = 'form_inline'
+        self.helper.form_method = 'get'
+        self.helper.label_class = 'sr-only'
+        return Layout(
+            Div(
+                Div(
+                    FieldWithButtons(
+                        InlineField('query', placeholder=u'Поиск'),
+                        StrictButton(u'<i class="fa fa-search"></i> Поиск', type='submit', css_class='btn-default')
+                    ),
+                    css_class='col-md-6'
+                ),
+                Div(
+                    InlineField('city'),
+                    css_class='col-md-3'
+                ),
+                css_class='row'
+            ),
+            'friends',
+        )
