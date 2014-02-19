@@ -28,6 +28,11 @@
             <h3 class="page-header">{{ object.name }}</h3>
             <p>{{ object.description|linebreaks }}</p>
             <hr>
+            {% if user == object.admin %}
+                <a href="{% url 'community_edit' object.id %}">
+                    <i class="fa fa-edit"></i> Редактировать
+                </a>
+            {% endif %}
         </div>
     </article>
 

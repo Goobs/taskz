@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# -*- coding: utf-8 -*-
-
 from django.conf.urls import patterns, url
 from .views import *
 from proj.core.utils.auth import *

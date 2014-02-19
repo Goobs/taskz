@@ -8,9 +8,10 @@ urlpatterns = patterns(
     '',
     url(r'^$', unauthorized_only(LoginView.as_view())),
 
-    url(r'^projects/', include('proj.core.project.urls')),
-    url(r'^tasks/', include('proj.core.task.urls')),
-    url(r'^messages/', include('proj.core.message.urls')),
+    url(r'^projects/', include('proj.core.project.urls', app_name='project')),
+    url(r'^tasks/', include('proj.core.task.urls', app_name='task')),
+    url(r'^messages/', include('proj.core.message.urls', app_name='message')),
+    url(r'^community/', include('proj.core.community.urls', app_name='community')),
 
     url(r'^feed/?$', login_required(FeedListView.as_view()), name='feed_list'),
     url(r'^feed/(?P<pk>\d+)/?$', login_required(FeedDetailView.as_view()), name='feed_detail'),
@@ -21,7 +22,6 @@ urlpatterns = patterns(
     url(r'^accounts/login/$', unauthorized_only(LoginView.as_view()), name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
 
-    url(r'^communities/?$', login_required(CommunityListView.as_view()), name='community_list'),
-    url(r'^communities/(?P<pk>\d+)/?$', login_required(CommunityDetailView.as_view()), name='community_detail'),
+
 
 )

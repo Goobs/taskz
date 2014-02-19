@@ -191,13 +191,3 @@ class FollowUserForm(CrispyForm):
         return None
 
 
-class FollowCommunityForm(CrispyForm):
-    community = forms.IntegerField(widget=forms.HiddenInput)
-
-    def get_layout(self, *args, **kwargs):
-        self.helper.label_class = 'sr-only'
-        self.helper.field_class = ''
-        self.helper.form_method = 'post'
-
-        return None
-

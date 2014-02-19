@@ -164,34 +164,3 @@ class LoginView(TemplateView):
         context['regform'] = self.regform
         return context
 
-
-class CommunityListView(ListView):
-    model = Community
-    paginate_by = 10
-
-    def get_queryset(self):
-        return self.request.user.communities.all()
-
-
-class CommunityDetailView(DetailView):
-    model = Community
-    followform = FollowCommunityForm(prefix='follow')
-
-    def get_context_data(self, **kwargs):
-        context = super(CommunityDetailView, self).get_context_data(**kwargs)
-        context['userfeed'] = Feed.objects.community_feed(self.object)
-        context['followform'] = self.followform
-        return context
-
-    def post(self, request, **kwargs):
-
-        self.followform = FollowCommunityForm(request.POST, prefix='follow')
-        if self.followform.is_valid():
-            community = Community.objects.get(pk=self.followform.cleaned_data.get('community'))
-            if not community in request.user.communities.all():
-                request.user.communities.add(community)
-            else:
-                request.user.communities.remove(community)
-            return self.get(request)
-
-        return self.get(request, **kwargs)
