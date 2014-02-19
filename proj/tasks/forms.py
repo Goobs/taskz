@@ -59,7 +59,7 @@ class EditProfileForm(CrispyModelForm):
 
     class Meta:
         model = User
-        fields = ['full_name', 'city', 'dob', 'about']
+        fields = ['full_name', 'city', 'dob', 'about', 'tags']
         labels = {
             'full_name': u'Ваше имя'
         }
@@ -73,6 +73,7 @@ class EditProfileForm(CrispyModelForm):
             'dob',
             'city',
             Field('about', rows=3),
+            'tags',
             Div(
                 Div(
                     StrictButton(

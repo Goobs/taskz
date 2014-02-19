@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
+from taggit.managers import TaggableManager
 from proj.core.models import User, Currency
 from proj.core.project.models import Project, Milestone
 from proj.core.community.models import Community
@@ -53,6 +54,7 @@ class Task(models.Model):
                                verbose_name=u'Доступность')
     communities = models.ManyToManyField(Community, related_name='tasks', blank=True, null=True,
                                          verbose_name=u'Опубликовать в сообществах')
+    tags = TaggableManager(blank=True)
 
     objects = TaskManager()
 

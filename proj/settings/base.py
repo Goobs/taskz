@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'mptt',
     'treeadmin',
+    'taggit',
 
     #core
     'proj',

@@ -40,7 +40,7 @@
                 {% if object.about %}
                 <p><b>О себе:</b> {{ object.about }}</p>
                 {% endif %}
-                {% if object.contacts.all|length %}
+                {% if object.contacts.all %}
                     <hr/>
                     <h5>Контакты</h5>
                     <p>
@@ -49,6 +49,14 @@
                             <b>{{ contact.get_type_display }}:</b> {{ contact.value }}<br/>
                         {% endif %}
                     {% endfor %}
+                    </p>
+                {% endif %}
+
+                {% if object.tags.all %}
+                    <p><i class="fa fa-tags"></i> Метки:
+                        {% for tag in object.tags.all %}
+                        <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                        {% endfor %}
                     </p>
                 {% endif %}
 

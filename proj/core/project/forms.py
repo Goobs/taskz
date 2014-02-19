@@ -22,6 +22,7 @@ class ProjectEditForm(CrispyModelForm):
             Field('status'),
             Field('visible'),
             Field('date_due'),
+            Field('tags'),
             Div(
                 Div(
                     StrictButton(u'<i class="fa fa-save"></i> Сохранить',

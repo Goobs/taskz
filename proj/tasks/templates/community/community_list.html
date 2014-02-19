@@ -16,7 +16,15 @@
                         <a href="{% url 'community_detail' community.id %}">{{ community.name }}</a>
                     </h3>
                     <p>{{ community.description|striptags|truncatewords:10 }}</p>
+                    {% if community.tags.all %}
+                        <p><i class="fa fa-tags"></i> Метки:
+                            {% for tag in community.tags.all %}
+                            <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </p>
+                    {% endif %}
                     <p class="text-muted"><i class="fa fa-user"></i> Участников: {{ community.users.all|length }}</p>
+
                 </div>
             </div>
         </div>

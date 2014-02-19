@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 import re
+from taggit.managers import TaggableManager
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlquote
@@ -54,6 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     friends = models.ManyToManyField('self', symmetrical=False, blank=True, null=True, verbose_name=u'Друзья')
 
     city = models.ForeignKey(City, blank=True, null=True, related_name='users', verbose_name=u'Город')
+    tags = TaggableManager(blank=True)
 
     objects = UserManager()
 

@@ -18,7 +18,7 @@ class FollowCommunityForm(CrispyForm):
 class CommunityForm(CrispyModelForm):
     class Meta:
         model = Community
-        fields = ['name', 'image', 'description']
+        fields = ['name', 'image', 'description', 'tags']
         widgets = {
             'description': widgets.Textarea()
         }
@@ -30,6 +30,7 @@ class CommunityForm(CrispyModelForm):
             'name',
             'image',
             'description',
+            'tags',
             Div(
                 Div(
                     StrictButton(u'<i class="fa fa-save"></i> Сохранить',

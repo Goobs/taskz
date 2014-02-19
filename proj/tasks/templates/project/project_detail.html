@@ -16,6 +16,13 @@
                 <small>Создан: {{ object.date_created }}</small>
             </h3>
             <p>{{ object.description|linebreaks }}</p>
+            {% if object.tags.all %}
+                <p><i class="fa fa-tags"></i> Метки:
+                    {% for tag in object.tags.all %}
+                    <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                    {% endfor %}
+                </p>
+            {% endif %}
             <hr>
             <div class="row">
                 <div class="col-md-6 tasks-panel">

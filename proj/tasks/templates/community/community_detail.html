@@ -27,6 +27,13 @@
             </div>
             <h3 class="page-header">{{ object.name }}</h3>
             <p>{{ object.description|linebreaks }}</p>
+            {% if object.tags.all %}
+                <p><i class="fa fa-tags"></i> Метки:
+                    {% for tag in object.tags.all %}
+                    <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                    {% endfor %}
+                </p>
+            {% endif %}
             <hr>
             {% if user == object.admin %}
                 <a href="{% url 'community_edit' object.id %}">

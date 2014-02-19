@@ -29,6 +29,7 @@ class TaskEditForm(CrispyModelForm):
             Field('date_due'),
             Field('visible'),
             Field('communities'),
+            Field('tags'),
             Div(
                 Div(
                     StrictButton(u'<i class="fa fa-save"></i> Сохранить',

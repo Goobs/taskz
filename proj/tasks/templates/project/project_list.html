@@ -12,6 +12,13 @@
                     <h3>
                         <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
                     </h3>
+                    {% if project.tags.all %}
+                        <p><i class="fa fa-tags"></i> Метки:
+                            {% for tag in project.tags.all %}
+                            <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                            {% endfor %}
+                        </p>
+                    {% endif %}
                     <p>Создан: {{ project.date_created }} {% if project.reporter == user %}
                         <a href="{% url 'project_edit' project.id %}">Редактировать</a>
                         {% endif %}

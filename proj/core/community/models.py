@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from taggit.managers import TaggableManager
 from proj.core.models import User
 
 
@@ -10,6 +11,7 @@ class Community(models.Model):
     name = models.CharField(max_length=250, verbose_name=u'Название')
     description = models.CharField(max_length=4000, verbose_name=u'Описание', null=True, blank=True)
     image = models.ImageField(upload_to='groups', verbose_name=u'Логотип', null=True, blank=True)
+    tags = TaggableManager(blank=True)
 
     class Meta:
         verbose_name = u'Сообщество'

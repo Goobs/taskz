@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
+from taggit.managers import TaggableManager
 from proj.core.models import User
 from .managers import *
 
@@ -27,6 +28,7 @@ class Project(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
+    tags = TaggableManager(blank=True)
 
     def __unicode__(self):
         return self.title

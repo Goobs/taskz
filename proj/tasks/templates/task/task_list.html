@@ -13,6 +13,13 @@
                         <h3>
                             <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
                         </h3>
+                        {% if task.tags.all %}
+                            <p>
+                                {% for tag in task.tags.all %}
+                                    <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
                         <p>Создан: {{ task.date_created }} {% if task.reporter == user %}
                             <a href="{% url 'task_edit' task.id %}">Редактировать</a>
                             {% endif %}

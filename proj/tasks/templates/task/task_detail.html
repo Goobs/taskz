@@ -49,6 +49,13 @@
                         </p>
                     </div>
                 </div>
+                {% if object.tags.all %}
+                    <p><i class="fa fa-tags"></i> Метки:
+                        {% for tag in object.tags.all %}
+                        <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                        {% endfor %}
+                    </p>
+                {% endif %}
                 <hr/>
                 <p><strong>Описание:</strong></p>
                 <p>{{ object.description|default_if_none:''|linebreaks }}</p>
