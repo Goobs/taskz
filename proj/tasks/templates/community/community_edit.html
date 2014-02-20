@@ -5,9 +5,17 @@
 {% block title %}Редактирование сообщества{% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'community_list' %}">Сообщества</a></li>
+        {% if form.instance.id %}
+            <li><a href="{% url 'community_detail' form.instance.id %}">{{ form.instance.name }}</a></li>
+            <li class="active">Редактирование</li>
+        {% else %}
+            <li class="active">Создать сообщество</li>
+        {% endif %}
+    </ul>
     <article class="panel panel-default">
         <div class="panel-body">
-            <h4 class="page-header">Редактирование сообщества</h4>
             <div class="row">
                 <div class="col-md-8">
                     {% crispy form %}

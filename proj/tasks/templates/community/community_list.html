@@ -3,7 +3,7 @@
 {% block title %}Сообщества{% endblock %}
 
 {% block content %}
-
+    <h3>Сообщества</h3>
     {% for community in object_list %}
     <section class="panel panel-default">
         <div class="panel-body">
@@ -23,7 +23,10 @@
                             {% endfor %}
                         </p>
                     {% endif %}
-                    <p class="text-muted"><i class="fa fa-user"></i> Участников: {{ community.users.all|length }}</p>
+                    <p class="text-muted">
+                        <i class="fa fa-user"></i> Участников:
+                        <a href="{% url 'community_users' community.id %}">{{ community.users.all|length }}</a>
+                    </p>
 
                 </div>
             </div>

@@ -15,6 +15,18 @@ class FollowCommunityForm(CrispyForm):
         return None
 
 
+class CommunityUserForm(CrispyForm):
+    user = forms.IntegerField(widget=forms.HiddenInput)
+    ban = forms.BooleanField(required=False)
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.label_class = 'sr-only'
+        self.helper.field_class = ''
+        self.helper.form_method = 'post'
+
+        return None
+
+
 class CommunityForm(CrispyModelForm):
     class Meta:
         model = Community

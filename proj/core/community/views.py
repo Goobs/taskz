@@ -7,6 +7,7 @@ from django.contrib import messages
 from .forms import *
 from .models import *
 from proj.core.feed.models import *
+from proj.tasks.views import UserListView
 
 
 class CommunityListView(ListView):
@@ -67,4 +68,34 @@ class CommunityEditView(TemplateView):
                 messages.success(request, u'Изменения сохранены')
                 return redirect('community_detail', self.form.instance.id)
 
+        return self.get(request, **kwargs)
+
+
+class CommunityUsersView(UserListView):
+    template_name = 'community/user_list.html'
+    userform = None
+
+    def get_queryset(self):
+        qs = super(CommunityUsersView, self).get_queryset()
+        return qs.filter(communities__id=self.kwargs.get('pk'))
+
+    def get_context_data(self, **kwargs):
+        context = super(CommunityUsersView, self).get_context_data(**kwargs)
+        context['object'] = get_object_or_404(Community, pk=self.kwargs.get('pk'))
+        return context
+
+    def post(self, request, **kwargs):
+        if request.POST.get('user'):
+            community = get_object_or_404(Community, pk=self.kwargs.get('pk'))
+            if not community.admin == request.user:
+                messages.error(request, u'Кулхацкер, да?')
+                return redirect('community_users', pk=community.id)
+            self.userform = CommunityUserForm(request.POST)
+            if self.userform.is_valid:
+                print self.userform
+                user = get_object_or_404(User, pk=self.userform.cleaned_data.get('user'))
+                if self.userform.cleaned_data.get('ban'):
+                    community.users.remove(user)
+                    messages.success(request, u'Пользователь удален из сообщества')
+                    return redirect('community_users', pk=community.id)
         return self.get(request, **kwargs)

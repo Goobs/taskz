@@ -1,0 +1,72 @@
+{% extends 'base_inner.html' %}
+{% load crispy_forms_tags %}
+{% load proj_core %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'community_list' %}">Сообщества</a></li>
+        <li><a href="{% url 'community_detail' object.id %}">{{ object.name }}</a></li>
+        <li class="active">Участники</li>
+    </ul>
+    {% crispy searchform %}
+    <div class="row">
+        <div class="col-md-8">
+            {% for user in object_list %}
+            <section class="panel panel-default">
+                <div class="panel-body media">
+                    <a href="{% url 'user_detail' user.id %}" class="pull-left media-object">
+                        <img src="{{ user.avatar_url }}" width="80" class="img-circle"/>
+                    </a>
+                    <div class="media-object pull-right">
+                        {% if user != request.user %}
+                            <a href="{% url 'message_modal' user.id %}" class="message-modal btn btn-link">
+                                <i class="fa fa-envelope-o"></i> Написать сообщение
+                            </a>
+                            {% if object.admin == request.user %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="user" value="{{ user.id }}"/>
+                                <button class="btn btn-link" type="submit" name="ban" value="on">
+                                    <i class="fa fa-ban text-danger"></i> Удалить из сообщества
+                                </button>
+                            </form>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="media-body">
+                        <h4>
+                            <a href="{% url 'user_detail' user.id %}">
+                                {{ user.get_full_name }}
+                            </a>
+                        </h4>
+                        {% if user.tags.all %}
+                            <p><i class="fa fa-tags"></i> Метки:
+                                {% for tag in user.tags.all %}
+                                <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+            {% empty %}
+            <section class="panel panel-default">
+                <div class="panel-body media">
+                    <div class="alert alert-warning">
+                        По вашему запросу ничего не найдено.
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
+            {% include 'includes/pagination.html' %}
+        </div>
+        <div class="col-md-4">
+            <a href="?{% url_replace request 'friends' '' %}">Все</a><br/>
+            <a href="?{% url_replace request 'friends' 'following' %}">Я подписан</a><br/>
+            <a href="?{% url_replace request 'friends' 'followers' %}">Мои подписчики</a><br/>
+        </div>
+    </div>
+
+{% endblock %}

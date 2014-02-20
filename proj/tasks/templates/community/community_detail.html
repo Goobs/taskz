@@ -3,6 +3,10 @@
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'community_list' %}">Сообщества</a></li>
+        <li class="active">{{ object.name }}</li>
+    </ul>
     <article class="panel panel-default">
         <div class="panel-body">
             <div class="pull-right">
@@ -25,7 +29,11 @@
                     </form>
                 {% endif %}
             </div>
-            <h3 class="page-header">{{ object.name }}</h3>
+            <h3 class="page-header">{{ object.name }}
+                <small>
+                    <a href="{% url 'community_users' object.id %}">Участники ({{ object.users.all|length }})</a>
+                </small>
+            </h3>
             <p>{{ object.description|linebreaks }}</p>
             {% if object.tags.all %}
                 <p><i class="fa fa-tags"></i> Метки:
