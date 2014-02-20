@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.forms.models import modelformset_factory
 from django.utils.functional import curry
 from .forms import *
-from proj.core.feed.models import Feed
 from proj.core.models import User
 
 from proj.core.task.models import Task
@@ -20,30 +19,6 @@ class IndexView(TemplateView):
         if request.user.is_authenticated():
             return redirect(reverse('feed_list'))
         return HttpResponse(render(self.request, 'index.html'))
-
-
-class FeedListView(ListView):
-    model = Feed
-    paginate_by = 20
-
-    def get_context_data(self, **kwargs):
-        context = super(FeedListView, self).get_context_data(**kwargs)
-        context['getparam'] = self.request.GET.get('from')
-        return context
-
-    def get_queryset(self):
-        param = self.request.GET.get('from')
-        if param == 'communities':
-            queryset = Feed.objects.user_community_feed(self.request.user)
-        elif param == 'people':
-            queryset = Feed.objects.people_feed(self.request.user)
-        else:
-            queryset = Feed.objects.common_feed(self.request.user)
-        return queryset
-
-
-class FeedDetailView(DetailView):
-    model = Feed
 
 
 class UserDetailView(DetailView):

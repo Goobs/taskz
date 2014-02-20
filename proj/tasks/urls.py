@@ -12,9 +12,7 @@ urlpatterns = patterns(
     url(r'^tasks/', include('proj.core.task.urls', app_name='task')),
     url(r'^messages/', include('proj.core.message.urls', app_name='message')),
     url(r'^community/', include('proj.core.community.urls', app_name='community')),
-
-    url(r'^feed/?$', login_required(FeedListView.as_view()), name='feed_list'),
-    url(r'^feed/(?P<pk>\d+)/?$', login_required(FeedDetailView.as_view()), name='feed_detail'),
+    url(r'^feed/', include('proj.core.feed.urls', app_name='feed')),
 
     url(r'^user/(?P<pk>\d+)/?$', UserDetailView.as_view(), name='user_detail'),
     url(r'^user/profile/?$', login_required(UserProfileView.as_view()), name='user_profile'),

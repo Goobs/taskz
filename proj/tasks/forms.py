@@ -158,29 +158,6 @@ class UserContactForm(CrispyModelForm):
         super(UserContactForm, self).save(*args, **kwargs)
 
 
-
-class FeedForm(CrispyModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'placeholder': u'Напишите, что у вас нового'}),)
-
-    class Meta:
-        model = Feed
-        fields = ('content',)
-
-    def get_layout(self, *args, **kwargs):
-        self.helper.label_class = 'sr-only'
-        self.helper.field_class = ''
-        self.helper.form_method = 'post'
-
-        return Layout(
-            Div(
-                Field('content'),
-                css_class='col-md-12'
-            ),
-            StrictButton(u'<i class="fa fa-share"></i> Отправить', type='submit',
-                         css_class='btn-primary', name='post', value='1'),
-        )
-
-
 class FollowUserForm(CrispyForm):
     user = forms.IntegerField(widget=forms.HiddenInput)
 

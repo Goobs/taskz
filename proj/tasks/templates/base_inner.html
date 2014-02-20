@@ -30,7 +30,7 @@
                     <i class="fa fa-user"></i> Юзер
                 </a>
             </li>
-            <li>
+            <li{% ifequal request.resolver_match.app_name 'feed' %} class="active"{% endifequal %}>
                 <a href="{% url 'feed_list' %}" title="Лента">
                     <i class="fa fa-list"></i> Лента
                 </a>
