@@ -52,8 +52,8 @@ class Task(models.Model):
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
     visible = models.CharField(max_length=10, choices=PUBLIC_STATUSES, default='public',
                                verbose_name=u'Доступность')
-    communities = models.ManyToManyField(Community, related_name='tasks', blank=True, null=True,
-                                         verbose_name=u'Опубликовать в сообществах')
+    community = models.ForeignKey(Community, related_name='tasks', blank=True, null=True,
+                                         verbose_name=u'Опубликовать в сообществе')
     tags = TaggableManager(blank=True)
 
     objects = TaskManager()
