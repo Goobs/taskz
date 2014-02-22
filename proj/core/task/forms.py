@@ -41,23 +41,6 @@ class TaskEditForm(CrispyModelForm):
         )
 
 
-class TaskCommentForm(CrispyModelForm):
-    class Meta:
-        model = TaskComment
-        exclude = ['task', 'user', 'date']
-
-    def get_layout(self, *args, **kwargs):
-        self.helper.form_class = ''
-        return Layout(
-            Field('comment', rows=3),
-            Div(
-                StrictButton(u'<i class="fa fa-share"></i> Отправить',
-                             type='submit', name='send', value='1', css_class='btn-primary'),
-                css_class='form-group'
-            )
-        )
-
-
 class TaskReplyForm(CrispyForm):
     task = forms.IntegerField(widget=widgets.HiddenInput)
 

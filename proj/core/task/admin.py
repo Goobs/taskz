@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
+from proj.core.comment.models import *
 from .models import *
 
 
 class TaskAdmin(admin.ModelAdmin):
-    class TaskCommentInline(admin.TabularInline):
-        model = TaskComment
-        allow_add = True
+    class CommentInline(generic.GenericTabularInline):
+        model = Comment
         extra = 0
-        verbose_name_plural = u'Комментарии'
+        allow_add = True
 
     list_display = ('id', 'title', 'reporter', 'date_created', 'date_due', 'status')
-    inlines = (TaskCommentInline,)
+    inlines = (CommentInline,)
 
 admin.site.register(Task, TaskAdmin)

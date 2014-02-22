@@ -5,6 +5,7 @@ from taggit.managers import TaggableManager
 from proj.core.models import User, Currency
 from proj.core.project.models import Project, Milestone
 from proj.core.community.models import Community
+from proj.core.comment.models import *
 from .managers import *
 
 
@@ -55,6 +56,7 @@ class Task(models.Model):
     community = models.ForeignKey(Community, related_name='tasks', blank=True, null=True,
                                          verbose_name=u'Опубликовать в сообществе')
     tags = TaggableManager(blank=True)
+    comments = generic.GenericRelation(Comment)
 
     objects = TaskManager()
 
@@ -71,13 +73,3 @@ class Task(models.Model):
     def __unicode__(self):
         return self.title
 
-
-class TaskComment(models.Model):
-    task = models.ForeignKey(Task, related_name='comments', verbose_name=u'Задача')
-    user = models.ForeignKey(User, verbose_name=u'Пользователь')
-    comment = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Комментарий')
-    date = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
-
-    class Meta:
-        verbose_name = u'Комментарий'
-        verbose_name_plural = u'Комментарии'

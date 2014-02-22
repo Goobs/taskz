@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.comments',
     'south',
     'crispy_forms',
     'mptt',
@@ -37,6 +36,7 @@ INSTALLED_APPS = (
     'proj.core.task',
     'proj.core.project',
     'proj.core.geo',
+    'proj.core.comment',
 
     #app
     'proj.tasks',

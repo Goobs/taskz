@@ -9,6 +9,8 @@ from django.contrib import messages
 from .forms import *
 from proj.core.models import User
 from proj.core.task.models import Task
+from proj.core.comment.models import *
+from proj.core.comment.forms import *
 
 
 class TaskListView(ListView):
@@ -24,7 +26,7 @@ class TaskDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskDetailView, self).get_context_data(**kwargs)
-        self.commentform = TaskCommentForm(prefix='comment')
+        self.commentform = CommentForm(prefix='comment')
         self.replyform = TaskReplyForm(prefix='reply')
         self.assignform = TaskAssignForm(prefix='assign')
         context['commentform'] = self.commentform
@@ -34,9 +36,9 @@ class TaskDetailView(DetailView):
 
     def post(self, request, **kwargs):
         if request.POST.get('send'):
-            self.commentform = TaskCommentForm(request.POST, prefix='comment')
+            self.commentform = CommentForm(request.POST, prefix='comment')
             self.commentform.instance.user = request.user
-            self.commentform.instance.task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
+            self.commentform.instance.subject = get_object_or_404(Task, pk=self.kwargs.get('pk'))
             if self.commentform.is_valid():
                 self.commentform.save()
                 messages.success(request, u'Комментарий добавлен')

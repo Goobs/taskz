@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
+from django.contrib.contenttypes import generic
 from taggit.managers import TaggableManager
 from proj.core.models import User
+from proj.core.comment.models import Comment
 from .managers import *
 
 PROJECT_STATUSES = (
@@ -29,6 +31,7 @@ class Project(models.Model):
     date_due = models.DateTimeField(blank=True, null=True, verbose_name=u'Срок выполнения')
     date_updated = models.DateTimeField(auto_now=True, verbose_name=u'Дата обновления')
     tags = TaggableManager(blank=True)
+    comments = generic.GenericRelation(Comment)
 
     def __unicode__(self):
         return self.title
