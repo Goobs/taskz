@@ -45,6 +45,6 @@ class ProjectEditView(TemplateView):
                 self.editform.instance.reporter = request.user
                 self.editform.save()
                 messages.success(request, u'Проект сохранен')
-                redirect('project_edit', **self.kwargs)
+                redirect('project_edit', pk=self.editform.instance.id)
             print self.editform.errors
         return self.get(request, **kwargs)

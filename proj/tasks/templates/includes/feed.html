@@ -25,7 +25,7 @@
                 </a>
             {% endif %}
             <div class="feed-post-content">
-                {{ post.content|linebreaks }}
+                {{ post.content|safe }}
             </div>
 
             <p class="text-muted">

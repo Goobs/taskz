@@ -1,0 +1,3 @@
+<a href="{% url 'user_detail' task.reporter_id %}">{{ task.reporter }}</a>
+создал новую задачу <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+{% if task.project %} в контексте проекта <a href="{% url 'project_detail' task.project_id %}">{{ task.project }}</a>{% endif %}
