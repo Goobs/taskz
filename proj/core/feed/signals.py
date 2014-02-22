@@ -35,9 +35,12 @@ def task_saved(sender, instance, created, **kwargs):
             template_name = 'task_updated.html'
         template = get_template(template_name)
         content = template.render(Context({'task': instance}))
+        community = None
+        if instance.community:
+            community = instance.community
         feed = Feed(
             sender=instance.reporter,
-            community=None,
+            community=community,
             title=instance.title,
             content=content
         )
