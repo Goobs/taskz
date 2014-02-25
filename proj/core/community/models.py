@@ -9,6 +9,7 @@ from proj.core.comment.models import Comment
 
 class Community(models.Model):
     users = models.ManyToManyField(User, related_name='communities', verbose_name=u'Пользователи')
+    followers = models.ManyToManyField(User, related_name='follow_communities', verbose_name=u'Подписчики')
     admin = models.ForeignKey(User, verbose_name=u'Администратор группы')
     name = models.CharField(max_length=250, verbose_name=u'Название')
     description = models.CharField(max_length=4000, verbose_name=u'Описание', null=True, blank=True)

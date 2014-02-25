@@ -10,6 +10,15 @@
         <li><a href="{% url 'community_detail' object.id %}">{{ object.name }}</a></li>
         <li class="active">Участники</li>
     </ul>
+    <ul class="nav nav-tabs">
+        <li{% if not request.GET.show or request.GET.show == 'users' %} class="active"{% endif %}>
+            <a href="?show=users">Участники</a>
+        </li>
+        <li{% if request.GET.show == 'followers' %} class="active"{% endif %}>
+            <a href="?show=followers">Подписчики</a>
+        </li>
+    </ul>
+    <br/>
     {% crispy searchform %}
     <div class="row">
         <div class="col-md-8">

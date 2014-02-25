@@ -33,10 +33,10 @@ class CommunityDetailView(DetailView):
         self.followform = FollowCommunityForm(request.POST, prefix='follow')
         if self.followform.is_valid():
             community = Community.objects.get(pk=self.followform.cleaned_data.get('community'))
-            if not community in request.user.communities.all():
-                request.user.communities.add(community)
+            if not community in request.user.follow_communities.all():
+                request.user.follow_communities.add(community)
             else:
-                request.user.communities.remove(community)
+                request.user.follow_communities.remove(community)
             return self.get(request)
 
         return self.get(request, **kwargs)
@@ -77,6 +77,8 @@ class CommunityUsersView(UserListView):
 
     def get_queryset(self):
         qs = super(CommunityUsersView, self).get_queryset()
+        if self.request.GET.get('show') == 'followers':
+            return qs.filter(follow_communities__id=self.kwargs.get('pk'))
         return qs.filter(communities__id=self.kwargs.get('pk'))
 
     def get_context_data(self, **kwargs):
@@ -95,7 +97,7 @@ class CommunityUsersView(UserListView):
                 print self.userform
                 user = get_object_or_404(User, pk=self.userform.cleaned_data.get('user'))
                 if self.userform.cleaned_data.get('ban'):
-                    community.users.remove(user)
+                    community.followers.remove(user)
                     messages.success(request, u'Пользователь удален из сообщества')
                     return redirect('community_users', pk=community.id)
         return self.get(request, **kwargs)
