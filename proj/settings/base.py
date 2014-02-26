@@ -26,6 +26,7 @@ INSTALLED_APPS = (
     'mptt',
     'treeadmin',
     'taggit',
+    'sorl.thumbnail',
 
     #core
     'proj',

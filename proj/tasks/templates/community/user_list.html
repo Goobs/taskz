@@ -1,6 +1,7 @@
 {% extends 'base_inner.html' %}
 {% load crispy_forms_tags %}
 {% load proj_core %}
+{% load thumbnail %}
 
 {% block title %}Пользователи{% endblock %}
 
@@ -26,7 +27,13 @@
             <section class="panel panel-default">
                 <div class="panel-body media">
                     <a href="{% url 'user_detail' user.id %}" class="pull-left media-object">
-                        <img src="{{ user.avatar_url }}" width="80" class="img-circle"/>
+                        {% thumbnail user.avatar '80x80' crop='center' as im %}
+                            <img src="{{ im.url }}"
+                                 class="img-circle feed-avatar"/>
+                        {% empty %}
+                            <img src="{{ user.gravatar }}"
+                             class="img-circle feed-avatar" width="80"/>
+                        {% endthumbnail %}
                     </a>
                     <div class="media-object pull-right">
                         {% if user != request.user %}

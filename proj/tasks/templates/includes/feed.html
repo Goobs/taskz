@@ -1,19 +1,23 @@
+{% load proj_core %}
+
 <div class="panel panel-default">
     <section class="panel-body media">
         {% if post.community %}
-        <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
-            <img src="{% if post.community.image %}{{ MEDIA_URL }}{{ post.community.image }}{% else %}http://dummyimage.com/80x80{% endif %}"
+        <a href="{% url 'community_detail' post.community.id %}" class="media-object pull-left">
+            <img src="{% community_image post.community 80 %}"
                  class="img-circle feed-avatar"/>
         </a>
         {% else %}
         <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
-            <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
-                 class="img-circle feed-avatar"/>
+
+                <img src="{% avatar post.sender 80 %}"
+                    class="img-circle feed-avatar"/>
+
         </a>
         {% endif %}
         <div class="media-body">
             {% if post.community %}
-                <a href="{% url 'user_detail' post.sender.id %}">
+                <a href="{% url 'community_detail' post.community.id %}">
                     {{ post.community.name }}
                 </a>
             {% else %}
@@ -33,7 +37,6 @@
                     </a> |
                 {% endif %}
                 {{ post.date }} |
-
                 <a href="{% url 'feed_detail' post.id %}">
                     <i class="fa fa-comment-o"></i> Комментировать
                 </a>

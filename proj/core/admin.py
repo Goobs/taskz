@@ -1,9 +1,11 @@
 # -*- coding: utf8 -*-
 from django import forms
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from sorl.thumbnail.admin import AdminImageMixin
+
 
 from .models import *
 
@@ -13,6 +15,10 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('full_name',)
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        del self.fields['username']
 
     def clean_email(self):
         email = self.cleaned_data["email"]
@@ -26,7 +32,18 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
 
-class CustomUserAdmin(UserAdmin):
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        exclude = ('username',)
+
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+        del self.fields['username']
+
+
+class CustomUserAdmin(UserAdmin, AdminImageMixin):
 
     class ContactInline(admin.TabularInline):
         model = Contact
@@ -38,7 +55,7 @@ class CustomUserAdmin(UserAdmin):
     inlines = (ContactInline, )
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('full_name', 'about', 'avatar', 'city')}),
+        (_('Personal info'), {'fields': ('full_name', 'dob', 'about', 'avatar', 'city')}),
         (u'Социальные связи', {'fields': ('friends',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
@@ -58,6 +75,7 @@ class CustomUserAdmin(UserAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
     add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
 
 
 admin.site.register(User, CustomUserAdmin)

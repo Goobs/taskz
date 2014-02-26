@@ -1,10 +1,9 @@
 {% extends 'base_inner.html' %}
+{% load thumbnail %}
 
 {% block title %}Лента{% endblock %}
 
 {% block content %}
-
-{% load comments %}
 
 {% with object as post %}
 <div class="panel panel-default">
@@ -16,8 +15,13 @@
         </a>
         {% else %}
         <a href="{% url 'user_detail' post.sender.id %}" class="media-object pull-left">
-            <img src="{% if post.sender.avatar %}{{ MEDIA_URL }}{{ post.sender.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+            {% thumbnail post.sender.avatar '80x80' crop='center' as im %}
+                <img src="{{ im.url }}"
+                     class="img-circle feed-avatar"/>
+            {% empty %}
+                <img src="{{ post.sender.gravatar }}"
                  class="img-circle feed-avatar"/>
+            {% endthumbnail %}
         </a>
         {% endif %}
         <div class="media-body">
@@ -31,7 +35,7 @@
                 </a>
             {% endif %}
             <div class="feed-post-content">
-                {{ post.content|linebreaks }}
+                {{ post.content|safe }}
             </div>
 
             <p class="text-muted">
@@ -44,19 +48,19 @@
                 {{ post.date }}
             </p>
             <hr/>
-            {% get_comment_count for post as comment_count %}
-            <h4>Комментарии ({{ comment_count }})</h4>
 
-            {% get_comment_list for post as comment_list %}
-            {% for comment in comment_list %}
+            <h4>Комментарии ({{ post.comments.count }})</h4>
+
+
+            {% for comment in post.comments.all %}
                 <a name="c{{ comment.id }}"></a>
                 <div class="media">
                     <a href="{% url 'user_detail' comment.user.id %}" class="media-object pull-left">
-                        <img src="{% if comment.user.avatar %}{{ MEDIA_URL }}{{ comment.user.avatar }}{% else %}http://dummyimage.com/80x80{% endif %}"
+                        <img src="{{ comment.user.avatar_url }}"
                              class="img-circle feed-avatar"/>
                     </a>
                     <div class="media-body">
-                        <a href="{% url 'user_detail' post.sender.id %}">
+                        <a href="{% url 'user_detail' comment.user.id %}">
                             {{ comment.user.full_name }}
                         </a>
                         <div class="feed-post-content">
@@ -70,23 +74,7 @@
 
             {% endfor %}
 
-            {% get_comment_form for post as form %}
-            <form action="{% comment_form_target %}" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label>Комментарий:</label>
-                    <textarea name="comment" rows="3" class="form-control">{{ form.comment.value|default_if_none:'' }}</textarea>
-                </div>
-                {{ form.honeypot }}
-                {{ form.content_type }}
-                {{ form.object_pk }}
-                {{ form.timestamp }}
-                {{ form.security_hash }}
-                <input type="hidden" name="next" value="{% url 'feed_detail' post.id %}" />
-                <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-share"></i> Отправить
-                </button>
-            </form>
+
         </div>
     </section>
 </div>

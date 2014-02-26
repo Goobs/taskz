@@ -45,7 +45,7 @@
                 {% endif %}
                 <li>
                     <a href="{% url 'user_detail' user.id %}" title="Профиль">
-                        <i class="fa fa-user fa-lg"></i>
+                        <img src="{% avatar user 32 %}" class="img-circle" style="margin: -8px 0;"/>
                     </a>
                 </li>
             </ul>

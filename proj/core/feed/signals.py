@@ -88,7 +88,10 @@ def community_follow(sender, instance, **kwargs):
         return
     template = get_template(template_name)
     user1 = instance
-    community = Community.objects.get(pk__in=kwargs.get('pk_set'))
+    try:
+        community = Community.objects.get(pk__in=kwargs.get('pk_set'))
+    except:
+        return
     content = template.render(Context({'user1': user1, 'community': community}))
     feed = Feed(
         sender=user1,

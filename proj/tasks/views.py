@@ -49,10 +49,11 @@ class UserDetailView(DetailView):
 
 
 class UserProfileView(TemplateView):
-    template_name = 'accounts/profile_edit.html'
+    template_name = 'core/profile_edit.html'
     passwordform = None
     profileform = None
     contactforms = modelformset_factory(Contact, form=UserContactForm, extra=1)
+    avatarform = None
 
     def get_context_data(self, **kwargs):
         self.contactforms.form = staticmethod(curry(UserContactForm, user=self.request.user))
@@ -61,9 +62,12 @@ class UserProfileView(TemplateView):
             self.passwordform = UserPasswordChangeForm(self.request.user, prefix='pass')
         if not self.profileform:
             self.profileform = EditProfileForm(instance=self.request.user, prefix='profile')
+        if not self.avatarform:
+            self.avatarform = UserAvatarForm(instance=self.request.user, prefix='avatar')
         context['profileform'] = self.profileform
         context['passwordform'] = self.passwordform
         context['contactforms'] = self.contactforms(queryset=self.request.user.contacts.all())
+        context['avatarform'] = self.avatarform
         return context
 
     def post(self, request, **kwargs):
@@ -91,6 +95,12 @@ class UserProfileView(TemplateView):
             if contact and contact.user == request.user:
                 contact.delete()
                 messages.success(request, u'Контакт удален')
+                return redirect('user_profile')
+        if request.POST.get('save_avatar'):
+            self.avatarform = UserAvatarForm(request.POST, request.FILES, instance=request.user, prefix='avatar')
+            if self.avatarform.is_valid:
+                self.avatarform.save()
+                messages.success(request, u'Аватар сохранен')
                 return redirect('user_profile')
 
         return self.get(request, **kwargs)

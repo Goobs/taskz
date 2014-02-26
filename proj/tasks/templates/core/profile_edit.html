@@ -1,5 +1,6 @@
 {% extends 'base_inner.html' %}
 {% load crispy_forms_tags %}
+{% load proj_core %}
 
 {% block title %}Редактирование профиля{% endblock %}
 
@@ -36,13 +37,28 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
+
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h4 class="page-header">Сменить пароль</h4>
                     {% crispy passwordform %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4 class="page-header">Аватар</h4>
+                    {% if not user.avatar %}
+                        <p>По умолчанию используется <a href="http://gravatar.com/" target="_blank">Gravatar</a>.
+                        Вы можете использовать его, или загрузить другой файл здесь.
+                        </p>
+                    {% endif %}
+                    <p>
+                        <img src="{% avatar user 200 %}" class="img-thumbnail"/>
+                    </p>
+                    {% crispy avatarform %}
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 {% extends 'base_inner.html' %}
+{% load proj_core %}
 
 {% block title %}Сообщества{% endblock %}
 
@@ -9,7 +10,7 @@
         <div class="panel-body">
             <div class="media">
                 <a href="{% url 'community_detail' community.id %}" class="pull-left media-object">
-                    <img src="{{ community.image.url }}" class="img-thumbnail" width="200"/>
+                    <img src="{% community_image community 80 %}" class="img-thumbnail" width="200"/>
                 </a>
                 <div class="media-body">
                     <h3>

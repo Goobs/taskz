@@ -1,6 +1,6 @@
 {% extends 'base_inner.html' %}
 {% load crispy_forms_tags %}
-{% load static %}
+{% load proj_core %}
 
 {% block title %}Редактирование сообщества{% endblock %}
 
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-4">
                     {% if form.instance.image %}
-                    <img src="{% static form.instance.image.url %}" width="200" class="thumbnail"/>
+                    <img src="{% community_image form.instance 200 %}" width="200" class="thumbnail"/>
                     {% endif %}
                 </div>
             </div>

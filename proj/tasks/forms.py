@@ -87,6 +87,24 @@ class EditProfileForm(CrispyModelForm):
         )
 
 
+class UserAvatarForm(CrispyModelForm):
+    class Meta:
+        model = User
+        fields = ['avatar']
+
+    def get_layout(self, *args, **kwargs):
+        return Layout(
+            'avatar',
+            Div(
+                StrictButton(
+                    u'<i class="fa fa-save"></i> Сохранить',
+                    type='submit', name='save_avatar', value='1', css_class='btn btn-primary'
+                ),
+                css_class='col-md-9 col-md-offset-3'
+            )
+        )
+
+
 class UserPasswordChangeForm(PasswordChangeForm, CrispyForm):
     def get_layout(self, *args, **kwargs):
         self.helper.label_class = 'col-md-3'

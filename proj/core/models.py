@@ -1,10 +1,12 @@
 # -*- coding: utf8 -*-
+import hashlib
 from django.core.mail import send_mail
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 import re
 from taggit.managers import TaggableManager
+from sorl import thumbnail
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlquote
@@ -65,7 +67,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=True, db_index=True, blank=True)
+    email = models.EmailField(_('email address'), unique=True, db_index=True)
     full_name = models.CharField(_('full name'), max_length=255, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
@@ -76,7 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
     dob = models.DateField(blank=True, null=True, verbose_name=u'Дата рождения')
-    avatar = models.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
+    avatar = thumbnail.ImageField(upload_to='users', null=True, blank=True, verbose_name=u'Аватар')
     about = models.TextField(blank=True, null=True, verbose_name=u'О себе')
     friends = models.ManyToManyField('self', symmetrical=False, blank=True, null=True,
                                      related_name='followers', verbose_name=u'Друзья')
@@ -88,6 +90,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name']
+    abstract = False
 
     class Meta:
         verbose_name = _('user')
@@ -114,10 +117,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email])
 
     @property
-    def avatar_url(self):
+    def gravatar(self):
+        ghash = hashlib.md5(self.email.lower().strip()).hexdigest()
+        return 'http://gravatar.com/avatar/%s?d=identicon' % ghash
+
+    def avatar_url(self, width=80):
         if self.avatar:
-            return self.avatar.url
-        return 'http://dummyimage.com/220x220'
+            thumb = thumbnail.get_thumbnail(self.avatar, '%sx%s' % (width, width), crop='center', quality=99)
+            return thumb.url
+        return self.gravatar
 
     def __unicode__(self):
         return self.get_full_name()
