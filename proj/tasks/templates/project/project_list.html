@@ -28,8 +28,11 @@
                     <p class="text-right">
                         Статус: <span class="badge">{{ project.get_status_display }}</span>
                     </p>
+                    <p class="text-right">Задачи:
+                        <a href="{% url 'project_detail' project.id %}">{{ project.tasks.count }}</a>
+                    </p>
                     <p class="text-right">Вехи:
-                        <a href="{% url 'project_detail' project.id %}">{{ project.milestones.all|length }}</a>
+                        <a href="{% url 'project_detail' project.id %}">{{ project.milestones.count }}</a>
                     </p>
                 </div>
             </div>

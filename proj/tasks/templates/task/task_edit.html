@@ -9,10 +9,23 @@
     <li class="active">Редактирование</li>
 </ul>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-body">
                 {% crispy form %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% for list in object.checklists.all %}
+
+                {% empty %}
+                    <div class="alert alert-warning">
+                        Чек-листы в разработке
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

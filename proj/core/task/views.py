@@ -85,6 +85,7 @@ class TaskEditView(TemplateView):
         if not self.form:
             self.form = TaskEditForm(instance=self.object)
         context['form'] = self.form
+        context['object'] = self.object
         return context
 
     def post(self, request, **kwargs):

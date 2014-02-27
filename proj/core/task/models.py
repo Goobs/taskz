@@ -73,3 +73,22 @@ class Task(models.Model):
     def __unicode__(self):
         return self.title
 
+
+class Checklist(models.Model):
+    task = models.ForeignKey(Task, related_name='checklists', verbose_name=u'Задача')
+    title = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Заголовок')
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
+
+    def __unicode__(self):
+        return self.title
+
+
+class ChecklistItem(models.Model):
+    checklist = models.ForeignKey(Checklist, related_name='items', verbose_name=u'Чеклист')
+    title = models.CharField(max_length=255, blank=True, null=True, verbose_name=u'Заголовок')
+    done = models.BooleanField(default=False, verbose_name=u'Сделано')
+    date_created = models.DateTimeField(auto_now_add=True, verbose_name=u'Дата создания')
+    date_done = models.DateTimeField(null=True, verbose_name=u'Дата выполнения')
+
+    def __unicode__(self):
+        return self.title
