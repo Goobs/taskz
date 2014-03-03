@@ -14,15 +14,15 @@ class CommunityListView(ListView):
     model = Community
     paginate_by = 10
 
+    def get_context_data(self, **kwargs):
+        context = super(CommunityListView, self).get_context_data(**kwargs)
+        context['form'] = CommunitySearchForm(self.request.GET)
+        return context
+
     def get_queryset(self):
         param = self.request.GET.get('filter')
-        if param == 'following':
-            queryset = Community.objects.filter(followers__in=[self.request.user.id])
-        elif param == 'member':
-            queryset = Community.objects.filter(users__user__id=self.request.user.id)
-        else:
-            queryset = Community.objects.all()
-        return queryset
+        query = self.request.GET.get('query')
+        return Community.objects.search(self.request, query=query, filter_param=param)
 
 
 class CommunityDetailView(DetailView):

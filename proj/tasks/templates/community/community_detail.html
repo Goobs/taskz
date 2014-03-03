@@ -10,7 +10,7 @@
     <article class="panel panel-default">
         <div class="panel-body">
             <div class="pull-right">
-                {% if not object in user.communities.all %}
+                {% if not object in user.follow_communities.all %}
                     <form method="post">
                         {% csrf_token %}
                         <input type="hidden" name="follow-community" value="{{ object.id }}">

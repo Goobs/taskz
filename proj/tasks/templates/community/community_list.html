@@ -1,5 +1,6 @@
 {% extends 'base_inner.html' %}
 {% load proj_core %}
+{% load crispy_forms_tags %}
 
 {% block title %}Сообщества{% endblock %}
 
@@ -16,6 +17,7 @@
             <a href="{% url 'community_list' %}?filter=member">Я участвую</a>
         </li>
     </ul>
+    {% crispy form %}<br/>
     {% for community in object_list %}
     <section class="panel panel-default">
         <div class="panel-body">
@@ -48,7 +50,15 @@
     <section class="panel panel-default">
         <div class="panel-body media">
             <div class="alert alert-warning">
-                Здесь будут размещаться сообщества, в которых вы участвуете.
+
+                {% if not request.GET.filter %}
+                    Здесь будут размещаться сообщества.
+                {% elif request.GET.filter == 'following' %}
+                    Здесь будут размещаться сообщества, на которые подписаны.
+                {% elif requset.GET.filter == 'member' %}
+                    Здесь будут размещаться сообщества, в которых вы участвуете.
+                {% endif %}
+
             </div>
         </div>
     </section>

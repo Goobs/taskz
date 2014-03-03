@@ -52,3 +52,17 @@ class CommunityForm(CrispyModelForm):
                 css_class='col-md-6 col-md-offset-3'
             )
         )
+
+
+class CommunitySearchForm(CrispyForm):
+    query = forms.CharField(label=u'Поиск')
+    filter = forms.CharField(widget=widgets.HiddenInput())
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.form_class = 'form-inline'
+        self.helper.form_method = 'get'
+        return Layout(
+            InlineField('query'),
+            'filter',
+            StrictButton(u'<i class="fa fa-search"></i> Поиск', css_class='btn-primary')
+        )

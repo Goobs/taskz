@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 from taggit.managers import TaggableManager
 from proj.core.models import User
 from proj.core.comment.models import Comment
+from .managers import *
 
 
 class Community(models.Model):
@@ -16,6 +17,8 @@ class Community(models.Model):
     image = models.ImageField(upload_to='groups', verbose_name=u'Логотип', null=True, blank=True)
     tags = TaggableManager(blank=True)
     comments = generic.GenericRelation(Comment)
+
+    objects = CommunityManager()
 
     class Meta:
         verbose_name = u'Сообщество'
