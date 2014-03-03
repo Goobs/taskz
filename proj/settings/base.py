@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'taggit',
     'sorl.thumbnail',
     'reversion',
+    'django_ulogin',
 
     'proj.cms.templates',
     'feincms',

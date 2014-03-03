@@ -11,3 +11,4 @@ django-treeadmin
 django-taggit
 sorl-thumbnail
 django-reversion
+django-ulogin
