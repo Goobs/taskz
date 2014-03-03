@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^', include('proj.tasks.urls')),
+    url(r'^', include('proj.cms.urls')),
 )
 
 if settings.DEBUG:

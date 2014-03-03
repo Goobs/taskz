@@ -1,5 +1,6 @@
 django==1.6
 django-grappelli==2.5
+FeinCMS==1.9.1
 -e git+git@github.com:ashvetsov/grappelli-tools.git#egg=grappelli-tools
 south
 jsonfield
@@ -9,3 +10,4 @@ django-mptt
 django-treeadmin
 django-taggit
 sorl-thumbnail
+django-reversion

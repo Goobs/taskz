@@ -27,6 +27,13 @@ INSTALLED_APPS = (
     'treeadmin',
     'taggit',
     'sorl.thumbnail',
+    'reversion',
+
+    'proj.cms.templates',
+    'feincms',
+    'feincms.module.page',
+    'feincms.module.medialibrary',
+    'proj.cms',
 
     #core
     'proj',
