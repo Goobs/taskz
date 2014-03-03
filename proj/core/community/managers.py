@@ -17,4 +17,4 @@ class CommunityManager(Manager):
             qs = qs.filter(followers__id=request.user.id)
         if filter_param == 'member':
             qs = qs.filter(users__id=request.user.id)
-        return qs
+        return qs.all()
