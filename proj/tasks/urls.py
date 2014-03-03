@@ -22,7 +22,7 @@ urlpatterns = patterns(
     url(r'^accounts/login/$', unauthorized_only(LoginView.as_view()), name='login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
 
-    url(r'^blog/', include('proj.cms.urls', app_name='blog'))
+    url(r'^blog/', include('proj.cms.urls')),
 
 
 )

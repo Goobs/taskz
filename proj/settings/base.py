@@ -86,3 +86,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 AUTH_USER_MODEL = 'core.User'
+
+FEINCMS_RICHTEXT_INIT_TEMPLATE = 'admin/content/richtext/init_tinymce4.html'
+FEINCMS_RICHTEXT_INIT_CONTEXT = {
+    'TINYMCE_JS_URL': STATIC_URL + 'cms/tinymce/tinymce.min.js',
+}
+
+from django.contrib.messages import constants
+MESSAGE_TAGS = {
+    constants.ERROR: 'danger',
+}

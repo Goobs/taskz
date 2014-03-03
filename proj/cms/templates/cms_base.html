@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block commoncontent %}
+    {% include 'includes/navbar.html' %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
