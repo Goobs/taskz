@@ -15,7 +15,14 @@ class CommunityListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return self.request.user.communities.all()
+        param = self.request.GET.get('filter')
+        if param == 'following':
+            queryset = Community.objects.filter(followers__in=[self.request.user.id])
+        elif param == 'member':
+            queryset = Community.objects.filter(users__user__id=self.request.user.id)
+        else:
+            queryset = Community.objects.all()
+        return queryset
 
 
 class CommunityDetailView(DetailView):

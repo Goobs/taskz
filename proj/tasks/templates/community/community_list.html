@@ -5,6 +5,17 @@
 
 {% block content %}
     <h3>Сообщества</h3>
+    <ul class="nav nav-pills compact">
+        <li{% if not request.GET.filter %} class="active"{% endif %}>
+            <a href="{% url 'community_list' %}">Все</a>
+        </li>
+        <li{% if request.GET.filter == 'following' %} class="active"{% endif %}>
+            <a href="{% url 'community_list' %}?filter=following">Я подписан</a>
+        </li>
+        <li{% if request.GET.filter == 'member' %} class="active"{% endif %}>
+            <a href="{% url 'community_list' %}?filter=member">Я участвую</a>
+        </li>
+    </ul>
     {% for community in object_list %}
     <section class="panel panel-default">
         <div class="panel-body">
