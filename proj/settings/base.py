@@ -97,3 +97,10 @@ from django.contrib.messages import constants
 MESSAGE_TAGS = {
     constants.ERROR: 'danger',
 }
+
+ULOGIN_FIELDS = ['first_name', 'last_name', 'email']
+ULOGIN_OPTIONAL = ['photo', 'bdate', 'city']
+ULOGIN_PROVIDERS = ['vkontakte', 'facebook', 'mailru', 'google', 'odnoklassniki']
+ULOGIN_HIDDEN = []
+ULOGIN_DISPLAY = 'panel'
+ULOGIN_CREATE_USER_CALLBACK = "proj.core.utils.ulogin.custom_user_create"

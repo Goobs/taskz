@@ -162,3 +162,29 @@ class Currency(models.Model):
 
     def __unicode__(self):
         return self.char_code
+
+
+def catch_ulogin_signal(*args, **kwargs):
+    """
+    Обновляет модель пользователя: исправляет username, имя и фамилию на
+    полученные от провайдера.
+
+    В реальной жизни следует иметь в виду, что username должен быть уникальным,
+    а в социальной сети может быть много "тёзок" и, как следствие,
+    возможно нарушение уникальности.
+
+    """
+    user=kwargs['user']
+    json=kwargs['ulogin_data']
+
+    if kwargs['registered']:
+        user.full_name = json['first_name'] = ' ' + json['last_name']
+        user.email = json['email']
+        user.save()
+
+from django_ulogin.models import ULoginUser
+from django_ulogin.signals import assign
+
+assign.connect(receiver=catch_ulogin_signal,
+               sender=ULoginUser,
+               dispatch_uid='customize.models')
