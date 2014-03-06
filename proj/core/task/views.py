@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-
+from django.core.exceptions import ValidationError
 from django.http import HttpResponse
 from django.views.generic import *
 from django.views.generic.list import ListView
 from django.contrib.auth.views import *
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 from .forms import *
 from proj.core.models import User
 from proj.core.task.models import Task
@@ -101,3 +105,21 @@ class TaskEditView(TemplateView):
                 return redirect('task_detail', pk=self.form.instance.pk)
 
         return self.get(request, **kwargs)
+
+
+class TaskEditFieldView(APIView):
+    model = Task
+
+    def post(self, request, **kwargs):
+        object = get_object_or_404(self.model, pk=request.POST.get('pk'))
+        field = request.POST.get('name')
+        value = request.POST.get('value')
+        setattr(object, field, value)
+        print object.__dict__
+        try:
+            object.full_clean()
+        except ValidationError as e:
+            return Response(e.error_dict, status=400)
+        object.save()
+        return Response('{"status":"OK"}')
+

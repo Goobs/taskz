@@ -29,10 +29,12 @@
         })
 
         $(window).on('resize', function(){
-            console.log($(window).height())
             $('.chat').height($(window).height() - $('.inputs').outerHeight()-102);
             $('.chat').scrollTop($(document).height())
         }).resize();
+
+        $.fn.editable.defaults.mode = 'inline';
+        $('.xeditable').editable();
 
     })
 })(jQuery)
