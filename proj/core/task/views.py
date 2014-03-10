@@ -15,6 +15,7 @@ from proj.core.models import User
 from proj.core.task.models import Task
 from proj.core.comment.models import *
 from proj.core.comment.forms import *
+from proj.core.utils.inlineeditview import InlineEditView
 
 
 class TaskListView(ListView):
@@ -107,19 +108,6 @@ class TaskEditView(TemplateView):
         return self.get(request, **kwargs)
 
 
-class TaskEditFieldView(APIView):
+class TaskEditFieldView(InlineEditView):
     model = Task
-
-    def post(self, request, **kwargs):
-        object = get_object_or_404(self.model, pk=request.POST.get('pk'))
-        field = request.POST.get('name')
-        value = request.POST.get('value')
-        setattr(object, field, value)
-        print object.__dict__
-        try:
-            object.full_clean()
-        except ValidationError as e:
-            return Response(e.error_dict, status=400)
-        object.save()
-        return Response('{"status":"OK"}')
 
