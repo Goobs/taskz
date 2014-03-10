@@ -1,0 +1,44 @@
+{% extends 'base_inner.html' %}
+
+{% block content %}
+
+    <ul class="breadcrumb">
+        <li><a href="{% url 'project_list' %}">Проекты</a></li>
+        <li><a href="{% url 'project_detail' project.id %}">{{ project.title }}</a></li>
+        <li class="active">Вехи</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-8">
+            {% for milestone in object_list %}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><a href="{% url 'task_list' %}?milestone={{ milestone.id }}">{{ milestone.title }}</a><br/>
+                                    <small>Срок: {{ milestone.date_due }}</small>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="text-right">
+                                    <a href="{% url 'milestone_edit' milestone.id %}">Редактировать</a>&nbsp;|&nbsp;
+                                    <a href="{% url 'task_list' %}?milestone={{ milestone.id }}">Задачи</a>
+                                </p>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar"
+                                         aria-valuenow="{{ milestone.progress|floatformat:0 }}" aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         style="width: {{ milestone.progress|floatformat:0 }}%;">
+                                        {{ milestone.progress|floatformat:0 }}%
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% include 'includes/pagination.html' %}
+        </div>
+    </div>
+
+{% endblock content %}

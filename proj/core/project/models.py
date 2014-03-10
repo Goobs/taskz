@@ -44,7 +44,7 @@ class Project(models.Model):
 
 
 class Milestone(models.Model):
-    project = models.ForeignKey(Project, related_name='milestones', verbose_name=u'Веха')
+    project = models.ForeignKey(Project, related_name='milestones', verbose_name=u'Проект')
 
     title = models.CharField(max_length=255, verbose_name=u'Заголовок')
     description = models.TextField(max_length=1000, blank=True, null=True, verbose_name=u'Описание')
@@ -64,3 +64,10 @@ class Milestone(models.Model):
             return True
         return False
 
+    @property
+    def progress(self):
+        completed = self.tasks.filter(status__in=['resolved', 'closed']).count()
+        total = self.tasks.count()
+        if total:
+            return completed / total * 100
+        return 0

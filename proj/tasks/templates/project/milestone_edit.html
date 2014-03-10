@@ -1,0 +1,21 @@
+{% extends 'base_inner.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'project_list' %}">Проекты</a></li>
+        <li><a href="{% url 'project_detail' project.id %}">{{ project.title }}</a></li>
+        <li><a href="#">Вехи</a></li>
+        <li class="active">Редактирование</li>
+    </ul>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% crispy form %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

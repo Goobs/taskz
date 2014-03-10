@@ -26,7 +26,7 @@
             <hr>
             <div class="row">
                 <div class="col-md-6 tasks-panel">
-                    <h4>Задачи</h4>
+                    <h4><a href="{% url 'task_list' %}?project={{ object.id }}">Задачи</a></h4>
                     {% if object.tasks.all|length %}
                         <div class="list-group">
                         {% for task in object.tasks.latest_top %}
@@ -42,17 +42,17 @@
                             </a>
                         {% endfor %}
                         </div>
-                        <a href="#">Показать еще&hellip;</a>
+                        <a href="{% url 'task_list' %}?project={{ object.id }}">Показать еще&hellip;</a>
                     {% else %}
                         <p>В проекте пока нет задач</p>
                     {% endif %}
                 </div>
                 <div class="col-md-6">
-                    <h4>Вехи</h4>
+                    <h4><a href="{% url 'milestone_list' object.id %}">Вехи</a></h4>
                     {% if object.milestones.all|length %}
                         <div class="list-group">
                         {% for milestone in object.milestones.latest_top %}
-                            <a href="#" class="list-group-item">
+                            <a href="{% url 'task_list' %}?milestone={{ milestone.id }}" class="list-group-item">
                                 <span class="list-group-heading">
                                     <i class="fa fa-tag"></i> {{ milestone.title }}
                                 </span>
@@ -64,9 +64,9 @@
                             </a>
                         {% endfor %}
                         </div>
-                        <a href="#">Показать еще&hellip;</a>
+                        <a href="{% url 'milestone_list' object.id %}">Показать еще&hellip;</a>
                     {% else %}
-                        <p>В проекте пока нет вех</p>
+                        <p>В проекте пока нет вех. <a href="{% url 'milestone_edit' object.id %}">Создать&hellip;</a></p>
                     {% endif %}
                 </div>
             </div>

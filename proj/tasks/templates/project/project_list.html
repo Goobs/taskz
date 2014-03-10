@@ -3,51 +3,55 @@
 {% block title %}Проекты{% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            {% for project in object_list %}
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>
+                                <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+                            </h3>
+                            {% if project.tags.all %}
+                                <p><i class="fa fa-tags"></i> Метки:
+                                    {% for tag in project.tags.all %}
+                                    <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                            <p>Создан: {{ project.date_created }} {% if project.reporter == user %}
+                                <a href="{% url 'project_edit' project.id %}">Редактировать</a>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="text-right">
+                                Статус: <span class="badge">{{ project.get_status_display }}</span>
+                            </p>
+                            <p class="text-right">Задачи:
+                                <a href="{% url 'project_detail' project.id %}">{{ project.tasks.count }}</a>
+                            </p>
+                            <p class="text-right">Вехи:
+                                <a href="{% url 'project_detail' project.id %}">{{ project.milestones.count }}</a>
+                            </p>
+                        </div>
+                    </div>
 
-    {% for project in object_list %}
-    <section class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <h3>
-                        <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
-                    </h3>
-                    {% if project.tags.all %}
-                        <p><i class="fa fa-tags"></i> Метки:
-                            {% for tag in project.tags.all %}
-                            <a href="#"><span class="label label-warning">{{ tag.name }}</span></a>
-                            {% endfor %}
-                        </p>
-                    {% endif %}
-                    <p>Создан: {{ project.date_created }} {% if project.reporter == user %}
-                        <a href="{% url 'project_edit' project.id %}">Редактировать</a>
-                        {% endif %}
-                    </p>
                 </div>
-                <div class="col-md-4">
-                    <p class="text-right">
-                        Статус: <span class="badge">{{ project.get_status_display }}</span>
-                    </p>
-                    <p class="text-right">Задачи:
-                        <a href="{% url 'project_detail' project.id %}">{{ project.tasks.count }}</a>
-                    </p>
-                    <p class="text-right">Вехи:
-                        <a href="{% url 'project_detail' project.id %}">{{ project.milestones.count }}</a>
-                    </p>
+            </section>
+            {% empty %}
+            <section class="panel panel-default">
+                <div class="panel-body media">
+                    <div class="alert alert-warning">
+                        Здесь будут размещаться ваши проекты.
+                    </div>
                 </div>
-            </div>
-
+            </section>
+            {% endfor %}
+            {% include 'includes/pagination.html' %}
         </div>
-    </section>
-    {% empty %}
-    <section class="panel panel-default">
-        <div class="panel-body media">
-            <div class="alert alert-warning">
-                Здесь будут размещаться ваши проекты.
-            </div>
-        </div>
-    </section>
-    {% endfor %}
+    </div>
 
-{% include 'includes/pagination.html' %}
+
 {% endblock %}

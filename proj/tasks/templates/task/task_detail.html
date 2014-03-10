@@ -15,16 +15,20 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <h4 class="page-header">
+                    {% if user == object.reporter %}
                     <a href="#" class="xeditable" data-url="{% url 'task_editfield' %}"
                             id="title" data-pk="{{ object.id }}" data-value="{{ object.title }}"
                             data-type="text" data-params="{csrfmiddlewaretoken:'{{csrf_token}}'}">{{ object.title }}</a>
+                    {% else %}
+                        {{ object.title }}
+                    {% endif %}
                     <br/>
                 <small>Создана: {{ object.date_created }}</small></h4>
                 <div class="row">
                     <div class="col-md-6">
                         <p><i class="fa fa-user"></i> <b>Заказчик:</b> {{ object.reporter }}</p>
                         <p><i class="fa fa-file-o"></i> <b>Статус:</b> <span class="badge">{{ object.get_status_display }}</span></p>
-                        <p><i class="fa fa-clock-o"></i> <b>Срок:</b> {{ object.date_due }}</p>
+                        <p><i class="fa fa-clock-o"></i> <b>Срок:</b> {{ object.date_due|default_if_none:'<span class="text-muted">Нет</span>' }}</p>
                         <p><i class="fa fa-signal"></i> <b>Приоритет:</b> {{ object.get_priority_display }}</p>
                     </div>
                     <div class="col-md-6">

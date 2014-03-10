@@ -22,6 +22,16 @@ class TaskListView(ListView):
     model = Task
     paginate_by = 20
 
+    def get_queryset(self):
+        qs = Task.objects.all()
+        project = self.request.GET.get('project')
+        milestone = self.request.GET.get('milestone')
+        if project:
+            qs = qs.filter(project_id=project)
+        if milestone:
+            qs = qs.filter(milestone_id=milestone)
+        return qs
+
 
 class TaskDetailView(DetailView):
     model = Task
