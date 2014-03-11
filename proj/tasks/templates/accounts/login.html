@@ -1,22 +1,129 @@
-{% extends 'accounts/base.html' %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load ulogin_tags %}
+
 {% block title %}Вход{% endblock %}
 
-{% block content %}
-<div class="panel panel-default">
-    <div class="panel-body">
-    {% crispy loginform %}
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h5 class="panel-title">Впервые у нас? Присоединяйтесь!</h5>
-    </div>
-    <div class="panel-body">
-    {% crispy regform %}
-    </div>
-</div>
+{% block commoncontent %}
 
-    {% load ulogin_tags %}
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">Taskz</a>
+            </div>
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#howitworks">Как это работает?</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="full-back">
+        <div class="vertical-center">
+            <h1>Taskz</h1>
+            <hr/>
+            <h3>Доверьте работу профессионалам</h3>
+            <p>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-vk"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+            </p>
+
+        </div>
+        <a href="#about" class="next"><i class="fa fa-chevron-circle-down"></i></a>
+    </div>
+    <div class="container">
+        <a id="about"></a>
+        <h1 class="page-header">О проекте</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <p class="lead">
+                    Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.
+                </p>
+            </div>
+            <div class="col-md-8">
+                <p>
+                    Не следует, однако забывать, что сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач. Идейные соображения высшего порядка, а также сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.
+                </p>
+            </div>
+
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="http://dummyimage.com/360x220" class="img-responsive"/>
+                <h3>Фича раз</h3>
+                <p>
+                    Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="http://dummyimage.com/360x220" class="img-responsive"/>
+                <h3>Фича два</h3>
+                <p>
+                    Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="http://dummyimage.com/360x220" class="img-responsive"/>
+                <h3>Фича три</h3>
+                <p>
+                    Значимость этих проблем настолько очевидна, что начало повседневной работы по формированию позиции играет важную роль в формировании модели развития.
+                </p>
+            </div>
+        </div>
+
+        <br/>
+        <a id="howitworks"></a>
+        <h1 class="page-header">Как это работает?</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Вы &mdash; заказчик</h3>
+                <p>
+                    Не следует, однако забывать, что сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач. Идейные соображения высшего порядка, а также сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h3>Вы &mdash; мастер</h3>
+                <p>
+                    Не следует, однако забывать, что сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач. Идейные соображения высшего порядка, а также сложившаяся структура организации обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.
+                </p>
+            </div>
+        </div>
+        <br/>
+        <a id="contact"></a>
+        <h1 class="page-header">Контакты</h1>
+        <p class="lead text-center">
+            Чтобы записаться на закрытое бета-тестирование, пожалуйста, заполните форму.
+        </p>
+    </div>
+
+
+    <footer class="navbar navbar-default navbar-static-bottom">
+        <div class="container">
+            <p class="navbar-text">&copy; 2014</p>
+        </div>
+    </footer>
+
+    {% comment %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% crispy loginform %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5 class="panel-title">Впервые у нас? Присоединяйтесь!</h5>
+        </div>
+        <div class="panel-body">
+            {% crispy regform %}
+        </div>
+    </div>
+
+
     {% ulogin_widget %}
+    {% endcomment %}
 {% endblock %}

@@ -1,0 +1,59 @@
+.navbar-static-bottom {
+    margin: 20px 0 0;
+}
+
+.full-back {
+    display: block;
+    position: relative;
+    height: 100%;
+    background: url('/static/tasks/img/back.jpg') 50% 50% no-repeat fixed;
+}
+
+.vertical-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    text-align: center;
+    margin-top: -180px;
+    margin-left: -250px;
+}
+
+.vertical-center h1,
+.vertical-center h3 {
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+}
+
+.vertical-center h1 {
+    font-size: 80px;
+}
+
+.vertical-center p, .vertical-center a {
+    color: rgba(255,255,255,.3);
+    font-size: 50px;
+}
+
+.vertical-center a:hover {
+    color: rgba(255,255,255,.8);
+}
+
+.next {
+    text-align: center;
+    width: 60px;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -30px;
+    color: rgba(255,255,255,.3);
+    font-size: 50px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.next:hover,
+.next:focus {
+    color: rgba(255,255,255,.8);
+    font-size: 55px;
+    bottom: 17px;
+}
