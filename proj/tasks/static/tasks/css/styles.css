@@ -37,7 +37,7 @@ label {
     width: 250px;
     position: fixed;
     height: 100%;
-    background: #424242;
+    background: #333333;
     top: 0px;
     overflow: hidden;
     -weblit-transition: width .3s;
@@ -69,13 +69,13 @@ label {
 .sidebar-menu > li > a:hover {
     color: #ccc;
     text-decoration: none;
-    background: #2b2b2b;
+    background: #272727;
 }
 
 .sidebar-menu > li.active > a {
     color: #ccc;
     text-decoration: none;
-    background: #2b2b2b;
+    background: #272727;
     position: relative;
 }
 
@@ -110,9 +110,9 @@ label {
 .sidebar-menu > li > a .fa {color: #999;}
 .sidebar-menu > li > a:hover .fa {color: #ccc;}
 
-.sidebar-hidden .sidebar-menu > li > a {color: #424242;}
+.sidebar-hidden .sidebar-menu > li > a {color: #333333;}
 .sidebar-hidden .sidebar-menu > li > a:hover,
-.sidebar-hidden .sidebar-menu > li.active > a {color: #2b2b2b;}
+.sidebar-hidden .sidebar-menu > li.active > a {color: #272727;}
 
 .sidebar-hidden .sidebar-menu > li > a .fa {color: #999;}
 .sidebar-hidden .sidebar-menu > li > a:hover .fa {color: #ccc;}
