@@ -1,8 +1,29 @@
 {% extends 'base_inner.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Задачи{% endblock %}
 
 {% block content %}
+    <h3>Задачи</h3>
+    <ul class="nav nav-pills compact">
+        <li{% if not request.GET.status %} class="active"{% endif %}>
+            <a href="{% url 'task_list' %}">Все</a>
+        </li>
+        <li{% if request.GET.status == 'new' %} class="active"{% endif %}>
+            <a href="{% url 'task_list' %}?status=new">Новые</a>
+        </li>
+        <li{% if request.GET.status == 'open' %} class="active"{% endif %}>
+            <a href="{% url 'task_list' %}?status=open">Открытые</a>
+        </li>
+        <li{% if request.GET.status == 'resolved' %} class="active"{% endif %}>
+            <a href="{% url 'task_list' %}?status=resolved">Выполненные</a>
+        </li>
+        <li{% if request.GET.status == 'closed' %} class="active"{% endif %}>
+            <a href="{% url 'task_list' %}?status=closed">Закрытые</a>
+        </li>
+
+    </ul>
+    {% crispy form %}<br/>
 <div class="row">
     <div class="col-md-8">
         {% for task in object_list %}

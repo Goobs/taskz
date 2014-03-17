@@ -59,3 +59,26 @@ class TaskAssignForm(CrispyForm):
         self.helper.field_class = ''
         self.helper.form_method = 'post'
         return None
+
+
+class TaskSearchForm(CrispyForm):
+    query = forms.CharField(label=u'Поиск', required=False)
+    project = forms.ModelChoiceField(queryset=None, required=False, empty_label=u'Все проекты')
+    milestone = forms.ModelChoiceField(queryset=None, required=False, empty_label=u'Все вехи')
+    status = forms.CharField(widget=widgets.HiddenInput(), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(TaskSearchForm, self).__init__(*args, **kwargs)
+        self.fields['project'].queryset = kwargs.get('projects')
+        self.fields['milestone'].queryset = kwargs.get('milestones')
+
+    def get_layout(self, *args, **kwargs):
+        self.helper.form_class = 'form-inline'
+        self.helper.form_method = 'get'
+        return Layout(
+            InlineField('query'),
+            InlineField('project'),
+            InlineField('milestone'),
+            'status',
+            StrictButton(u'<i class="fa fa-search"></i> Поиск', css_class='btn-primary', type='submit')
+        )

@@ -127,6 +127,11 @@ class User(AbstractBaseUser, PermissionsMixin):
             return thumb.url
         return self.gravatar
 
+    @property
+    def milestones(self):
+        from proj.core.project.models import Milestone
+        return Milestone.objects.filter(project__reporter=self)
+
     def __unicode__(self):
         return self.get_full_name()
 

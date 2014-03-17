@@ -21,16 +21,26 @@ from proj.core.utils.inlineeditview import InlineEditView
 class TaskListView(ListView):
     model = Task
     paginate_by = 20
+    form = None
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskListView, self).get_context_data(**kwargs)
+        context['form'] = self.form
+        return context
 
     def get_queryset(self):
-        qs = Task.objects.all()
-        project = self.request.GET.get('project')
-        milestone = self.request.GET.get('milestone')
-        if project:
-            qs = qs.filter(project_id=project)
-        if milestone:
-            qs = qs.filter(milestone_id=milestone)
-        return qs
+        self.form = TaskSearchForm(
+            self.request.GET,
+            projects=self.request.user.projects,
+            milestones=self.request.user.milestones
+        )
+        self.form.is_valid()
+        return Task.objects.search(
+            project=self.form.cleaned_data.get('project'),
+            milestone=self.form.cleaned_data.get('milestone'),
+            status=self.request.GET.get('status'),
+            query=self.request.GET.get('query'),
+        )
 
 
 class TaskDetailView(DetailView):
