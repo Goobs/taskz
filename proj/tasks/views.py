@@ -27,7 +27,7 @@ class UserDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(UserDetailView, self).get_context_data(**kwargs)
-        context['userfeed'] = Feed.objects.user_feed(self.object)
+        context['userfeed'] = Feed.objects.user_feed(self.object)[:20]
         if not self.followform:
             self.followform = FollowUserForm(prefix='follow')
         context['followform'] = self.followform
