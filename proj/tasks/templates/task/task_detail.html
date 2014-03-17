@@ -14,6 +14,7 @@
     <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-body">
+                <h4 class="text-info pull-right">{{ task.price|floatformat:2 }} {{ task.currency }}</h4>
                 <h4 class="page-header">
                     {% if user == object.reporter %}
                     <a href="#" class="xeditable" data-url="{% url 'task_editfield' %}"

@@ -20,13 +20,14 @@
                                 {% endfor %}
                             </p>
                         {% endif %}
-                        <p>Создан: {{ task.date_created }} {% if task.reporter == user %}
+                        <p>Создана: {{ task.date_created }} {% if task.reporter == user %}
                             <a href="{% url 'task_edit' task.id %}">Редактировать</a>
                             {% endif %}
                         </p>
                     </div>
-                    <div class="col-md-4">
-                        <p class="text-right">
+                    <div class="col-md-4 text-right">
+                        <h3 class="text-info">{{ task.price|floatformat:2 }} {{ task.currency }}</h3>
+                        <p>
                             Статус: <span class="badge">{{ task.get_status_display }}</span>
                         </p>
                     </div>
